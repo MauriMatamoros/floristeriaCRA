@@ -2,27 +2,21 @@ import React, { useState, useEffect } from 'react'
 import {
 	Form,
 	Input,
-	TextArea,
 	Button,
 	Image,
 	Message,
 	Header,
 	Icon
 } from 'semantic-ui-react'
-import { connect } from 'react-redux'
 
 import database, { storage } from '../firebase'
-import { getTypes } from '../redux/actions/productTypes'
-import Spinner from '../components/Spinner/Spinner'
 
-const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
-	const INITIAL_PRODUCT = {
+const CreateType = () => {
+	const INITIAL_TYPE = {
 		name: '',
-		description: '',
-		price: '',
 		media: ''
 	}
-	const [product, setProduct] = useState(INITIAL_PRODUCT)
+	const [type, setType] = useState(INITIAL_TYPE)
 	const [mediaPreview, setMediaPreview] = useState('')
 	const [success, setSuccess] = useState(false)
 	const [loading, setLoading] = useState(false)
@@ -30,33 +24,25 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 	const [error, setError] = useState('')
 
 	useEffect(() => {
-		const isProduct = Object.values(product).every((element) =>
-			Boolean(element)
-		)
-		isProduct ? setDisabled(false) : setDisabled(true)
-	}, [product])
-
-	useEffect(() => {
-		getTypes()
-	}, [getTypes])
+		const isType = Object.values(type).every((element) => Boolean(element))
+		isType ? setDisabled(false) : setDisabled(true)
+	}, [type])
 
 	const handleChange = (e) => {
 		const { name, value, files } = e.target
 		if (name === 'media') {
-			setProduct((prevState) => ({ ...prevState, media: files[0] }))
+			setType((prevState) => ({ ...prevState, media: files[0] }))
 			setMediaPreview(window.URL.createObjectURL(files[0]))
 		} else {
-			setProduct((prevState) => ({
+			setType((prevState) => ({
 				...prevState,
 				[name]: value
 			}))
 		}
 	}
 
-	const handleImageUpload = async (productId) => {
-		await storage
-			.ref(`products/${productId}-${product.media.name}`)
-			.put(product.media)
+	const handleImageUpload = async (typeId) => {
+		await storage.ref(`types/${typeId}-${type.media.name}`).put(type.media)
 	}
 
 	const handleSubmit = async (e) => {
@@ -65,14 +51,12 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 			setLoading(true)
 			setError('')
 			const payload = {
-				name: product.name,
-				description: product.description,
-				images: [product.media.name],
-				price: product.price
+				name: type.name,
+				image: type.media.name
 			}
-			const { key } = await database.ref('products').push(payload)
+			const { key } = await database.ref('types').push(payload)
 			await handleImageUpload(key)
-			setProduct(INITIAL_PRODUCT)
+			setType(INITIAL_TYPE)
 			setSuccess(true)
 		} catch (error) {
 			setError(error.message)
@@ -81,15 +65,12 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 		}
 	}
 
-	return loadingSpinner ? (
-		<Spinner />
-	) : (
+	return (
 		<>
 			<Header as='h2' block>
 				<Icon name='add' color='orange' />
-				Create New Product
+				Create New Type
 			</Header>
-			{types[0].name}
 			<Form
 				loading={loading}
 				error={Boolean(error)}
@@ -100,7 +81,7 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 					success
 					icon='check'
 					header='Success!'
-					content='Your product has been posted.'
+					content='Your type has been posted.'
 				/>
 				<Message error header='Oops!' content={error} />
 				<Form.Group widths='equal'>
@@ -111,18 +92,7 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 						placeholder='Name'
 						type='text'
 						onChange={handleChange}
-						value={product.name}
-					/>
-					<Form.Field
-						control={Input}
-						name='price'
-						label='Price'
-						placeholder='Price'
-						min='0.00'
-						step='0.01'
-						type='number'
-						onChange={handleChange}
-						value={product.price}
+						value={type.name}
 					/>
 					<Form.Field
 						control={Input}
@@ -136,15 +106,6 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 				</Form.Group>
 				<Image src={mediaPreview} rounded centered size='small' />
 				<Form.Field
-					control={TextArea}
-					name='description'
-					label='Description'
-					placeholder='Description'
-					type='text'
-					onChange={handleChange}
-					value={product.description}
-				/>
-				<Form.Field
 					control={Button}
 					color='blue'
 					icon='pencil alternate'
@@ -157,12 +118,4 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 	)
 }
 
-const mapStateToProps = ({ productTypes: { types, loading } }) => ({
-	types,
-	loadingSpinner: loading
-})
-
-export default connect(
-	mapStateToProps,
-	{ getTypes }
-)(CreateProduct)
+export default CreateType
