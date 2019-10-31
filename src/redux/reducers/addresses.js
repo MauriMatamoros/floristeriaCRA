@@ -27,6 +27,7 @@ export default (state = initialState, action) => {
 				loading: false
 			}
 		case REMOVE_ADDRESS:
+			console.log(payload)
 			return {
 				...state,
 				addresses: state.addresses.filter((address) => address.id !== payload),

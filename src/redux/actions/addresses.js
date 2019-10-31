@@ -40,3 +40,17 @@ export const addAddress = (payload) => (dispatch) => {
 		})
 	}
 }
+
+export const removeAddress = (payload) => (dispatch) => {
+	try {
+		dispatch({
+			type: REMOVE_ADDRESS,
+			payload: payload
+		})
+	} catch (error) {
+		dispatch({
+			type: ADDRESS_ERROR,
+			payload: error.message
+		})
+	}
+}
