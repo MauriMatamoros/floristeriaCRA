@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Icon, Table, Button } from 'semantic-ui-react'
+import { Icon, Table } from 'semantic-ui-react'
 
 import Spinner from '../Spinner/Spinner'
 import AddressItem from './AddressItem'

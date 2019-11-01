@@ -8,10 +8,15 @@ import {
 	Header,
 	Icon
 } from 'semantic-ui-react'
+import axios from 'axios'
+import { connect } from 'react-redux'
 
-import database, { storage } from '../firebase'
+import { storage, firebase } from '../firebase'
+import { addType } from '../redux/actions/productTypes'
+import Spinner from '../components/Spinner/Spinner'
+import TypeList from '../components/ProductTypes/TypeList'
 
-const CreateType = () => {
+const CreateType = ({ addType, userLoading }) => {
 	const INITIAL_TYPE = {
 		name: '',
 		media: ''
@@ -50,12 +55,14 @@ const CreateType = () => {
 			e.preventDefault()
 			setLoading(true)
 			setError('')
-			const payload = {
-				name: type.name,
-				image: type.media.name
-			}
-			const { key } = await database.ref('types').push(payload)
-			await handleImageUpload(key)
+			const { name, media } = type
+			const token = await firebase.auth().currentUser.getIdToken()
+			const { data } = await axios.post(
+				'http://localhost:5001/floristeria-cra/us-central1/postType',
+				{ token, name, image: media.name }
+			)
+			await handleImageUpload(data.id)
+			addType(data)
 			setType(INITIAL_TYPE)
 			setSuccess(true)
 		} catch (error) {
@@ -65,7 +72,9 @@ const CreateType = () => {
 		}
 	}
 
-	return (
+	return userLoading ? (
+		<Spinner />
+	) : (
 		<>
 			<Header as='h2' block>
 				<Icon name='add' color='orange' />
@@ -114,8 +123,16 @@ const CreateType = () => {
 					disabled={disabled || loading}
 				/>
 			</Form>
+			<TypeList />
 		</>
 	)
 }
 
-export default CreateType
+const mapStateToProps = ({ auth }) => ({
+	userLoading: auth.loading
+})
+
+export default connect(
+	mapStateToProps,
+	{ addType }
+)(CreateType)
