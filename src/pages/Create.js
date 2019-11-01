@@ -16,7 +16,7 @@ import database, { storage } from '../firebase'
 import { getTypes } from '../redux/actions/productTypes'
 import Spinner from '../components/Spinner/Spinner'
 
-const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
+const CreateProduct = ({ getTypes, types, loadingSpinner, loadingUser }) => {
 	const INITIAL_PRODUCT = {
 		name: '',
 		description: '',
@@ -91,7 +91,7 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 		}
 	}
 
-	return loadingSpinner ? (
+	return loadingSpinner || loadingUser ? (
 		<Spinner />
 	) : (
 		<>
@@ -175,9 +175,10 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 	)
 }
 
-const mapStateToProps = ({ productTypes: { types, loading } }) => ({
+const mapStateToProps = ({ auth, productTypes: { types, loading } }) => ({
 	types,
-	loadingSpinner: loading
+	loadingSpinner: loading,
+	loadingUser: auth.loading
 })
 
 export default connect(

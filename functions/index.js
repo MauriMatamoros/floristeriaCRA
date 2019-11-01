@@ -46,6 +46,26 @@ exports.getProfile = functions.https.onRequest((req, res) =>
 	})
 )
 
+exports.updateProfile = functions.https.onRequest((req, res) =>
+	cors(req, res, async () => {
+		try {
+			const { token, name, lastName, birthday, gender } = req.body
+			const { uid } = await admin.auth().verifyIdToken(token)
+			await db
+				.collection('users')
+				.doc(uid)
+				.update({ name, lastName, birthday, gender })
+			const user = await db
+				.collection('users')
+				.doc(uid)
+				.get()
+			res.status(200).json(user.data())
+		} catch (error) {
+			res.status(500).send('Server Error')
+		}
+	})
+)
+
 exports.postAddress = functions.https.onRequest((req, res) =>
 	cors(req, res, async () => {
 		try {
