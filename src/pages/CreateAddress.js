@@ -17,7 +17,7 @@ import AddressList from '../components/Addresses/AddressList'
 import { addAddress } from '../redux/actions/addresses'
 import { firebase } from '../firebase'
 
-const CreateAddress = ({ user, userLoaded, addAddress }) => {
+const CreateAddress = ({ userLoaded, addAddress }) => {
 	const INITIAL_ADDRESS = {
 		name: '',
 		description: ''
@@ -118,7 +118,6 @@ const CreateAddress = ({ user, userLoaded, addAddress }) => {
 }
 
 const mapStateToProps = ({ auth }) => ({
-	user: auth.user,
 	userLoaded: auth.loading
 })
 

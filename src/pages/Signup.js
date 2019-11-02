@@ -10,7 +10,7 @@ import {
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-import database, { firebase } from '../firebase'
+import { firebase } from '../firebase'
 
 const Signup = () => {
 	const INITIAL_USER = {

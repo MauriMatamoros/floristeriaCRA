@@ -1,19 +1,47 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import { Icon, Table } from 'semantic-ui-react'
 
 import Spinner from '../Spinner/Spinner'
+import AddressItem from './AddressItem'
 import { getAddresses } from '../../redux/actions/addresses'
 
-const AddressList = ({ addresses, loading, getAddresses }) => {
+const AddressList = ({ addresses, loadingAddresses, getAddresses }) => {
 	useEffect(() => {
 		getAddresses()
 	}, [getAddresses])
-	return loading ? <Spinner /> : <div>hello</div>
+	return loadingAddresses ? (
+		<Spinner />
+	) : (
+		<>
+			<Table celled striped>
+				<Table.Header>
+					<Table.Row>
+						<Table.HeaderCell colSpan='3'>Addresses</Table.HeaderCell>
+					</Table.Row>
+				</Table.Header>
+
+				<Table.Body>
+					{addresses.length > 0 ? (
+						addresses.map((address) => (
+							<AddressItem key={address.id} {...address} />
+						))
+					) : (
+						<Table.Row>
+							<Table.Cell collapsing>
+								<Icon name='add' /> Add Addresses
+							</Table.Cell>
+						</Table.Row>
+					)}
+				</Table.Body>
+			</Table>
+		</>
+	)
 }
 
 const mapStateToProps = ({ addresses }) => ({
 	addresses: addresses.addresses,
-	loading: addresses.loading
+	loadingAddresses: addresses.loading
 })
 
 export default connect(

@@ -65,7 +65,7 @@ exports.postAddress = functions.https.onRequest((req, res) =>
 				.doc(id)
 				.get()
 
-			res.status(201).json(address.data())
+			res.status(201).json({ id, ...address.data() })
 		} catch (error) {
 			console.error(error)
 			res.status(500).send('Server Error')
@@ -87,7 +87,7 @@ exports.getAddresses = functions.https.onRequest((req, res) =>
 				.get()
 			const addresses = []
 			if (snapshots.empty) {
-				res.status(200).send('No addresses found')
+				res.status(200).json([])
 			}
 			snapshots.forEach((address) =>
 				addresses.push({
@@ -96,6 +96,95 @@ exports.getAddresses = functions.https.onRequest((req, res) =>
 				})
 			)
 			res.status(200).json(addresses)
+		} catch (error) {
+			res.status(500).send('Server Error')
+		}
+	})
+)
+
+exports.removeAddress = functions.https.onRequest((req, res) =>
+	cors(req, res, async () => {
+		try {
+			const { token, id } = req.body
+			const { uid } = await admin.auth().verifyIdToken(token)
+			if (!uid) {
+				res.status(403).send('Please log in again.')
+			}
+			await db
+				.collection('addresses')
+				.doc(id)
+				.delete()
+			res.status(200).json(id)
+		} catch (error) {
+			res.status(500).send('Server Error')
+		}
+	})
+)
+
+exports.postType = functions.https.onRequest((req, res) =>
+	cors(req, res, async () => {
+		try {
+			const { token, name, image } = req.body
+			const { uid } = await admin.auth().verifyIdToken(token)
+
+			if (!uid) {
+				res.status(403).send('Please log in again.')
+			}
+
+			const { id } = await db.collection('types').add({ name, image })
+
+			const type = await db
+				.collection('types')
+				.doc(id)
+				.get()
+
+			res.status(201).json({ id, ...type.data() })
+		} catch (error) {
+			console.error(error)
+			res.status(500).send('Server Error')
+		}
+	})
+)
+
+exports.getTypes = functions.https.onRequest((req, res) =>
+	cors(req, res, async () => {
+		try {
+			const { token } = req.body
+			const { uid } = await admin.auth().verifyIdToken(token)
+			if (!uid) {
+				res.status(403).send('Please log in again.')
+			}
+			const snapshots = await db.collection('types').get()
+			const types = []
+			if (snapshots.empty) {
+				res.status(200).send([])
+			}
+			snapshots.forEach((type) =>
+				types.push({
+					id: type.id,
+					...type.data()
+				})
+			)
+			res.status(200).json(types)
+		} catch (error) {
+			res.status(500).send('Server Error')
+		}
+	})
+)
+
+exports.removeType = functions.https.onRequest((req, res) =>
+	cors(req, res, async () => {
+		try {
+			const { token, id } = req.body
+			const { uid } = await admin.auth().verifyIdToken(token)
+			if (!uid) {
+				res.status(403).send('Please log in again.')
+			}
+			await db
+				.collection('types')
+				.doc(id)
+				.delete()
+			res.status(200).json(id)
 		} catch (error) {
 			res.status(500).send('Server Error')
 		}
