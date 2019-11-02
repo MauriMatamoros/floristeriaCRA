@@ -7,7 +7,8 @@ import {
 	Image,
 	Message,
 	Header,
-	Icon
+	Icon,
+	Select
 } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
@@ -20,7 +21,8 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 		name: '',
 		description: '',
 		price: '',
-		media: ''
+		media: '',
+		type: ''
 	}
 	const [product, setProduct] = useState(INITIAL_PRODUCT)
 	const [mediaPreview, setMediaPreview] = useState('')
@@ -53,6 +55,13 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 		}
 	}
 
+	const handleTypeChange = (e, { value }) => {
+		setProduct((prevState) => ({
+			...prevState,
+			type: value
+		}))
+	}
+
 	const handleImageUpload = async (productId) => {
 		await storage
 			.ref(`products/${productId}-${product.media.name}`)
@@ -68,7 +77,8 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 				name: product.name,
 				description: product.description,
 				images: [product.media.name],
-				price: product.price
+				price: product.price,
+				type: product.type
 			}
 			const { key } = await database.ref('products').push(payload)
 			await handleImageUpload(key)
@@ -89,7 +99,6 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 				<Icon name='add' color='orange' />
 				Create New Product
 			</Header>
-			{types[0].name}
 			<Form
 				loading={loading}
 				error={Boolean(error)}
@@ -112,6 +121,15 @@ const CreateProduct = ({ getTypes, types, loadingSpinner }) => {
 						type='text'
 						onChange={handleChange}
 						value={product.name}
+					/>
+					<Select
+						placeholder='Seleccione el tipo...'
+						options={types.map((type) => ({
+							key: type.id,
+							value: type.name,
+							text: type.name
+						}))}
+						onChange={handleTypeChange}
 					/>
 					<Form.Field
 						control={Input}
