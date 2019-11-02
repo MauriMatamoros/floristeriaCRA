@@ -3,10 +3,10 @@ import { connect } from 'react-redux'
 import { Icon, Table, Button } from 'semantic-ui-react'
 import axios from 'axios'
 
-import { removeAddress } from '../../redux/actions/addresses'
-import { firebase } from '../../firebase'
+import { removeType } from '../../redux/actions/productTypes'
+import { firebase, storage } from '../../firebase'
 
-const AddressItem = ({ id, name, description, removeAddress }) => {
+const TypeItem = ({ id, name, image, removeType }) => {
 	const [disabled, setDisabled] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const handleDelete = async (id) => {
@@ -15,10 +15,11 @@ const AddressItem = ({ id, name, description, removeAddress }) => {
 			setDisabled(true)
 			const token = await firebase.auth().currentUser.getIdToken()
 			const { data } = await axios.post(
-				'http://localhost:5001/floristeria-cra/us-central1/removeAddress',
+				'http://localhost:5001/floristeria-cra/us-central1/removeType',
 				{ token, id }
 			)
-			removeAddress(data)
+			await storage.ref(`types/${id}-${image}`).delete()
+			removeType(data)
 		} catch (error) {
 			console.log(error)
 		}
@@ -26,9 +27,8 @@ const AddressItem = ({ id, name, description, removeAddress }) => {
 	return (
 		<Table.Row>
 			<Table.Cell collapsing>
-				<Icon name='address card' /> {name}
+				<Icon name='options' /> {name}
 			</Table.Cell>
-			<Table.Cell collapsing>{description}</Table.Cell>
 			<Table.Cell>
 				<Button
 					negative
@@ -46,5 +46,5 @@ const AddressItem = ({ id, name, description, removeAddress }) => {
 
 export default connect(
 	null,
-	{ removeAddress }
-)(AddressItem)
+	{ removeType }
+)(TypeItem)

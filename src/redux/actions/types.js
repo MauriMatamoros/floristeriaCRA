@@ -5,6 +5,8 @@ export const CHANGE_CITY = 'CHANGE_CITY'
 
 export const GET_TYPES = 'GET_TYPES'
 export const TYPES_ERROR = 'TYPES_ERROR'
+export const ADD_TYPE = 'ADD_TYPE'
+export const REMOVE_TYPE = 'REMOVE_TYPE'
 
 export const GET_PRODUCTS = 'GET_PRODUCTS'
 export const PRODUCTS_ERROR = 'RODUCTS_ERROR'
