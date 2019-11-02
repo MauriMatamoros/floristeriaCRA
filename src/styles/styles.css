@@ -28,6 +28,11 @@ body {
   padding-top: 6em;
 }
 
+.mbt-10em {
+  margin-top: 10em;
+  margin-bottom: 10em;
+}
+
 .btn .fa.fa-3x {
   font-size: 3em;
 }
