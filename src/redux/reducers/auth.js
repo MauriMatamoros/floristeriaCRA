@@ -1,4 +1,4 @@
-import { LOAD_USER, AUTH_ERROR } from '../actions/types'
+import { LOAD_USER, AUTH_ERROR, UPDATE_PROFILE } from '../actions/types'
 
 const initialState = {
 	user: null,
@@ -17,6 +17,12 @@ export default (state = initialState, action) => {
 				loading: false,
 				isAuthenticated: true,
 				profile: payload.profile
+			}
+		case UPDATE_PROFILE:
+			return {
+				...state,
+				loading: false,
+				profile: payload
 			}
 		case AUTH_ERROR:
 			return {

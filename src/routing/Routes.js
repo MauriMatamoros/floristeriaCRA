@@ -8,6 +8,7 @@ import Signup from '../pages/Signup'
 import Create from '../pages/Create'
 import CreateType from '../pages/CreateType'
 import CreateAddress from '../pages/CreateAddress'
+import Account from '../pages/Account'
 
 const Routes = () => (
 	<>
@@ -18,6 +19,7 @@ const Routes = () => (
 			<PrivateRoute exact path='/create' component={Create} />
 			<PrivateRoute exact path='/createType' component={CreateType} />
 			<PrivateRoute exact path='/createAddress' component={CreateAddress} />
+			<PrivateRoute exact path='/account' component={Account} />
 		</Switch>
 	</>
 )
