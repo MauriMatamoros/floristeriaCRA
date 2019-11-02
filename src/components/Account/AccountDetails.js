@@ -1,29 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import {
-	Button,
-	Form,
-	Icon,
-	Message,
-	Segment,
-	Container
-} from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Button, Form, Message, Segment, Container } from 'semantic-ui-react'
 import axios from 'axios'
+import { connect } from 'react-redux'
 
-import { firebase } from '../firebase'
+import { firebase } from '../../firebase'
+import { updateProfile } from '../../redux/actions/auth'
 
-const Signup = () => {
+const AccountDetails = ({
+	name,
+	lastName,
+	birthday,
+	gender,
+	updateProfile
+}) => {
 	const INITIAL_USER = {
-		name: '',
-		lastName: '',
-		email: '',
-		password: '',
-		confirmPassword: '',
-		birthday: '',
-		gender: ''
+		name,
+		lastName,
+		birthday,
+		gender
 	}
 	const [user, setUser] = useState(INITIAL_USER)
 	const [disabled, setDisabled] = useState(true)
+	const [success, setSuccess] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const [error, setError] = useState('')
 
@@ -47,37 +45,36 @@ const Signup = () => {
 		try {
 			setLoading(true)
 			setError('')
-			const response = await firebase
-				.auth()
-				.createUserWithEmailAndPassword(user.email, user.password)
-			const profile = {
-				uid: response.user.uid,
-				name: user.name,
-				lastName: user.lastName,
-				birthday: user.birthday,
-				gender: user.gender
-			}
-			await axios.post(
-				'http://localhost:5001/floristeria-cra/us-central1/createProfile',
-				profile
+			const { name, lastName, birthday, gender } = user
+			const token = await firebase.auth().currentUser.getIdToken()
+			const { data } = await axios.post(
+				'http://localhost:5001/floristeria-cra/us-central1/updateProfile',
+				{ token, name, lastName, birthday, gender }
 			)
+			updateProfile(data)
+			setSuccess(true)
 		} catch (error) {
 			setError(error.message)
 		} finally {
 			setLoading(false)
+			setDisabled(false)
 		}
 	}
 	return (
 		<Container text className='pt-6em'>
-			<Message
-				attached
-				icon='settings'
-				header='Get Started'
-				content='Create a new account'
-				color='teal'
-			/>
-			<Form error={Boolean(error)} onSubmit={handleSubmit} loading={loading}>
+			<Form
+				error={Boolean(error)}
+				onSubmit={handleSubmit}
+				loading={loading}
+				success={success}
+			>
 				<Message error header='Oops!' content={error || ''} />
+				<Message
+					success
+					icon='check'
+					header='Success!'
+					content='Your profile has been updated.'
+				/>
 				<Segment>
 					<Form.Input
 						fluid
@@ -100,39 +97,6 @@ const Signup = () => {
 						onChange={handleChange}
 						value={user.lastName}
 						type='text'
-					/>
-					<Form.Input
-						fluid
-						icon='envelope'
-						iconPosition='left'
-						label='Email'
-						placeholder='Email'
-						name='email'
-						onChange={handleChange}
-						value={user.email}
-						type='email'
-					/>
-					<Form.Input
-						fluid
-						icon='lock'
-						iconPosition='left'
-						label='Password'
-						placeholder='Password'
-						name='password'
-						onChange={handleChange}
-						value={user.password}
-						type='password'
-					/>
-					<Form.Input
-						fluid
-						icon='lock'
-						iconPosition='left'
-						label='Confirm Password'
-						placeholder='Password'
-						name='confirmPassword'
-						onChange={handleChange}
-						value={user.confirmPassword}
-						type='password'
 					/>
 					<Form.Input
 						fluid
@@ -165,17 +129,16 @@ const Signup = () => {
 						icon='signup'
 						type='submit'
 						color='orange'
-						content='Signup'
+						content='Update Profile Details'
 						disabled={disabled || loading}
 					/>
 				</Segment>
 			</Form>
-			<Message attached='bottom' warning>
-				<Icon name='help' />
-				Existing user? <Link to='/login'>Log in here</Link> instead
-			</Message>
 		</Container>
 	)
 }
 
-export default Signup
+export default connect(
+	null,
+	{ updateProfile }
+)(AccountDetails)
