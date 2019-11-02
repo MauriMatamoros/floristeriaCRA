@@ -8,6 +8,8 @@ import {
 	Container
 } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+
 import database, { firebase } from '../firebase'
 
 const Signup = () => {
@@ -49,13 +51,17 @@ const Signup = () => {
 				.auth()
 				.createUserWithEmailAndPassword(user.email, user.password)
 			const profile = {
+				uid: response.user.uid,
 				name: user.name,
 				lastName: user.lastName,
 				birthday: user.birthday,
 				gender: user.gender,
 				role: 'client'
 			}
-			await database.ref(`users/${response.user.uid}`).set(profile)
+			await axios.post(
+				'http://localhost:5001/floristeria-cra/us-central1/createProfile',
+				profile
+			)
 		} catch (error) {
 			setError(error.message)
 		} finally {
