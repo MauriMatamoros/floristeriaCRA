@@ -18,11 +18,11 @@ let db = admin.firestore()
 exports.createProfile = functions.https.onRequest((req, res) =>
 	cors(req, res, async () => {
 		try {
-			const { uid, name, lastName, birthday, gender, role } = req.body
+			const { uid, name, lastName, birthday, gender } = req.body
 			await db
 				.collection('users')
 				.doc(uid)
-				.set({ name, lastName, birthday, gender, role })
+				.set({ name, lastName, birthday, gender, role: 'client' })
 			res.status(201).send('User profile created.')
 		} catch (error) {
 			res.status(500).send('Server Error')

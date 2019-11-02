@@ -10,6 +10,7 @@ import CreateType from '../pages/CreateType'
 import CreateAddress from '../pages/CreateAddress'
 import Account from '../pages/Account'
 import ForgotPassword from '../pages/ForgotPassword'
+import Products from '../pages/Products'
 
 const Routes = () => (
 	<>
@@ -18,6 +19,7 @@ const Routes = () => (
 			<Route exact path='/signup' component={Signup} />
 			<Route exact path='/' component={Home} />
 			<Route exact path='/forgotPassword' component={ForgotPassword} />
+			<Route exact path='/products/:type/:page' component={Products} />
 			<PrivateRoute exact path='/create' component={Create} />
 			<PrivateRoute exact path='/createType' component={CreateType} />
 			<PrivateRoute exact path='/createAddress' component={CreateAddress} />
