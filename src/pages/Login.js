@@ -93,7 +93,7 @@ const Login = () => {
 			</Form>
 			<Message attached='bottom' warning>
 				<Icon name='help' />
-				New user? <Link to='/signup'>>Sign up here</Link> instead.{' '}
+				New user? <Link to='/signup'>Sign up here</Link> instead.{' '}
 				<Link to='/forgotPassword'>Forgot your password?</Link>
 			</Message>
 		</Container>
