@@ -50,14 +50,14 @@ const Login = () => {
     }
   }
   return (
-    <Container className="mbt-10em w-75">
+    <Container className='mbt-10em w-75'>
       <Segment>
-        <Grid centered className="pt-5 pb-5">
-          <Grid.Row className="text-center">
-            <Grid.Column className="col-lg-5 col-md-8 col-12 align-self-center">
-              <div className="alert alert-light text-center" role="alert">
-                <p className="h3 font-weight-normal">
-                  Ya eres <span className="font-weight-bold">miembro</span>?
+        <Grid centered className='pt-5 pb-5'>
+          <Grid.Row className='text-center'>
+            <Grid.Column className='col-lg-5 col-md-8 col-12 align-self-center'>
+              <div className='alert alert-light text-center' role='alert'>
+                <p className='h3 font-weight-normal'>
+                  Ya eres <span className='font-weight-bold'>miembro</span>?
                 </p>
               </div>
               <Form
@@ -65,33 +65,33 @@ const Login = () => {
                 onSubmit={handleSubmit}
                 loading={loading}
               >
-                <Message error header="Oops!" content={error} />
+                <Message error header='Oops!' content={error} />
 
                 <Form.Input
-                  placeholder="Correo"
-                  name="email"
+                  placeholder='Correo'
+                  name='email'
                   onChange={handleChange}
                   value={user.email}
-                  type="email"
+                  type='email'
                 />
                 <Form.Input
-                  placeholder="Contraseña"
-                  name="password"
+                  placeholder='Contraseña'
+                  name='password'
                   onChange={handleChange}
                   value={user.password}
-                  type="password"
+                  type='password'
                 />
                 <Button
-                  type="submit"
-                  color="black"
-                  content="Ingresar"
+                  type='submit'
+                  color='black'
+                  content='Ingresar'
                   disabled={disabled || loading}
                 />
               </Form>
             </Grid.Column>
-            <Grid.Column className="col-lg-5 col-md-8 col-12">
+            <Grid.Column className='col-lg-5 col-md-8 col-12'>
               <div
-                className="view"
+                className='view'
                 style={{
                   backgroundImage: "url('./assets/flowers_login.jpg')",
                   width: 317,
@@ -101,10 +101,10 @@ const Login = () => {
                   backgroundRepeat: 'repeat'
                 }}
               >
-                <Message attached="bottom">
-                  <Icon name="help" />
-                  New user? <Link to="/signup">Registrarse</Link> instead.{' '}
-                  <Link to="/forgotPassword">Olvidaste tu contraseña?</Link>
+                <Message attached='bottom'>
+                  <Icon name='help' />
+                  New user? <Link to='/signup'>Registrarse</Link> instead.{' '}
+                  <Link to='/forgotPassword'>Olvidaste tu contraseña?</Link>
                 </Message>
               </div>
             </Grid.Column>
