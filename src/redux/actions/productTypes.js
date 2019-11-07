@@ -5,10 +5,8 @@ import { GET_TYPES, TYPES_ERROR, ADD_TYPE, REMOVE_TYPE } from './types'
 
 export const getTypes = () => async (dispatch) => {
 	try {
-		const token = await firebase.auth().currentUser.getIdToken()
 		const { data } = await axios.post(
-			'http://localhost:5001/floristeria-cra/us-central1/getTypes',
-			{ token }
+			'http://localhost:5001/floristeria-cra/us-central1/getTypes'
 		)
 		dispatch({
 			type: GET_TYPES,
