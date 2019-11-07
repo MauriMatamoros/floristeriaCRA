@@ -44,6 +44,10 @@ body {
   padding-right: 100px;
 }
 
+.input-custom::placeholder {
+  color: black;
+}
+
 /* --------------------------------------------------------------- */
 
 div.scrollmenu {

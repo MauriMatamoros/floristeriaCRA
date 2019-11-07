@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import {
   Button,
   Form,
-  Icon,
   Message,
   Container,
   Grid,
@@ -82,6 +81,7 @@ const Login = () => {
                   type='password'
                 />
                 <Button
+                  className='mb-5'
                   type='submit'
                   color='black'
                   content='Ingresar'
@@ -90,22 +90,25 @@ const Login = () => {
               </Form>
             </Grid.Column>
             <Grid.Column className='col-lg-5 col-md-8 col-12'>
-              <div
-                className='view'
-                style={{
-                  backgroundImage: "url('./assets/flowers_login.jpg')",
-                  width: 317,
-                  height: 450,
-                  backgroundPosition: 'center',
-
-                  backgroundRepeat: 'repeat'
-                }}
-              >
-                <Message attached='bottom'>
-                  <Icon name='help' />
-                  New user? <Link to='/signup'>Registrarse</Link> instead.{' '}
-                  <Link to='/forgotPassword'>Olvidaste tu contraseña?</Link>
-                </Message>
+              <div className='view' style={styles.backgroundView}>
+                <div style={styles.buttonFloat}>
+                  <Link
+                    to='/signup'
+                    role='button'
+                    className='btn w-100 font-weight-bold'
+                    style={styles.btnRegister}
+                  >
+                    Registrarse
+                  </Link>
+                  <Link
+                    to='/forgotpassword'
+                    role='button'
+                    className='btn w-100 font-weight-bold'
+                    style={styles.btnPass}
+                  >
+                    Olvidaste tu contraseña?
+                  </Link>
+                </div>
               </div>
             </Grid.Column>
           </Grid.Row>
@@ -116,3 +119,28 @@ const Login = () => {
 }
 
 export default Login
+
+// Styles
+const styles = {
+  buttonFloat: {
+    position: 'absolute',
+    top: '75%',
+    left: '0',
+    right: '0',
+    bottom: '10%',
+    margin: 'auto',
+    width: '65%'
+  },
+  backgroundView: {
+    backgroundImage: 'url(./assets/flowers_login.jpg)',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    height: '70vh'
+  },
+  btnRegister: {
+    backgroundColor: '#00B5AD',
+    color: 'white',
+    fontSize: '1rem'
+  },
+  btnPass: { backgroundColor: '#6435C9', color: 'white', fontSize: '1rem' }
+}
