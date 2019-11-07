@@ -169,11 +169,6 @@ exports.postType = functions.https.onRequest((req, res) =>
 exports.getTypes = functions.https.onRequest((req, res) =>
 	cors(req, res, async () => {
 		try {
-			const { token } = req.body
-			const { uid } = await admin.auth().verifyIdToken(token)
-			if (!uid) {
-				res.status(403).send('Please log in again.')
-			}
 			const snapshots = await db.collection('types').get()
 			const types = []
 			if (snapshots.empty) {
