@@ -19,10 +19,19 @@ exports.createProfile = functions.https.onRequest((req, res) =>
 	cors(req, res, async () => {
 		try {
 			const { uid, name, lastName, birthday, gender } = req.body
+			const profile = {
+				uid,
+				name,
+				role: 'client'
+			}
+			if (lastName) profile.lastName = lastName
+			if (birthday) profile.birthday = birthday
+			if (gender) profile.gender = gender
+
 			await db
 				.collection('users')
 				.doc(uid)
-				.set({ name, lastName, birthday, gender, role: 'client' })
+				.set(profile)
 			res.status(201).send('User profile created.')
 		} catch (error) {
 			res.status(500).send('Server Error')

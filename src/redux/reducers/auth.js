@@ -1,4 +1,4 @@
-import { LOAD_USER, AUTH_ERROR, UPDATE_PROFILE } from '../actions/types'
+import { LOAD_USER, AUTH_ERROR, UPDATE_PROFILE, LOGIN } from '../actions/types'
 
 const initialState = {
 	user: null,
@@ -10,6 +10,11 @@ const initialState = {
 export default (state = initialState, action) => {
 	const { type, payload } = action
 	switch (type) {
+		case LOGIN:
+			return {
+				...state,
+				loading: true
+			}
 		case LOAD_USER:
 			return {
 				...state,

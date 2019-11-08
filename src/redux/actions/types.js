@@ -1,6 +1,7 @@
 export const LOAD_USER = 'LOAD_USER'
 export const AUTH_ERROR = 'AUTH_ERROR'
 export const UPDATE_PROFILE = 'UPDATE_PROFILE'
+export const LOGIN = 'LOGIN'
 
 export const CHANGE_CITY = 'CHANGE_CITY'
 

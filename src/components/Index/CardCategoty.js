@@ -1,11 +1,12 @@
 import React from 'react'
 import { Card, Image } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 const CardCategory = (props) => {
 	const { image, name } = props.array
 	return (
 		<div style={{ height: 250 }}>
-			<Card href={`/${name}`}>
+			<Card as={Link} to={`/${name}`}>
 				<Image src={image} ui={false} width={'100%'} height={160} />
 				<Card.Content>
 					<Card.Header>{name}</Card.Header>

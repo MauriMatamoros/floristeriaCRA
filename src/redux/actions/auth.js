@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { AUTH_ERROR, LOAD_USER, UPDATE_PROFILE } from './types'
+import { AUTH_ERROR, LOAD_USER, UPDATE_PROFILE, LOGIN } from './types'
 import { firebase } from '../../firebase'
 
 export const loadUser = (user) => async (dispatch) => {
@@ -21,6 +21,11 @@ export const loadUser = (user) => async (dispatch) => {
 		})
 	}
 }
+
+export const login = () => (dispatch) =>
+	dispatch({
+		type: LOGIN
+	})
 
 export const updateProfile = (payload) => (dispatch) => {
 	try {
