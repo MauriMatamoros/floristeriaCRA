@@ -1,30 +1,29 @@
-import React from 'react'
-import { Container } from 'semantic-ui-react'
-import { connect } from 'react-redux'
+import React from 'react';
+import {Container} from 'semantic-ui-react';
+import {connect} from 'react-redux';
 
-import AccountHeader from '../components/Account/AccountHeader'
+import AccountHeader from '../components/Account/AccountHeader';
 // import AccountOrders from '../components/Account/AccountOrders'
-import ChangePassword from '../components/Account/ChangePassword'
-import AccountDetails from '../components/Account/AccountDetails'
-import Spinner from '../components/Spinner/Spinner'
+import ChangePassword from '../components/Account/ChangePassword';
+import AccountDetails from '../components/Account/AccountDetails';
+import Spinner from '../components/Spinner/Spinner';
 
-const Account = ({ user, profile, loading }) => {
-	return loading ? (
-		<Spinner />
-	) : (
-		<Container text className='pt-6em'>
-			<AccountHeader {...profile} />
-			<AccountDetails {...profile} />
-			{/* <AccountOrders orders={orders} /> */}
-			<ChangePassword />
-		</Container>
-	)
-}
+const Account = ({profile}) => {
+  return !profile.isLoaded ? (
+    <Spinner />
+  ) : (
+    <Container text className='pt-6em'>
+      <AccountHeader />
+      <AccountDetails />
+      {/* <AccountOrders orders={orders} /> */}
+      <ChangePassword />
+    </Container>
+  );
+};
 
-const mapStateToProps = ({ auth: { user, profile, loading } }) => ({
-	user,
-	profile,
-	loading
-})
+const mapStateToProps = ({firebase: {auth, profile}}) => ({
+  auth,
+  profile
+});
 
-export default connect(mapStateToProps)(Account)
+export default connect(mapStateToProps)(Account);
