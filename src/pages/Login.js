@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react';
+import {compose} from 'redux';
 import {
   Button,
   Form,
@@ -6,48 +7,49 @@ import {
   Container,
   Grid,
   Segment
-} from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+} from 'semantic-ui-react';
+import {Link, withRouter} from 'react-router-dom';
 
-import { firebase } from '../firebase'
+import {firebaseConnect} from 'react-redux-firebase';
 
-const Login = () => {
+const Login = ({firebase, history}) => {
   const INITIAL_USER = {
     email: '',
     password: ''
-  }
-  const [user, setUser] = useState(INITIAL_USER)
-  const [disabled, setDisabled] = useState(true)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  };
+  const [user, setUser] = useState(INITIAL_USER);
+  const [disabled, setDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const isUser = Object.values(user).every(element => Boolean(element))
-    isUser ? setDisabled(false) : setDisabled(true)
-  }, [user])
+    const isUser = Object.values(user).every(element => Boolean(element));
+    isUser ? setDisabled(false) : setDisabled(true);
+  }, [user]);
 
   const handleChange = e => {
-    const { name, value } = e.target
+    const {name, value} = e.target;
     setUser(prevState => ({
       ...prevState,
       [name]: value
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = async e => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      setLoading(true)
-      setError('')
+      setLoading(true);
+      setError('');
       await firebase
         .auth()
-        .signInWithEmailAndPassword(user.email, user.password)
+        .signInWithEmailAndPassword(user.email, user.password);
     } catch (error) {
-      setError(error.message)
+      setError(error.message);
     } finally {
-      setLoading(false)
+      setLoading(false);
+      history.push('/');
     }
-  }
+  };
   return (
     <Container className='mbt-10em w-75'>
       <Segment>
@@ -115,10 +117,13 @@ const Login = () => {
         </Grid>
       </Segment>
     </Container>
-  )
-}
+  );
+};
 
-export default Login
+export default compose(
+  withRouter,
+  firebaseConnect()
+)(Login);
 
 // Styles
 const styles = {
@@ -142,5 +147,5 @@ const styles = {
     color: 'white',
     fontSize: '1rem'
   },
-  btnPass: { backgroundColor: '#6435C9', color: 'white', fontSize: '1rem' }
-}
+  btnPass: {backgroundColor: '#6435C9', color: 'white', fontSize: '1rem'}
+};

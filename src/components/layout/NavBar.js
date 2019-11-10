@@ -10,10 +10,12 @@ import {
   Responsive,
   Dropdown
 } from 'semantic-ui-react';
-import { Link, withRouter } from 'react-router-dom';
-import { firebase } from '../../firebase';
+import {compose} from 'redux';
+import {connect} from 'react-redux';
+import {Link, withRouter} from 'react-router-dom';
+import {firebaseConnect} from 'react-redux-firebase';
 
-const NavBar = ({ location, user }) => {
+const NavBar = ({location, auth, firebase}) => {
   const isActive = route => route === location.pathname;
   // const isRoot = user && user.role === 'root'
   // const isAdmin = user && user.role === 'admin'
@@ -34,7 +36,7 @@ const NavBar = ({ location, user }) => {
           <div className='w-100'>
             <Dropdown
               text='Menu'
-              style={{ color: 'black' }}
+              style={{color: 'black'}}
               pointing
               className='link item'
             >
@@ -62,7 +64,7 @@ const NavBar = ({ location, user }) => {
                   className='link item'
                 >
                   <Dropdown.Menu>
-                    {!user ? (
+                    {auth.isEmpty ? (
                       <>
                         <Dropdown.Item as={Link} to='/login'>
                           <Icon name='sign in' size='large' />
@@ -110,7 +112,7 @@ const NavBar = ({ location, user }) => {
                   <Image
                     size='mini'
                     src='/static/logo.svg'
-                    style={{ marginRight: '1em' }}
+                    style={{marginRight: '1em'}}
                   />
                   <p className='text-dark font-weight-bold'>INICIO</p>
                 </Menu.Item>
@@ -145,7 +147,7 @@ const NavBar = ({ location, user }) => {
                 hoverable
               >
                 <Grid centered divided columns={1}>
-                  {!user ? (
+                  {auth.isEmpty ? (
                     <>
                       <Grid.Column textAlign='center'>
                         <Header as='h4'>INGRESAR</Header>
@@ -210,7 +212,7 @@ const NavBar = ({ location, user }) => {
                   <Icon name='cart' size='large' />
                 </Menu.Item>
               </Link>
-              {user && (
+              {!auth.isEmpty && (
                 <Link to='/create'>
                   <Menu.Item
                     header
@@ -230,4 +232,16 @@ const NavBar = ({ location, user }) => {
   );
 };
 
-export default withRouter(NavBar);
+const mapStateToProps = ({firebase: {auth, profile}}) => ({
+  auth,
+  profile
+});
+
+export default compose(
+  withRouter,
+  firebaseConnect(),
+  connect(
+    mapStateToProps,
+    null
+  )
+)(NavBar);

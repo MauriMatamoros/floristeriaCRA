@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react';
 import {
   Button,
   Form,
@@ -7,13 +7,13 @@ import {
   Container,
   Image,
   Radio
-} from 'semantic-ui-react'
-//import { Link } from 'react-router-dom'
-import axios from 'axios'
+} from 'semantic-ui-react';
+import {compose} from 'redux';
+import axios from 'axios';
+import {withRouter} from 'react-router-dom';
+import {firebaseConnect} from 'react-redux-firebase';
 
-import { firebase } from '../firebase'
-
-const Signup = () => {
+const Signup = ({firebase, history}) => {
   const INITIAL_USER = {
     name: '',
     lastName: '',
@@ -22,52 +22,53 @@ const Signup = () => {
     confirmPassword: '',
     birthday: '',
     gender: ''
-  }
-  const [user, setUser] = useState(INITIAL_USER)
-  const [disabled, setDisabled] = useState(true)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  };
+  const [user, setUser] = useState(INITIAL_USER);
+  const [disabled, setDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    const isUser = Object.values(user).every(element => Boolean(element))
+    const isUser = Object.values(user).every(element => Boolean(element));
     isUser && user.password === user.confirmPassword
       ? setDisabled(false)
-      : setDisabled(true)
-  }, [user])
+      : setDisabled(true);
+  }, [user]);
 
   const handleChange = e => {
-    const { name, value } = e.target
+    const {name, value} = e.target;
     setUser(prevState => ({
       ...prevState,
       [name]: value
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = async e => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      setLoading(true)
-      setError('')
+      setLoading(true);
+      setError('');
       const response = await firebase
         .auth()
-        .createUserWithEmailAndPassword(user.email, user.password)
+        .createUserWithEmailAndPassword(user.email, user.password);
       const profile = {
         uid: response.user.uid,
         name: user.name,
         lastName: user.lastName,
         birthday: user.birthday,
         gender: user.gender
-      }
+      };
       await axios.post(
         'http://localhost:5001/floristeria-cra/us-central1/createProfile',
         profile
-      )
+      );
     } catch (error) {
-      setError(error.message)
+      setError(error.message);
     } finally {
-      setLoading(false)
+      setLoading(false);
+      history.push('/account');
     }
-  }
+  };
   return (
     <>
       <Container className='mbt-10em' style={styles.container}>
@@ -211,18 +212,21 @@ const Signup = () => {
         <Image src='./assets/footer_signup.png' style={styles.rounded} />
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default Signup
+export default compose(
+  withRouter,
+  firebaseConnect()
+)(Signup);
 
 const styles = {
-  container: { backgroundColor: 'lightgray', padding: 0 },
+  container: {backgroundColor: 'lightgray', padding: 0},
   imgFacebook: {
     width: '100%',
     height: 60
   },
-  separator: { paddingLeft: '5%', paddingRight: '5%' },
+  separator: {paddingLeft: '5%', paddingRight: '5%'},
   inputStyle: {
     backgroundColor: '#D3D3D3',
     borderTop: 'none',
@@ -238,4 +242,4 @@ const styles = {
     borderTopLeftRadius: '2%',
     borderTopRightRadius: '2%'
   }
-}
+};
