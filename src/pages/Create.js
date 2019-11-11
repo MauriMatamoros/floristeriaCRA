@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react'
 import {
   Form,
   Input,
@@ -9,68 +9,68 @@ import {
   Header,
   Icon,
   Select
-} from 'semantic-ui-react';
-import {connect} from 'react-redux';
+} from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 // import database, { storage } from '../firebase'
-import {getTypes} from '../redux/actions/productTypes';
-import Spinner from '../components/Spinner/Spinner';
+import { getTypes } from '../redux/actions/productTypes'
+import Spinner from '../components/Spinner/Spinner'
 
-const CreateProduct = ({getTypes, types, loadingSpinner, loadingUser}) => {
+const CreateProduct = ({ getTypes, types, loadingSpinner, loadingUser }) => {
   const INITIAL_PRODUCT = {
     name: '',
     description: '',
     price: '',
     media: '',
     type: ''
-  };
-  const [product, setProduct] = useState(INITIAL_PRODUCT);
-  const [mediaPreview, setMediaPreview] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [disabled, setDisabled] = useState(true);
-  const [error, setError] = useState('');
+  }
+  const [product, setProduct] = useState(INITIAL_PRODUCT)
+  const [mediaPreview, setMediaPreview] = useState('')
+  const [success, setSuccess] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [disabled, setDisabled] = useState(true)
+  const [error, setError] = useState('')
 
   useEffect(() => {
-    const isProduct = Object.values(product).every(element => Boolean(element));
-    isProduct ? setDisabled(false) : setDisabled(true);
-  }, [product]);
+    const isProduct = Object.values(product).every(element => Boolean(element))
+    isProduct ? setDisabled(false) : setDisabled(true)
+  }, [product])
 
   useEffect(() => {
-    getTypes();
-  }, [getTypes]);
+    getTypes()
+  }, [getTypes])
 
   const handleChange = e => {
-    const {name, value, files} = e.target;
+    const { name, value, files } = e.target
     if (name === 'media') {
-      setProduct(prevState => ({...prevState, media: files[0]}));
-      setMediaPreview(window.URL.createObjectURL(files[0]));
+      setProduct(prevState => ({ ...prevState, media: files[0] }))
+      setMediaPreview(window.URL.createObjectURL(files[0]))
     } else {
       setProduct(prevState => ({
         ...prevState,
         [name]: value
-      }));
+      }))
     }
-  };
+  }
 
-  const handleTypeChange = (e, {value}) => {
+  const handleTypeChange = (e, { value }) => {
     setProduct(prevState => ({
       ...prevState,
       type: value
-    }));
-  };
+    }))
+  }
 
-  const handleImageUpload = async productId => {
-    // await storage
-    // 	.ref(`products/${productId}-${product.media.name}`)
-    // 	.put(product.media)
-  };
+  //const handleImageUpload = async productId => {
+  // await storage
+  // 	.ref(`products/${productId}-${product.media.name}`)
+  // 	.put(product.media)
+  //};
 
   const handleSubmit = async e => {
     try {
-      e.preventDefault();
-      setLoading(true);
-      setError('');
+      e.preventDefault()
+      setLoading(true)
+      setError('')
       // const payload = {
       // 	name: product.name,
       // 	description: product.description,
@@ -80,14 +80,14 @@ const CreateProduct = ({getTypes, types, loadingSpinner, loadingUser}) => {
       // }
       // const { key } = await database.ref('products').push(payload)
       // await handleImageUpload(key)
-      setProduct(INITIAL_PRODUCT);
-      setSuccess(true);
+      setProduct(INITIAL_PRODUCT)
+      setSuccess(true)
     } catch (error) {
-      setError(error.message);
+      setError(error.message)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return loadingSpinner || loadingUser ? (
     <Spinner />
@@ -170,16 +170,16 @@ const CreateProduct = ({getTypes, types, loadingSpinner, loadingUser}) => {
         />
       </Form>
     </>
-  );
-};
+  )
+}
 
-const mapStateToProps = ({auth, productTypes: {types, loading}}) => ({
+const mapStateToProps = ({ auth, productTypes: { types, loading } }) => ({
   types,
   loadingSpinner: loading,
   loadingUser: auth.loading
-});
+})
 
 export default connect(
   mapStateToProps,
-  {getTypes}
-)(CreateProduct);
+  { getTypes }
+)(CreateProduct)
