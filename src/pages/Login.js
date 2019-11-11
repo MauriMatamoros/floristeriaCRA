@@ -11,8 +11,9 @@ import {
 import {Link, withRouter} from 'react-router-dom';
 
 import {firebaseConnect} from 'react-redux-firebase';
+import {connect} from 'react-redux';
 
-const Login = ({firebase, history}) => {
+const Login = ({firebase, history, location, profile}) => {
   const INITIAL_USER = {
     email: '',
     password: ''
@@ -50,6 +51,9 @@ const Login = ({firebase, history}) => {
       history.push('/');
     }
   };
+  if (!profile.isEmpty) {
+    history.push('/');
+  }
   return (
     <Container className='mbt-10em w-75'>
       <Segment>
@@ -122,7 +126,8 @@ const Login = ({firebase, history}) => {
 
 export default compose(
   withRouter,
-  firebaseConnect()
+  firebaseConnect(),
+  connect(({firebase: {profile}}) => ({profile}))
 )(Login);
 
 // Styles

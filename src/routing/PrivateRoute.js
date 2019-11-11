@@ -14,7 +14,7 @@ const PrivateRoute = ({
   <Route
     {...rest}
     render={props => {
-      return auth.isEmpty && profile.isEmpty ? (
+      return profile.isEmpty ? (
         <Redirect to='/login' />
       ) : !profile.isEmpty &&
         ADMIN_ROUTES.includes(location.pathname) &&
