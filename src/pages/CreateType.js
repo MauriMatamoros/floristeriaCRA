@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {compose} from 'redux';
 import {
   Form,
   Input,
@@ -11,12 +12,12 @@ import {
 import axios from 'axios';
 import {connect} from 'react-redux';
 
-import {firebase} from '../firebase';
 import {addType} from '../redux/actions/productTypes';
 import Spinner from '../components/Spinner/Spinner';
 import TypeList from '../components/ProductTypes/TypeList';
+import {firebaseConnect} from 'react-redux-firebase';
 
-const CreateType = ({addType, userLoading}) => {
+const CreateType = ({addType, userLoading, firebase}) => {
   const INITIAL_TYPE = {
     name: '',
     media: ''
@@ -47,7 +48,10 @@ const CreateType = ({addType, userLoading}) => {
   };
 
   const handleImageUpload = async typeId => {
-    // await storage.ref(`types/${typeId}-${type.media.name}`).put(type.media)
+    await firebase
+      .storage()
+      .ref(`types/${typeId}-${type.media.name}`)
+      .put(type.media);
   };
 
   const handleSubmit = async e => {
@@ -128,11 +132,14 @@ const CreateType = ({addType, userLoading}) => {
   );
 };
 
-const mapStateToProps = ({auth}) => ({
-  userLoading: auth.loading
+const mapStateToProps = ({firebase: {profile}}) => ({
+  userLoading: !profile.isLoaded
 });
 
-export default connect(
-  mapStateToProps,
-  {addType}
+export default compose(
+  firebaseConnect(),
+  connect(
+    mapStateToProps,
+    {addType}
+  )
 )(CreateType);
