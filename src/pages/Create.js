@@ -11,12 +11,19 @@ import {
   Select
 } from 'semantic-ui-react';
 import {connect} from 'react-redux';
+import {compose} from 'redux';
 
-// import database, { storage } from '../firebase'
 import {getTypes} from '../redux/actions/productTypes';
 import Spinner from '../components/Spinner/Spinner';
+import {firebaseConnect} from 'react-redux-firebase';
 
-const CreateProduct = ({getTypes, types, loadingSpinner, loadingUser}) => {
+const CreateProduct = ({
+  getTypes,
+  types,
+  loadingSpinner,
+  firebase,
+  loadingUser
+}) => {
   const INITIAL_PRODUCT = {
     name: '',
     description: '',
@@ -61,9 +68,10 @@ const CreateProduct = ({getTypes, types, loadingSpinner, loadingUser}) => {
   };
 
   const handleImageUpload = async productId => {
-    // await storage
-    // 	.ref(`products/${productId}-${product.media.name}`)
-    // 	.put(product.media)
+    await firebase
+      .storage()
+      .ref(`products/${productId}-${product.media.name}`)
+      .put(product.media);
   };
 
   const handleSubmit = async e => {
@@ -71,15 +79,18 @@ const CreateProduct = ({getTypes, types, loadingSpinner, loadingUser}) => {
       e.preventDefault();
       setLoading(true);
       setError('');
-      // const payload = {
-      // 	name: product.name,
-      // 	description: product.description,
-      // 	images: [product.media.name],
-      // 	price: product.price,
-      // 	type: product.type
-      // }
-      // const { key } = await database.ref('products').push(payload)
-      // await handleImageUpload(key)
+      const payload = {
+        name: product.name,
+        description: product.description,
+        images: [product.media.name],
+        price: product.price,
+        type: product.type
+      };
+      const {key} = await firebase
+        .database()
+        .ref('products')
+        .push(payload);
+      await handleImageUpload(key);
       setProduct(INITIAL_PRODUCT);
       setSuccess(true);
     } catch (error) {
@@ -176,10 +187,13 @@ const CreateProduct = ({getTypes, types, loadingSpinner, loadingUser}) => {
 const mapStateToProps = ({auth, productTypes: {types, loading}}) => ({
   types,
   loadingSpinner: loading,
-  loadingUser: auth.loading
+  loadingUser: auth.uid
 });
 
-export default connect(
-  mapStateToProps,
-  {getTypes}
+export default compose(
+  firebaseConnect(),
+  connect(
+    mapStateToProps,
+    {getTypes}
+  )
 )(CreateProduct);

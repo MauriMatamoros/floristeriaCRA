@@ -15,7 +15,7 @@ import {connect} from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
 import {firebaseConnect} from 'react-redux-firebase';
 
-const NavBar = ({location, auth, firebase}) => {
+const NavBar = ({location, auth, profile, firebase}) => {
   const isActive = route => route === location.pathname;
   // const isRoot = user && user.role === 'root'
   // const isAdmin = user && user.role === 'admin'
@@ -212,15 +212,27 @@ const NavBar = ({location, auth, firebase}) => {
                   <Icon name='cart' size='large' />
                 </Menu.Item>
               </Link>
-              {!auth.isEmpty && (
+              {!profile.isEmpty && profile.role === 'admin' && (
                 <Link to='/create'>
                   <Menu.Item
                     header
-                    active={isActive('/create')}
+                    active={isActive('/creates')}
                     className='text-dark'
                   >
                     <Icon name='add square' size='large' />
                     Create
+                  </Menu.Item>
+                </Link>
+              )}
+              {!profile.isEmpty && profile.role === 'admin' && (
+                <Link to='/createType'>
+                  <Menu.Item
+                    header
+                    active={isActive('/createTypes')}
+                    className='text-dark'
+                  >
+                    <Icon name='add square' size='large' />
+                    Create Types
                   </Menu.Item>
                 </Link>
               )}
