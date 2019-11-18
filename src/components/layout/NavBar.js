@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   Header,
   Button,
@@ -9,25 +9,25 @@ import {
   Menu,
   Responsive,
   Dropdown
-} from 'semantic-ui-react';
-import {compose} from 'redux';
-import {connect} from 'react-redux';
-import {Link, withRouter} from 'react-router-dom';
-import {firebaseConnect} from 'react-redux-firebase';
+} from 'semantic-ui-react'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
+import { firebaseConnect } from 'react-redux-firebase'
 
-const NavBar = ({location, auth, profile, firebase}) => {
-  const isActive = route => route === location.pathname;
+const NavBar = ({ location, auth, profile, firebase }) => {
+  const isActive = route => route === location.pathname
   // const isRoot = user && user.role === 'root'
   // const isAdmin = user && user.role === 'admin'
   // const isRootOrAdmin = isRoot || isAdmin
 
   const handleLogout = async () => {
     try {
-      await firebase.auth().signOut();
+      await firebase.auth().signOut()
     } catch (error) {
-      console.log(error.message);
+      console.log(error.message)
     }
-  };
+  }
 
   return (
     <>
@@ -36,7 +36,7 @@ const NavBar = ({location, auth, profile, firebase}) => {
           <div className='w-100'>
             <Dropdown
               text='Menu'
-              style={{color: 'black'}}
+              style={{ color: 'black' }}
               pointing
               className='link item'
             >
@@ -109,11 +109,11 @@ const NavBar = ({location, auth, profile, firebase}) => {
             <div className='d-flex flex-row'>
               <Link to='/'>
                 <Menu.Item header active={isActive('/')}>
-                  <Image
+                  {/* <Image
                     size='mini'
                     src='/static/logo.svg'
                     style={{marginRight: '1em'}}
-                  />
+                  /> */}
                   <p className='text-dark font-weight-bold'>INICIO</p>
                 </Menu.Item>
               </Link>
@@ -241,13 +241,13 @@ const NavBar = ({location, auth, profile, firebase}) => {
         </Menu>
       </Responsive>
     </>
-  );
-};
+  )
+}
 
-const mapStateToProps = ({firebase: {auth, profile}}) => ({
+const mapStateToProps = ({ firebase: { auth, profile } }) => ({
   auth,
   profile
-});
+})
 
 export default compose(
   withRouter,
@@ -256,4 +256,4 @@ export default compose(
     mapStateToProps,
     null
   )
-)(NavBar);
+)(NavBar)
