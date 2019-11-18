@@ -1,0 +1,246 @@
+[debug] [2019-11-18T00:48:28.694Z] ----------------------------------------------------------------------
+[debug] [2019-11-18T00:48:28.696Z] Command:       /Users/christiannajera/.nvm/versions/node/v10.15.0/bin/node /usr/local/bin/firebase emulators:start --only functions
+[debug] [2019-11-18T00:48:28.696Z] CLI Version:   7.7.0
+[debug] [2019-11-18T00:48:28.696Z] Platform:      darwin
+[debug] [2019-11-18T00:48:28.696Z] Node Version:  v10.15.0
+[debug] [2019-11-18T00:48:28.697Z] Time:          Sun Nov 17 2019 18:48:28 GMT-0600 (Central Standard Time)
+[debug] [2019-11-18T00:48:28.697Z] ----------------------------------------------------------------------
+[debug] [2019-11-18T00:48:28.697Z] 
+[info] i  Starting emulators: ["functions"]
+[info] ✔  functions: Using node@10 from host.
+[info] ✔  functions: Emulator started at http://localhost:5001
+[info] i  functions: Watching "/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions" for Cloud Functions...
+[debug] [2019-11-18T00:48:28.992Z] [worker-~diagnostic~-15a037bd-54be-432d-b739-d388395657fc]: BUSY
+[debug] [2019-11-18T00:48:29.266Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions","node_version":"10.15.0"}
+[debug] [2019-11-18T00:48:29.267Z] [runtime-status] Disabled runtime features: undefined {}
+[debug] [2019-11-18T00:48:29.270Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-11-18T00:48:29.270Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-18T00:48:29.443Z] [runtime-status] Found google-gax at /Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/google-gax/build/src/index.js {}
+[debug] [2019-11-18T00:48:29.443Z] [runtime-status] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"},{"name":"google-gax","status":"mocked"}]
+[debug] [2019-11-18T00:48:29.479Z] [runtime-status] Checked functions.config() {"config":{}}
+[debug] [2019-11-18T00:48:29.480Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-18T00:48:29.481Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-11-18T00:48:29.481Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-18T00:48:29.508Z] [runtime-status] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/firebase-admin/lib/index.js"}}
+[debug] [2019-11-18T00:48:29.559Z] [runtime-status] initializeApp(DEFAULT) {"databaseURL":"https://floristeria-cra.firebaseio.com","storageBucket":"floristeria-cra.appspot.com","projectId":"floristeria-cra","credential":{"certificate":{"projectId":"floristeria-cra","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDSMnBL5wBiDgoP\nodN+qn55B2xXCzGslx0eTWm/f1XV/eLGipzhSSemkhRg7HMicLDfUfDbszfGsQlT\ncyoCVVKCFWd+R+KX8WtajvFdqKmkgQuyenP5HMebrkQEUxWSccgmsxiEl5O9ZoI/\nTc0LtjLEq/fI9s/hfJ1KE6syv3RP6yW2ZXxY4pgRnHs8xSFrtAZXkeAzO2U0PSB1\nTTyHxr2jCo3hqii74Nleu2Xhki3lnCuQGYM85wystvHoNu27fLyt8QlvDj+lSKHR\n9BFQI5Z1XL7J//nPt4GSS70qBux1WTSGHvPcL1v9Znrq2sj+5wzklModReESXbFq\niPoYf8t9AgMBAAECggEAB/wk3dVJf/AWe94YSaVETiF8HaBjZxWLnVqwROHig7TX\nn0gzu8vYzgkL0T9vkc7c5Miue7r/j18c3vi88tuhrtG4HbOxReJEw1zBGKZ2Ut/8\nUn3/l0oX+8VLzdZ5fl69m5JNlk01ytgUVgaE+yujU8CJT1mvkvbLaqEKGEJ8a3zx\n1zkc1qZaGv1MxnspD5/T3A25EBKL+u1dqO8210NN4LjulOwgcxjar87852ZoRjbn\nt1W2islxRVS9KPeRai+oe8DfUcsrw0GqWTsdTsFUgb72A0nRUT8XRCDeRAtbqUIz\nEtd6rj1GJ6v3V07e4ehnmvfX7bOQ26XPaStWHfw/lwKBgQD2Nv9CQYsBWBMm6NNG\nr9fHAuojzS5yyQMk+DjeiVf8srGlkNO0POPpwABpMSElmc7xLh/FBCTc3v4s/fDa\nPsUwHsRilS57qSf5qiqeHpWLawBzLwWaaDmWgNB4ywSZxA6oSW3riGerbjP7a3Ci\nbqvtejIcroz2ZBt5Cjbboe75DwKBgQDajP6VA9NK1l3LeFuhfhnk3cXNCx37eGd6\n71y5O4xtf1qbbWb7Bzy76OQUObCPz1nLXg1z7dJmIZIZ8Y0P3LFswTb5ApmzOcwM\nOQaVIl+ogFF0aGvq3C0PdrfjkXYxp+WWsVIhzlOHTu9T4F7WUWttZnpCJoPqIKGL\n6gPw1+H6swKBgQCCum7L0hspSodYuHQ9au4px51kBvRrk9ksjvM7DTd/f62dGAmg\nAFiO6xgMwj40RbdADVpm9C1SbMAOSYLRjlSKmTtykH0OwaDtCfH45IpIbTbe8Y+L\nDV3OUHTgPgMiVZvmtJ49Wb6ZojjNfJ1gUVzOCXyECBXmWP7RRKAd+5vz9wKBgEf0\nTckv9jvYcg8QdFKqGspgPcRxWZC2ppMyBXwy39wZJvKvRU12p4dSeO0zxS7D3NN5\nBsLZVQEtIlYKUiAb0Ap3XqsDMSlx6P1JNSKaq5XlkWvbCVTM4sUJmCeDd7+HgK5p\neRoKPTP6SA98epzjN5RQPgZTefD2h1lyVZPQ7+TDAoGAIX7LZGDVCgBLQ9IBvBmF\nyZcviRhyjxP88dDgGVNgGzwyZU/SS8VAxXhsSZOpu1CoEDLL3R1XeDoI701+k6Kq\niEkaWakSWKWBnuJoz6WZZ2SrxTmiDT2vCyY9YiSRHavfpuOVrOWZD2g1BVFfML5u\nkkGdejlGGMnHtyJAi/jktH4=\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-pdx5g@floristeria-cra.iam.gserviceaccount.com"},"httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}}
+[warn] ⚠  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production.
+[info] ✔  functions[createProfile]: http function initialized (http://localhost:5001/floristeria-cra/us-central1/createProfile).
+[info] ✔  functions[getProfile]: http function initialized (http://localhost:5001/floristeria-cra/us-central1/getProfile).
+[info] ✔  functions[updateProfile]: http function initialized (http://localhost:5001/floristeria-cra/us-central1/updateProfile).
+[info] ✔  functions[postAddress]: http function initialized (http://localhost:5001/floristeria-cra/us-central1/postAddress).
+[info] ✔  functions[getAddresses]: http function initialized (http://localhost:5001/floristeria-cra/us-central1/getAddresses).
+[info] ✔  functions[removeAddress]: http function initialized (http://localhost:5001/floristeria-cra/us-central1/removeAddress).
+[info] ✔  functions[postType]: http function initialized (http://localhost:5001/floristeria-cra/us-central1/postType).
+[info] ✔  functions[getTypes]: http function initialized (http://localhost:5001/floristeria-cra/us-central1/getTypes).
+[info] ✔  functions[removeType]: http function initialized (http://localhost:5001/floristeria-cra/us-central1/removeType).
+[info] ✔  All emulators started, it is now safe to connect.
+[debug] [2019-11-18T00:48:29.627Z] [worker-~diagnostic~-15a037bd-54be-432d-b739-d388395657fc]: exited
+[debug] [2019-11-18T00:48:29.627Z] [worker-~diagnostic~-15a037bd-54be-432d-b739-d388395657fc]: FINISHED
+[debug] [2019-11-18T00:48:34.196Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T00:48:34.199Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T00:48:34.799Z] [runtime-status] Functions runtime initialized. {"cwd":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions","node_version":"10.15.0"}
+[debug] [2019-11-18T00:48:34.802Z] [runtime-status] Disabled runtime features: undefined {}
+[debug] [2019-11-18T00:48:34.804Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-11-18T00:48:34.805Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-18T00:48:35.001Z] [runtime-status] Found google-gax at /Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/google-gax/build/src/index.js {}
+[debug] [2019-11-18T00:48:35.001Z] [runtime-status] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"},{"name":"google-gax","status":"mocked"}]
+[debug] [2019-11-18T00:48:35.045Z] [runtime-status] Checked functions.config() {"config":{}}
+[debug] [2019-11-18T00:48:35.046Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-18T00:48:35.048Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-11-18T00:48:35.048Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-11-18T00:48:35.079Z] [runtime-status] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"8.6.1","resolution":"/Users/christiannajera/Documents/Freelance/floristeriaCRA/functions/node_modules/firebase-admin/lib/index.js"}}
+[debug] [2019-11-18T00:48:35.130Z] [runtime-status] initializeApp(DEFAULT) {"databaseURL":"https://floristeria-cra.firebaseio.com","storageBucket":"floristeria-cra.appspot.com","projectId":"floristeria-cra","credential":{"certificate":{"projectId":"floristeria-cra","privateKey":"-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDSMnBL5wBiDgoP\nodN+qn55B2xXCzGslx0eTWm/f1XV/eLGipzhSSemkhRg7HMicLDfUfDbszfGsQlT\ncyoCVVKCFWd+R+KX8WtajvFdqKmkgQuyenP5HMebrkQEUxWSccgmsxiEl5O9ZoI/\nTc0LtjLEq/fI9s/hfJ1KE6syv3RP6yW2ZXxY4pgRnHs8xSFrtAZXkeAzO2U0PSB1\nTTyHxr2jCo3hqii74Nleu2Xhki3lnCuQGYM85wystvHoNu27fLyt8QlvDj+lSKHR\n9BFQI5Z1XL7J//nPt4GSS70qBux1WTSGHvPcL1v9Znrq2sj+5wzklModReESXbFq\niPoYf8t9AgMBAAECggEAB/wk3dVJf/AWe94YSaVETiF8HaBjZxWLnVqwROHig7TX\nn0gzu8vYzgkL0T9vkc7c5Miue7r/j18c3vi88tuhrtG4HbOxReJEw1zBGKZ2Ut/8\nUn3/l0oX+8VLzdZ5fl69m5JNlk01ytgUVgaE+yujU8CJT1mvkvbLaqEKGEJ8a3zx\n1zkc1qZaGv1MxnspD5/T3A25EBKL+u1dqO8210NN4LjulOwgcxjar87852ZoRjbn\nt1W2islxRVS9KPeRai+oe8DfUcsrw0GqWTsdTsFUgb72A0nRUT8XRCDeRAtbqUIz\nEtd6rj1GJ6v3V07e4ehnmvfX7bOQ26XPaStWHfw/lwKBgQD2Nv9CQYsBWBMm6NNG\nr9fHAuojzS5yyQMk+DjeiVf8srGlkNO0POPpwABpMSElmc7xLh/FBCTc3v4s/fDa\nPsUwHsRilS57qSf5qiqeHpWLawBzLwWaaDmWgNB4ywSZxA6oSW3riGerbjP7a3Ci\nbqvtejIcroz2ZBt5Cjbboe75DwKBgQDajP6VA9NK1l3LeFuhfhnk3cXNCx37eGd6\n71y5O4xtf1qbbWb7Bzy76OQUObCPz1nLXg1z7dJmIZIZ8Y0P3LFswTb5ApmzOcwM\nOQaVIl+ogFF0aGvq3C0PdrfjkXYxp+WWsVIhzlOHTu9T4F7WUWttZnpCJoPqIKGL\n6gPw1+H6swKBgQCCum7L0hspSodYuHQ9au4px51kBvRrk9ksjvM7DTd/f62dGAmg\nAFiO6xgMwj40RbdADVpm9C1SbMAOSYLRjlSKmTtykH0OwaDtCfH45IpIbTbe8Y+L\nDV3OUHTgPgMiVZvmtJ49Wb6ZojjNfJ1gUVzOCXyECBXmWP7RRKAd+5vz9wKBgEf0\nTckv9jvYcg8QdFKqGspgPcRxWZC2ppMyBXwy39wZJvKvRU12p4dSeO0zxS7D3NN5\nBsLZVQEtIlYKUiAb0Ap3XqsDMSlx6P1JNSKaq5XlkWvbCVTM4sUJmCeDd7+HgK5p\neRoKPTP6SA98epzjN5RQPgZTefD2h1lyVZPQ7+TDAoGAIX7LZGDVCgBLQ9IBvBmF\nyZcviRhyjxP88dDgGVNgGzwyZU/SS8VAxXhsSZOpu1CoEDLL3R1XeDoI701+k6Kq\niEkaWakSWKWBnuJoz6WZZ2SrxTmiDT2vCyY9YiSRHavfpuOVrOWZD2g1BVFfML5u\nkkGdejlGGMnHtyJAi/jktH4=\n-----END PRIVATE KEY-----\n","clientEmail":"firebase-adminsdk-pdx5g@floristeria-cra.iam.gserviceaccount.com"},"httpClient":{"retry":{"maxRetries":4,"statusCodes":[503],"ioErrorCodes":["ECONNRESET","ETIMEDOUT"],"backOffFactor":0.5,"maxDelayInMillis":60000}}}}
+[warn] ⚠  functions: The Cloud Firestore emulator is not running, so calls to Firestore will affect production.
+[debug] [2019-11-18T00:48:35.177Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T00:48:35.177Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T00:48:35.177Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T00:48:35.183Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T00:48:35.183Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T00:48:35.190Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T00:48:35.291Z] [runtime-status] Ephemeral server survived. {}
+[warn] ⚠  Google API requested!
+   - URL: "https://www.googleapis.com/oauth2/v4/token"
+   - Be careful, this may be a production service.
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T00:48:36.096Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T00:49:09.912Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T00:49:09.912Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T00:49:09.913Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T00:49:09.913Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T00:49:09.913Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T00:49:09.914Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T00:49:09.915Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T00:49:09.918Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T00:49:09.919Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T00:49:10.083Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T00:50:27.011Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T00:50:27.011Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T00:50:27.012Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T00:50:27.012Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T00:50:27.012Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T00:50:27.013Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T00:50:27.013Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T00:50:27.015Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T00:50:27.015Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T00:50:27.237Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:07:29.850Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:07:29.850Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:07:29.852Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:07:29.852Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:07:29.853Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:07:29.853Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:07:29.853Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:07:29.857Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:07:29.860Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:07:30.250Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:07:37.789Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:07:37.789Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:07:37.798Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:07:37.799Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:07:37.799Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:07:37.799Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:07:37.799Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:07:37.803Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:07:37.803Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:07:37.956Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:07:45.617Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:07:45.617Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:07:45.618Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:07:45.618Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:07:45.618Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:07:45.620Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:07:45.620Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:07:45.622Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:07:45.622Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:07:45.765Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:09:21.357Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:09:21.357Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:09:21.358Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:09:21.359Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:09:21.359Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:09:21.362Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:09:21.362Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:09:21.363Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:09:21.364Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:09:21.510Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:09:24.886Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:09:24.886Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:09:24.887Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:09:24.887Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:09:24.887Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:09:24.888Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:09:24.888Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:09:24.889Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:09:24.889Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:09:25.035Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:10:03.658Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:10:03.658Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:10:03.660Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:10:03.660Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:10:03.660Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:10:03.661Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:10:03.661Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:10:03.667Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:10:03.668Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:10:03.808Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:10:05.486Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:10:05.486Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:10:05.487Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:10:05.487Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:10:05.487Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:10:05.488Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:10:05.488Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:10:05.489Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:10:05.489Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:10:05.635Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:10:47.846Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:10:47.847Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:10:47.847Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:10:47.849Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:10:47.849Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:10:47.849Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:10:47.849Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:10:47.851Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:10:47.851Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:10:48.079Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:11:09.589Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:11:09.589Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:11:09.590Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:11:09.590Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:11:09.590Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:11:09.591Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:11:09.591Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:11:09.593Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:11:09.593Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:11:09.822Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:11:12.011Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:11:12.011Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:11:12.011Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:11:12.012Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:11:12.012Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:11:12.013Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:11:12.013Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:11:12.014Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:11:12.014Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:11:12.161Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:11:55.409Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:11:55.409Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:11:55.410Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:11:55.410Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:11:55.410Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:11:55.411Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:11:55.411Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:11:55.412Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:11:55.412Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:11:55.555Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:17:10.468Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:17:10.469Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:17:10.470Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:17:10.470Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:17:10.471Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:17:10.471Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:17:10.472Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:17:10.473Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:17:10.474Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:17:10.959Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
+[debug] [2019-11-18T01:18:44.443Z] Accepted request POST /floristeria-cra/us-central1/getTypes --> getTypes
+[debug] [2019-11-18T01:18:44.443Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: BUSY
+[debug] [2019-11-18T01:18:44.443Z] [runtime-status] Trigger "getTypes" has been found, beginning invocation! {}
+[info] i  functions: Beginning execution of "getTypes"
+[debug] [2019-11-18T01:18:44.444Z] [runtime-status]  {"httpsTrigger":{},"name":"getTypes","entryPoint":"getTypes"}
+[debug] [2019-11-18T01:18:44.444Z] [runtime-status] Running getTypes in mode HTTPS {}
+[debug] [2019-11-18T01:18:44.445Z] {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:18:44.445Z] [functions] Runtime ready! Sending request! {"socketPath":"/var/folders/b2/fs0m_2xn1hs0yrf_pwm3fnvw0000gn/T/firebase_emulator_invocation_7545.sock"}
+[debug] [2019-11-18T01:18:44.446Z] [runtime-status] Ephemeral server used! {}
+[debug] [2019-11-18T01:18:44.446Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "getTypes" in ~1s
+[debug] [2019-11-18T01:18:44.591Z] [worker-getTypes-8b11d862-23d4-43b7-ba7e-48aaf4020145]: IDLE
