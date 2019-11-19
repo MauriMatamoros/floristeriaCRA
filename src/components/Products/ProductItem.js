@@ -1,20 +1,13 @@
 import React from "react";
 import {Card, Button} from "semantic-ui-react";
 
-const ProductItem = () => {
+const ProductItem = ({name, price, type, description}) => {
   return (
     <Card>
       <Card.Content>
-        {/* <Image
-          floated="right"
-          size="mini"
-          src="/images/avatar/large/steve.jpg"
-        /> */}
-        <Card.Header>Steve Sanders</Card.Header>
-        <Card.Meta>Friends of Elliot</Card.Meta>
-        <Card.Description>
-          Steve wants to add you to the group <strong>best friends</strong>
-        </Card.Description>
+        <Card.Header>{name}</Card.Header>
+        <Card.Meta>{price}</Card.Meta>
+        <Card.Description>{description}</Card.Description>
       </Card.Content>
       <Card.Content extra>
         <div className="ui two buttons">
