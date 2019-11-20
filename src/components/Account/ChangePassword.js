@@ -80,7 +80,7 @@ const ChangePassword = () => {
         </Form.Field>
         <Button
           type='submit'
-          color='brown'
+          color='black'
           content='Cambiar contraseña'
           disabled={disabled || loading}
         />

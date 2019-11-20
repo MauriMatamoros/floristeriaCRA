@@ -1,4 +1,5 @@
 import React from 'react'
+import WishListItem from '../Account/WishListItem'
 
 const WishList = () => {
   return (
@@ -15,9 +16,20 @@ const WishList = () => {
         </div>
       </div>
       <div className='d-flex justify-content-center mt-5'>
-        <a className='btn btn-dark rounded font-weight-400' role='button'>
+        <a
+          className='btn btn-dark rounded font-weight-400'
+          role='button'
+          onClick={() =>
+            alert('Este boton lleva al catalogo de productos en general.')
+          }
+        >
           Agrega items a tu wish list
         </a>
+      </div>
+      <div className='pt-5'>
+        <WishListItem />
+        <WishListItem />
+        <WishListItem />
       </div>
     </div>
   )

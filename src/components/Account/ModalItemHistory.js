@@ -22,7 +22,7 @@ const ModalItemHistory = props => {
         >
           <MDBModalHeader
             toggle={() => props.event()}
-            style={{ backgroundColor: '#B78565' }}
+            style={styles.containerHeader}
           >
             <Image src='./assets/logo.png' style={styles.imageHeaderModal} />
           </MDBModalHeader>
@@ -116,7 +116,8 @@ const styles = {
   imageHeaderModal: {
     width: 120,
     height: 70
-  }
+  },
+  containerHeader: { backgroundColor: '#E09D55' }
 }
 
 export default ModalItemHistory

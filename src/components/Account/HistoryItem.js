@@ -8,8 +8,8 @@ const HistoryItem = props => {
           <div className='row'>
             <div className='col-md-8'>
               <div className='card-body text-left'>
-                <h5 className='card-title'>Titulo de la compra</h5>
-                <p className='card-text'>Descripcion de la compra.</p>
+                <h5 className='card-title'>Nombre del producto</h5>
+                <p className='card-text'>Descripcion del producto.</p>
               </div>
             </div>
             <div className='col-md-4'>
