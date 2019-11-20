@@ -193,8 +193,5 @@ const mapStateToProps = ({ auth, productTypes: { types, loading } }) => ({
 
 export default compose(
   firebaseConnect(),
-  connect(
-    mapStateToProps,
-    { getTypes }
-  )
+  connect(mapStateToProps, { getTypes })
 )(CreateProduct)
