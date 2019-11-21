@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react";
-import {Button, Form, Message} from "semantic-ui-react";
-import axios from "axios";
-import {connect} from "react-redux";
+import React, { useState, useEffect } from 'react'
+import { Button, Form, Message } from 'semantic-ui-react'
+import axios from 'axios'
+import { connect } from 'react-redux'
 
-import {firebase} from "../../firebase";
-import {updateProfile} from "../../redux/actions/auth";
+import { firebase } from '../../firebase'
+import { updateProfile } from '../../redux/actions/auth'
 
 const AccountDetails = ({
   auth,
@@ -19,138 +19,138 @@ const AccountDetails = ({
     lastName,
     birthday,
     gender,
-    email: auth ? auth.email : ""
-  };
-  const [user, setUser] = useState(INITIAL_USER);
-  const [disabled, setDisabled] = useState(true);
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+    email: auth ? auth.email : ''
+  }
+  const [user, setUser] = useState(INITIAL_USER)
+  const [disabled, setDisabled] = useState(true)
+  const [success, setSuccess] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   useEffect(() => {
-    const isUser = Object.values(user).every(element => Boolean(element));
+    const isUser = Object.values(user).every(element => Boolean(element))
     isUser && user.password === user.confirmPassword
       ? setDisabled(false)
-      : setDisabled(true);
-  }, [user]);
+      : setDisabled(true)
+  }, [user])
 
   const handleChange = e => {
-    const {name, value} = e.target;
+    const { name, value } = e.target
     setUser(prevState => ({
       ...prevState,
       [name]: value
-    }));
-  };
+    }))
+  }
 
   const handleSubmit = async e => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      setLoading(true);
-      setError("");
-      const {name, lastName, birthday, gender, email} = user;
-      const token = await firebase.auth().currentUser.getIdToken();
+      setLoading(true)
+      setError('')
+      const { name, lastName, birthday, gender, email } = user
+      const token = await firebase.auth().currentUser.getIdToken()
       const {
         data
       } = await axios.post(
-        "http://localhost:5001/floristeria-cra/us-central1/updateProfile",
-        {token, name, lastName, birthday, gender, email}
-      );
-      updateProfile(data);
-      setSuccess(true);
+        'http://localhost:5001/floristeria-cra/us-central1/updateProfile',
+        { token, name, lastName, birthday, gender, email }
+      )
+      updateProfile(data)
+      setSuccess(true)
     } catch (error) {
-      setError(error.message);
+      setError(error.message)
     } finally {
-      setLoading(false);
-      setDisabled(false);
+      setLoading(false)
+      setDisabled(false)
     }
-  };
+  }
   return (
-    <div className="p-5" style={styles.container}>
+    <div className='p-5' style={styles.container}>
       <Form
         error={Boolean(error)}
         onSubmit={handleSubmit}
         loading={loading}
         success={success}
-        className="w-75"
+        className='w-75'
       >
-        <Message error header="Oops!" content={error || ""} />
+        <Message error header='Oops!' content={error || ''} />
         <Message
           success
-          icon="check"
-          header="Success!"
-          content="Your profile has been updated."
+          icon='check'
+          header='Success!'
+          content='Your profile has been updated.'
         />
 
         <Form.Input
-          label="Nombre"
-          placeholder="Nombre"
-          name="name"
+          label='Nombre'
+          placeholder='Nombre'
+          name='name'
           onChange={handleChange}
           value={user.name}
-          type="text"
+          type='text'
         />
         <Form.Input
-          label="Apellido"
-          placeholder="Apellido"
-          name="lastName"
+          label='Apellido'
+          placeholder='Apellido'
+          name='lastName'
           onChange={handleChange}
           value={user.lastName}
-          type="text"
+          type='text'
         />
         <Form.Input
-          label="Correo"
-          placeholder="Correo"
-          name="email"
+          label='Correo'
+          placeholder='Correo'
+          name='email'
           onChange={handleChange}
           value={user.email}
-          type="email"
+          type='email'
         />
         <Form.Input
-          className="w-50"
-          label="Fecha de nacimiento"
-          type="date"
+          className='w-50'
+          label='Fecha de nacimiento'
+          type='date'
           value={user.birthday}
           onChange={handleChange}
-          name="birthday"
+          name='birthday'
         />
         <Form.Group inline>
           <Form.Input
-            type="radio"
-            name="gender"
-            label="Hombre"
-            value="male"
-            checked={user.gender === "male"}
+            type='radio'
+            name='gender'
+            label='Hombre'
+            value='male'
+            checked={user.gender === 'male'}
             onChange={handleChange}
           />
           <Form.Input
-            type="radio"
-            label="Mujer"
-            name="gender"
-            value="female"
-            checked={user.gender === "female"}
+            type='radio'
+            label='Mujer'
+            name='gender'
+            value='female'
+            checked={user.gender === 'female'}
             onChange={handleChange}
           />
         </Form.Group>
         <Button
-          type="submit"
-          color="brown"
-          content="Actualizar"
+          type='submit'
+          color='black'
+          content='Actualizar'
           disabled={disabled || loading}
         />
       </Form>
     </div>
-  );
-};
+  )
+}
 
-const mapStateToProps = ({firebase: {profile, auth}}) => ({
+const mapStateToProps = ({ firebase: { profile, auth } }) => ({
   ...profile,
   auth
-});
+})
 
 const styles = {
   container: {
-    backgroundColor: "#D3D3D3"
+    backgroundColor: '#D3D3D3'
   }
-};
+}
 
-export default connect(mapStateToProps, {updateProfile})(AccountDetails);
+export default connect(mapStateToProps, { updateProfile })(AccountDetails)

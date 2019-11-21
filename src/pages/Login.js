@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {compose} from 'redux';
+import React, { useState, useEffect } from 'react'
+import { compose } from 'redux'
 import {
   Button,
   Form,
@@ -7,52 +7,52 @@ import {
   Container,
   Grid,
   Segment
-} from 'semantic-ui-react';
-import {Link, withRouter} from 'react-router-dom';
+} from 'semantic-ui-react'
+import { Link, withRouter } from 'react-router-dom'
 
-import {firebaseConnect} from 'react-redux-firebase';
-import {connect} from 'react-redux';
+import { firebaseConnect } from 'react-redux-firebase'
+import { connect } from 'react-redux'
 
-const Login = ({firebase, history, location, profile}) => {
+const Login = ({ firebase, history, location, profile }) => {
   const INITIAL_USER = {
     email: '',
     password: ''
-  };
-  const [user, setUser] = useState(INITIAL_USER);
-  const [disabled, setDisabled] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  }
+  const [user, setUser] = useState(INITIAL_USER)
+  const [disabled, setDisabled] = useState(true)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   useEffect(() => {
-    const isUser = Object.values(user).every(element => Boolean(element));
-    isUser ? setDisabled(false) : setDisabled(true);
-  }, [user]);
+    const isUser = Object.values(user).every(element => Boolean(element))
+    isUser ? setDisabled(false) : setDisabled(true)
+  }, [user])
 
   const handleChange = e => {
-    const {name, value} = e.target;
+    const { name, value } = e.target
     setUser(prevState => ({
       ...prevState,
       [name]: value
-    }));
-  };
+    }))
+  }
 
   const handleSubmit = async e => {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      setLoading(true);
-      setError('');
+      setLoading(true)
+      setError('')
       await firebase
         .auth()
-        .signInWithEmailAndPassword(user.email, user.password);
+        .signInWithEmailAndPassword(user.email, user.password)
     } catch (error) {
-      setError(error.message);
+      setError(error.message)
     } finally {
-      setLoading(false);
-      history.push('/');
+      setLoading(false)
+      history.push('/')
     }
-  };
+  }
   if (!profile.isEmpty) {
-    history.push('/');
+    history.push('/')
   }
   return (
     <Container className='mbt-10em w-75'>
@@ -121,14 +121,14 @@ const Login = ({firebase, history, location, profile}) => {
         </Grid>
       </Segment>
     </Container>
-  );
-};
+  )
+}
 
 export default compose(
   withRouter,
   firebaseConnect(),
-  connect(({firebase: {profile}}) => ({profile}))
-)(Login);
+  connect(({ firebase: { profile } }) => ({ profile }))
+)(Login)
 
 // Styles
 const styles = {
@@ -142,15 +142,16 @@ const styles = {
     width: '65%'
   },
   backgroundView: {
-    backgroundImage: 'url(./assets/flowers_login.jpg)',
+    backgroundImage:
+      'url(https://floresdesandy.com/85-large_default/ramo-de-flores-armonia.jpg)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     height: '70vh'
   },
   btnRegister: {
-    backgroundColor: '#00B5AD',
+    backgroundColor: '#C9A559',
     color: 'white',
     fontSize: '1rem'
   },
-  btnPass: {backgroundColor: '#6435C9', color: 'white', fontSize: '1rem'}
-};
+  btnPass: { backgroundColor: '#C9A559', color: 'white', fontSize: '1rem' }
+}
