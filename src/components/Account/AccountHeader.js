@@ -13,7 +13,11 @@ const AccountHeader = props => {
         style={styles.containerHeader}
       >
         <div className='d-flex justify-content-center pt-4'>
-          <img src='./assets/logo-spiral-white.png' style={styles.imgLogo} />
+          <img
+            src='./assets/logo-spiral-white.png'
+            style={styles.imgLogo}
+            alt='floristeria honduras'
+          />
         </div>
         <div
           className='container text-center mt-3 mb-4'

@@ -5,7 +5,11 @@ const WishList = () => {
   return (
     <div className='p-5 pt-0' style={styles.container}>
       <div className='d-flex justify-content-center'>
-        <img src='./assets/logo-spiral.png' style={styles.logo} />
+        <img
+          src='./assets/logo-spiral.png'
+          style={styles.logo}
+          alt='Floriteria Honduras'
+        />
       </div>
       <div className='d-flex justify-content-center'>
         <div>
@@ -19,7 +23,7 @@ const WishList = () => {
         <a
           className='btn btn-dark rounded font-weight-400'
           role='button'
-          onClick={() =>
+          href={() =>
             alert('Este boton lleva al catalogo de productos en general.')
           }
         >
