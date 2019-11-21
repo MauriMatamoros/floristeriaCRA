@@ -79,7 +79,7 @@ const Signup = ({ firebase, history }) => {
                 {/* El button de facebook llevara al usuario a registrarse por medio de facebook */}
                 <a
                   role='button'
-                  onClick={() => alert('Ingresar mediante FaceBook')}
+                  href={() => alert('Ingresar mediante FaceBook')}
                 >
                   <Image
                     src={'./assets/icons/btn_facebook.png'}
@@ -215,10 +215,7 @@ const Signup = ({ firebase, history }) => {
   )
 }
 
-export default compose(
-  withRouter,
-  firebaseConnect()
-)(Signup)
+export default compose(withRouter, firebaseConnect())(Signup)
 
 const styles = {
   container: { backgroundColor: 'lightgray', padding: 0 },

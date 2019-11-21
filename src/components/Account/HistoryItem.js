@@ -3,7 +3,7 @@ import React from 'react'
 const HistoryItem = props => {
   return (
     <>
-      <a role='button' onClick={() => props.toggle()}>
+      <a role='button' href={() => props.toggle()}>
         <div className='container'>
           <div className='row'>
             <div className='col-md-8'>
@@ -18,6 +18,7 @@ const HistoryItem = props => {
                 <img
                   src='https://www.florespedia.com/Imagenes/flores-bonitas-girasoles.jpg'
                   style={styles.imageSize}
+                  alt='floristeria honduras'
                 />
               </div>
             </div>

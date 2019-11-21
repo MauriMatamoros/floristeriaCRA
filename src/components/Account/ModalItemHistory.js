@@ -33,6 +33,7 @@ const ModalItemHistory = props => {
                   <img
                     src='https://www.florespedia.com/Imagenes/flores-bonitas-girasoles.jpg'
                     style={styles.modalImage}
+                    alt='floristeria honduras'
                   />
                   <div className='mt-4 mb-2'>
                     <p>

@@ -11,6 +11,7 @@ const HistoryItem = props => {
               <img
                 src='https://www.florespedia.com/Imagenes/flores-bonitas-girasoles.jpg'
                 style={styles.imageSize}
+                alt='floristeria honduras'
               />
               <div className='d-flex flex-column'>
                 <h5 className='card-title ml-3'>Titulo del producto</h5>
@@ -22,7 +23,7 @@ const HistoryItem = props => {
             <a
               role='button'
               className='btn btn-outline-dark'
-              onClick={() => alert('Compartir por correo')}
+              href={() => alert('Compartir por correo')}
             >
               Compartir
             </a>
@@ -39,9 +40,7 @@ const HistoryItem = props => {
 
               <a
                 role='button'
-                onClick={() =>
-                  alert('Remueve el item de la lista de wish list')
-                }
+                href={() => alert('Remueve el item de la lista de wish list')}
                 className='card-text'
               >
                 Quitar

@@ -5,7 +5,6 @@ import {
   Popup,
   Grid,
   Icon,
-  Image,
   Menu,
   Responsive,
   Dropdown
@@ -252,8 +251,5 @@ const mapStateToProps = ({ firebase: { auth, profile } }) => ({
 export default compose(
   withRouter,
   firebaseConnect(),
-  connect(
-    mapStateToProps,
-    null
-  )
+  connect(mapStateToProps, null)
 )(NavBar)
