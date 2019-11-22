@@ -2,7 +2,8 @@ import React from 'react'
 import { Tab, Container, Grid } from 'semantic-ui-react'
 
 import Search from '../components/layout/Search'
-import GalleryItem from '../components/Gallery/GalleryItem'
+import GalleryItemImage from '../components/Gallery/GalleryItemImage'
+import GalleryItemVideo from '../components/Gallery/GalleryItemVideo'
 
 const panes = [
   {
@@ -11,22 +12,42 @@ const panes = [
       <Tab.Pane loading={false}>
         <Grid>
           <Grid.Row className='pl-4'>
-            <GalleryItem />
-            <GalleryItem />
-            <GalleryItem />
-            <GalleryItem />
-            <GalleryItem />
-            <GalleryItem />
-            <GalleryItem />
-            <GalleryItem />
-            <GalleryItem />
-            <GalleryItem />
+            <GalleryItemImage />
+            <GalleryItemImage />
+            <GalleryItemImage />
+            <GalleryItemImage />
+            <GalleryItemImage />
+            <GalleryItemImage />
+            <GalleryItemImage />
+            <GalleryItemImage />
+            <GalleryItemImage />
+            <GalleryItemImage />
           </Grid.Row>
         </Grid>
       </Tab.Pane>
     )
   },
-  { menuItem: 'Videos', render: () => <Tab.Pane>Videos</Tab.Pane> }
+  {
+    menuItem: 'Videos',
+    render: () => (
+      <Tab.Pane>
+        <Grid>
+          <Grid.Row className='pl-4'>
+            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
+            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
+            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
+            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
+            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
+            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
+            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
+            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
+            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
+            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
+          </Grid.Row>
+        </Grid>
+      </Tab.Pane>
+    )
+  }
 ]
 
 const Gallery = props => {

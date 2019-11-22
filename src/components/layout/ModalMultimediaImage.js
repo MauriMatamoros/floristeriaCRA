@@ -1,7 +1,7 @@
 import React from 'react'
 import { Header, Modal } from 'semantic-ui-react'
 
-const ModalMultimedia = props => (
+const ModalMultimediaImage = props => (
   <Modal
     trigger={
       <a role='button' style={styles.textDecoration}>
@@ -13,6 +13,7 @@ const ModalMultimedia = props => (
     size='large'
   >
     <Header content='Nombre de la imagen' />
+    <p className='pl-4'>Fecha de la image en que se subio</p>
     <Modal.Content>{props.render}</Modal.Content>
   </Modal>
 )
@@ -23,4 +24,4 @@ const styles = {
   }
 }
 
-export default ModalMultimedia
+export default ModalMultimediaImage

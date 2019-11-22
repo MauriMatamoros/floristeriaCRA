@@ -1,18 +1,19 @@
 import React from 'react'
 import { Grid, Image } from 'semantic-ui-react'
-import ModalMultimedia from '../layout/ModalMultimedia'
+import ModalMultimediaVideo from '../layout/ModalMutlimediaVideo'
 
-const GalleryItem = props => {
+const GalleryItemVideo = props => {
   return (
     <>
       <Grid.Column className='col-12 col-lg-2 col-md-3 col-sm-4 p-2'>
-        <ModalMultimedia
+        <ModalMultimediaVideo
           render={
             <Image
-              src='http://3.bp.blogspot.com/-EHQ7m2jUFIk/VGY6WLi1o8I/AAAAAAAAQc4/MWwFtJQcyYA/s1600/La%2BGazania%2B01.JPG'
+              src='https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2019/10/22/15717587777250.jpg'
               style={styles.image}
             />
           }
+          video={props.linkVideo}
         />
       </Grid.Column>
     </>
@@ -26,4 +27,4 @@ const styles = {
   }
 }
 
-export default GalleryItem
+export default GalleryItemVideo
