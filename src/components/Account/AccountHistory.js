@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import HistoryItem from '../Account/HistoryItem'
 import ModalItemHistory from '../Account/ModalItemHistory'
+import Search from '../layout/Search'
 
 class AccountHistory extends Component {
   state = {
@@ -19,18 +20,7 @@ class AccountHistory extends Component {
       <>
         <div className='card'>
           <div className='card-header'>
-            <div className='input-group mb-3'>
-              <div className='input-group-prepend'>
-                <span className='input-group-text'>
-                  <i className='fas fa-search'></i>
-                </span>
-              </div>
-              <input
-                type='text'
-                className='form-control form-red'
-                placeholder='Buscar...'
-              />
-            </div>
+            <Search />
           </div>
           <div style={styles.containerItemHistory}>
             <div style={styles.overflowLimit}>

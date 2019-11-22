@@ -108,11 +108,6 @@ const NavBar = ({ location, auth, profile, firebase }) => {
             <div className='d-flex flex-row'>
               <Link to='/'>
                 <Menu.Item header active={isActive('/')}>
-                  {/* <Image
-                    size='mini'
-                    src='/static/logo.svg'
-                    style={{marginRight: '1em'}}
-                  /> */}
                   <p className='text-dark font-weight-bold'>INICIO</p>
                 </Menu.Item>
               </Link>

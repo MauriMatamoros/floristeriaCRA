@@ -3,7 +3,11 @@ import React from 'react'
 const HistoryItem = props => {
   return (
     <>
-      <a role='button' href={() => props.toggle()}>
+      <a
+        role='button'
+        onClick={() => props.toggle()}
+        style={styles.textDecoration}
+      >
         <div className='container'>
           <div className='row'>
             <div className='col-md-8'>
@@ -31,7 +35,8 @@ const HistoryItem = props => {
 }
 
 const styles = {
-  imageSize: { width: 110, height: 85 }
+  imageSize: { width: 110, height: 85 },
+  textDecoration: { textDecoration: 'none' }
 }
 
 export default HistoryItem
