@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tab, Container, Grid } from 'semantic-ui-react'
+import { Tab, Container, Grid, Pagination } from 'semantic-ui-react'
 
 import Search from '../components/layout/Search'
 import GalleryItemImage from '../components/Gallery/GalleryItemImage'
@@ -9,43 +9,66 @@ const panes = [
   {
     menuItem: 'Imagenes',
     render: () => (
-      <Tab.Pane loading={false}>
-        <Grid>
-          <Grid.Row className='pl-4'>
-            <GalleryItemImage />
-            <GalleryItemImage />
-            <GalleryItemImage />
-            <GalleryItemImage />
-            <GalleryItemImage />
-            <GalleryItemImage />
-            <GalleryItemImage />
-            <GalleryItemImage />
-            <GalleryItemImage />
-            <GalleryItemImage />
-          </Grid.Row>
-        </Grid>
-      </Tab.Pane>
+      <div className='text-center'>
+        <Tab.Pane loading={false}>
+          <Grid centered>
+            <Grid.Row centered>
+              <GalleryItemImage />
+              <GalleryItemImage />
+              <GalleryItemImage />
+              <GalleryItemImage />
+              <GalleryItemImage />
+              <GalleryItemImage />
+              <GalleryItemImage />
+              <GalleryItemImage />
+              <GalleryItemImage />
+              <GalleryItemImage />
+              <GalleryItemImage />
+            </Grid.Row>
+          </Grid>
+        </Tab.Pane>
+        <Pagination
+          boundaryRange={0}
+          defaultActivePage={1}
+          ellipsisItem={null}
+          firstItem={null}
+          lastItem={null}
+          siblingRange={1}
+          totalPages={10}
+        />
+      </div>
     )
   },
   {
     menuItem: 'Videos',
     render: () => (
-      <Tab.Pane>
-        <Grid>
-          <Grid.Row className='pl-4'>
-            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
-            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
-            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
-            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
-            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
-            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
-            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
-            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
-            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
-            <GalleryItemVideo linkVideo='https://www.youtube.com/embed/gHzPCXTv8pY?autoplay=1' />
-          </Grid.Row>
-        </Grid>
-      </Tab.Pane>
+      <div className='text-center'>
+        <Tab.Pane>
+          <Grid centered>
+            <Grid.Row centered>
+              <GalleryItemVideo />
+              <GalleryItemVideo />
+              <GalleryItemVideo />
+              <GalleryItemVideo />
+              <GalleryItemVideo />
+              <GalleryItemVideo />
+              <GalleryItemVideo />
+              <GalleryItemVideo />
+              <GalleryItemVideo />
+              <GalleryItemVideo />
+            </Grid.Row>
+          </Grid>
+        </Tab.Pane>
+        <Pagination
+          boundaryRange={0}
+          defaultActivePage={1}
+          ellipsisItem={null}
+          firstItem={null}
+          lastItem={null}
+          siblingRange={1}
+          totalPages={10}
+        />
+      </div>
     )
   }
 ]

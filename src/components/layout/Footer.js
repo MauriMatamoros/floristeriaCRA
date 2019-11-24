@@ -46,52 +46,52 @@ const FooterMain = ({ setCity }) => {
   }
   return (
     /* <!-- Footer --> */
-    <footer className="page-footer font-small mdb-color lighten-5 pt-4">
+    <footer className='page-footer font-small mdb-color lighten-5 pt-4'>
       {/* <!-- Footer Links --> */}
-      <div className="container text-center text-md-left text-dark">
+      <div className='container text-center text-md-left text-dark'>
         {/* <!-- Grid row --> */}
-        <div className="row">
-          <hr className="clearfix w-100 d-md-none" />
+        <div className='row'>
+          <hr className='clearfix w-100 d-md-none' />
 
           {/* <!-- Grid column --> */}
-          <div className="col-md-6 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1">
+          <div className='col-md-6 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1'>
             {/* <!-- Links --> */}
-            <h5 className="font-weight-bold text-uppercase mb-4">
+            <h5 className='font-weight-bold text-uppercase mb-4'>
               Informativo
             </h5>
 
-            <ul className="list-unstyled">
+            <ul className='list-unstyled'>
               <li>
                 <p>
-                  <a href="#!" className="text-dark">
+                  <a href='#!' className='text-dark'>
                     Compras
                   </a>
                 </p>
               </li>
               <li>
                 <p>
-                  <a href="#!" className="text-dark">
+                  <a href='#!' className='text-dark'>
                     Pedidos
                   </a>
                 </p>
               </li>
               <li>
                 <p>
-                  <a href="#!" className="text-dark">
+                  <a href='#!' className='text-dark'>
                     Envios
                   </a>
                 </p>
               </li>
               <li>
                 <p>
-                  <a href="#!" className="text-dark">
+                  <a href='#!' className='text-dark'>
                     Sobre nosotros
                   </a>
                 </p>
               </li>
               <li>
                 <p>
-                  <a href="#!" className="text-dark">
+                  <a href='#!' className='text-dark'>
                     Preguntas frecuentes
                   </a>
                 </p>
@@ -100,49 +100,46 @@ const FooterMain = ({ setCity }) => {
           </div>
           {/* <!-- Grid column --> */}
 
-          <hr className="clearfix w-100 d-md-none" />
+          <hr className='clearfix w-100 d-md-none' />
 
           {/* <!-- Grid column --> */}
-          <div className="col-md-6 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+          <div className='col-md-6 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1'>
             {/* <!-- Contact details --> */}
-            <h5 className="font-weight-bold text-uppercase mb-4">Tienda</h5>
+            <h5 className='font-weight-bold text-uppercase mb-4'>Tienda</h5>
 
             <Select
-              placeholder="Seleccione la ciudad..."
+              placeholder='Seleccione la ciudad...'
               options={countryOptions}
               onChange={handleCityChange}
             />
 
-            <ul className="list-unstyled pt-3">
+            <ul className='list-unstyled pt-3'>
               <li>
                 <p>
-                  <i className="fas fa-envelope mr-3"></i> info@example.com
+                  <i className='fas fa-envelope mr-3'></i> info@example.com
                 </p>
               </li>
               <li>
                 <p>
-                  <i className="fas fa-phone mr-3"></i> + 01 234 567 88
+                  <i className='fas fa-phone mr-3'></i> + 01 234 567 88
                 </p>
-              </li>
-              <li>
-                <ButtonWhatsApp />
               </li>
             </ul>
           </div>
           {/* <!-- Grid column --> */}
           {/* <!-- Grid column --> */}
-          <div className="col-md-6 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1">
+          <div className='col-md-6 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1'>
             {/* <!-- Contact details --> */}
-            <h5 className="font-weight-bold text-uppercase mb-4">Dirección</h5>
+            <h5 className='font-weight-bold text-uppercase mb-4'>Dirección</h5>
 
-            <ul className="list-unstyled">
+            <ul className='list-unstyled'>
               <li>
                 <p>
-                  <i className="fas fa-home mr-3"></i>
+                  <i className='fas fa-home mr-3'></i>
                   Dirección de la empresa....
                 </p>
                 <p>
-                  <i className="fas fa-clock mr-3"></i>
+                  <i className='fas fa-clock mr-3'></i>
                   Horarios de atencion
                 </p>
               </li>
@@ -150,15 +147,15 @@ const FooterMain = ({ setCity }) => {
           </div>
           {/* <!-- Grid column --> */}
 
-          <hr className="clearfix w-100 d-md-none" />
+          <hr className='clearfix w-100 d-md-none' />
 
           {/* <!-- Grid column --> */}
           <div
-            className="col-md-6 col-lg-4 mx-auto my-4"
+            className='col-md-6 col-lg-4 mx-auto my-4'
             style={{ backgroundColor: '#A7ABB5', padding: '2em' }}
           >
             {/* <!-- Social buttons --> */}
-            <h5 className="font-weight-bold text-uppercase mb-4">
+            <h5 className='font-weight-bold text-uppercase mb-4'>
               Suscripción
             </h5>
             <p>
@@ -172,23 +169,23 @@ const FooterMain = ({ setCity }) => {
                 success={success}
               >
                 <Form.Input
-                  name="email"
+                  name='email'
                   onChange={handleChange}
                   value={email}
-                  type="text"
-                  placeholder="Correo"
-                  label="Ingrese su correo"
+                  type='text'
+                  placeholder='Correo'
+                  label='Ingrese su correo'
                 />
-                <Button type="submit" disabled={disabled}>
+                <Button type='submit' disabled={disabled}>
                   Suscribirse
                 </Button>
               </Form>
             </div>
-            <button type="button" className="btn btn-fb">
-              <i className="fab fa-facebook-f left"></i> Facebook
+            <button type='button' className='btn btn-fb'>
+              <i className='fab fa-facebook-f left'></i> Facebook
             </button>
-            <button type="button" className="btn btn-ins">
-              <i className="fab fa-instagram left"></i> Instagram
+            <button type='button' className='btn btn-ins'>
+              <i className='fab fa-instagram left'></i> Instagram
             </button>
           </div>
           {/* <!-- Grid column --> */}
@@ -198,9 +195,9 @@ const FooterMain = ({ setCity }) => {
       {/* <!-- Footer Links --> */}
 
       {/* <!-- Copyright --> */}
-      <div className="footer-copyright text-center py-3 text-dark">
+      <div className='footer-copyright text-center py-3 text-dark'>
         © 2019 Copyright:
-        <a href="/" className="text-dark">
+        <a href='/' className='text-dark'>
           {' '}
           Floristeria Honduras
         </a>
@@ -214,9 +211,4 @@ const mapStateToProps = ({ city }) => ({
   city
 })
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { setCity }
-  )(FooterMain)
-)
+export default withRouter(connect(mapStateToProps, { setCity })(FooterMain))

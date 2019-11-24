@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Modal } from 'semantic-ui-react'
+import { Header, Modal, Embed } from 'semantic-ui-react'
 
 const ModalMultimediaVideo = props => (
   <Modal
@@ -15,14 +15,12 @@ const ModalMultimediaVideo = props => (
     <Header content='Nombre del video' />
     <p className='pl-4'>Fecha del video en que se subio</p>
     <Modal.Content>
-      <iframe
-        width='100%'
-        height='600'
-        src={props.video}
-        frameborder='0'
-        allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-        allowfullscreen
-      ></iframe>
+      <Embed
+        id='gHzPCXTv8pY'
+        // Imagen que tambien sera ingresada por el administrador para el placeholder
+        placeholder='https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2019/10/22/15717587777250.jpg'
+        source='youtube'
+      />
     </Modal.Content>
   </Modal>
 )
