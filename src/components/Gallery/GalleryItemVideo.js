@@ -5,7 +5,7 @@ import ModalMultimediaVideo from '../layout/ModalMutlimediaVideo'
 const GalleryItemVideo = props => {
   return (
     <>
-      <Grid.Column className='col-12 col-lg-2 col-md-3 col-sm-4 p-2'>
+      <Grid.Column className='col-12 col-lg-3 col-md-5 col-sm-6 p-2'>
         <ModalMultimediaVideo
           render={
             <Image
@@ -13,7 +13,6 @@ const GalleryItemVideo = props => {
               style={styles.image}
             />
           }
-          video={props.linkVideo}
         />
       </Grid.Column>
     </>

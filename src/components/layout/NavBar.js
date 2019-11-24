@@ -32,7 +32,7 @@ const NavBar = ({ location, auth, profile, firebase }) => {
     <>
       <Responsive maxWidth={750}>
         <Menu fluid inverted stackable id='menu' className='rounded-0'>
-          <div className='w-100'>
+          <div className='w-25'>
             <Dropdown
               text='Menu'
               style={{ color: 'black' }}
