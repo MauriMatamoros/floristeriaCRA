@@ -9,6 +9,9 @@ const Gallery = props => {
     <>
       <Container fluid className='mbt-10em text-center'>
         <Search />
+        <div className='w-100 mt-5 mb-2'>
+          <h2 className='text-center'>Nombre de la categoria</h2>
+        </div>
         <Grid centered className='pb-5'>
           <Grid.Row centered>
             <ArrayItem />
