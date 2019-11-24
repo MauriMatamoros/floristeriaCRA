@@ -12,6 +12,8 @@ import Account from '../pages/Account'
 import ForgotPassword from '../pages/ForgotPassword'
 import Products from '../pages/Products'
 import Gallery from '../pages/Gallery'
+import Arrays from '../pages/Arrays'
+import FormProductPay from '../pages/FormProductPay'
 
 const Routes = () => (
   <>
@@ -22,6 +24,8 @@ const Routes = () => (
       <Route exact path='/forgotPassword' component={ForgotPassword} />
       <Route exact path='/products/:type/:page?' component={Products} />
       <Route exact path='/gallery' component={Gallery} />
+      <Route exact path='/arrays' component={Arrays} />
+      <Route exact path='/form_card_product' component={FormProductPay} />
       <PrivateRoute exact path='/create' component={Create} />
       <PrivateRoute exact path='/createType' component={CreateType} />
       <PrivateRoute exact path='/createAddress' component={CreateAddress} />

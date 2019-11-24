@@ -7,7 +7,7 @@ const CardCategory = props => {
   return (
     <div style={{ height: 250 }}>
       <Card as={Link} to={`/products/${name}`}>
-        <Image src={image} ui={false} width={'95%'} height={200} />
+        <Image src={image} ui={false} width={'100%'} height={200} />
         <Card.Content>
           <Card.Header className='text-center'>{name}</Card.Header>
         </Card.Content>

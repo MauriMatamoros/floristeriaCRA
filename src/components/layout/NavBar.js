@@ -127,6 +127,7 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                   <p className='text-dark'>NOTICIAS</p>
                 </Menu.Item>
               </Link>
+
               <Popup
                 trigger={
                   <Menu.Item
