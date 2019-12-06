@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Header,
   Button,
@@ -7,14 +7,19 @@ import {
   Icon,
   Menu,
   Responsive,
-  Dropdown
+  Dropdown,
+  Sidebar
 } from 'semantic-ui-react'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { firebaseConnect } from 'react-redux-firebase'
+import SideBarCart from '../../components/Cart/SideBarCart'
 
 const NavBar = ({ location, auth, profile, firebase }) => {
+  const [opened, setOpened] = useState(false)
+  const [opened2, setOpened2] = useState(false)
+
   const isActive = route => route === location.pathname
   // const isRoot = user && user.role === 'root'
   // const isAdmin = user && user.role === 'admin'
@@ -31,7 +36,13 @@ const NavBar = ({ location, auth, profile, firebase }) => {
   return (
     <>
       <Responsive maxWidth={750}>
-        <Menu fluid inverted stackable id='menu' className='rounded-0'>
+        <Menu
+          fluid
+          inverted
+          stackable
+          id='menu'
+          className='d-flex flex-row justify-content-between rounded-0'
+        >
           <div className='w-25'>
             <Dropdown
               text='Menu'
@@ -88,16 +99,79 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                     )}
                   </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown.Item className='text-dark' as={Link} to='/search'>
+                <Dropdown.Item className='text-dark'>
                   <Icon name='search' size='big' />
                   BUSCAR
                 </Dropdown.Item>
-                <Dropdown.Item className='text-dark' as={Link} to='/cart'>
+                <Dropdown.Item
+                  className='text-dark'
+                  onClick={() => setOpened2(!opened2)}
+                >
                   <Icon name='cart' size='big' />
                   COMPRAS
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
+          </div>
+          <SideBarCart opened={opened2} setOpened={setOpened2} />
+          <div className='d-flex justify-content-end w-100'>
+            <div>
+              {!profile.isEmpty && profile.role === 'admin' && (
+                <Menu.Item
+                  onClick={() => setOpened(!opened)}
+                  className='text-dark'
+                >
+                  <Icon name='settings' size='large' />
+                </Menu.Item>
+              )}
+
+              <Sidebar
+                as={Menu}
+                animation='overlay'
+                direction='right'
+                icon='labeled'
+                inverted
+                vertical
+                visible={opened}
+              >
+                {!profile.isEmpty && profile.role === 'admin' && (
+                  <>
+                    <div className='mt-2 pr-3 d-flex justify-content-end'>
+                      <a
+                        role='button'
+                        className='text-white'
+                        onClick={() => setOpened(false)}
+                      >
+                        <i className='fas fa-times fa-2x' />
+                      </a>
+                    </div>
+
+                    <Link to='/create'>
+                      <Menu.Item
+                        header
+                        active={isActive('/creates')}
+                        className='text-white'
+                      >
+                        <Icon name='add square' size='large' />
+                        Create
+                      </Menu.Item>
+                    </Link>
+                  </>
+                )}
+                {!profile.isEmpty && profile.role === 'admin' && (
+                  <Link to='/createType'>
+                    <Menu.Item
+                      header
+                      active={isActive('/createTypes')}
+                      className='text-white'
+                    >
+                      <Icon name='add square' size='large' />
+                      Create Types
+                    </Menu.Item>
+                  </Link>
+                )}
+              </Sidebar>
+            </div>
           </div>
         </Menu>
       </Responsive>
@@ -127,6 +201,15 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                   <p className='text-dark'>NOTICIAS</p>
                 </Menu.Item>
               </Link>
+
+              {!profile.isEmpty && profile.role === 'admin' && (
+                <Menu.Item
+                  onClick={() => setOpened(!opened)}
+                  className='text-dark'
+                >
+                  <Icon name='settings' size='large' />
+                </Menu.Item>
+              )}
 
               <Popup
                 trigger={
@@ -188,49 +271,69 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                 </Grid>
               </Popup>
 
-              <Link to='/'>
-                <Menu.Item
-                  header
-                  active={isActive('/search')}
-                  className='text-dark'
-                >
-                  <Icon name='search' size='large' />
-                </Menu.Item>
-              </Link>
+              <Menu.Item
+                header
+                active={isActive('/search')}
+                className='text-dark'
+              >
+                <Icon name='search' size='large' />
+              </Menu.Item>
 
-              <Link to='/cart'>
-                <Menu.Item
-                  header
-                  active={isActive('/cart')}
-                  className='text-dark'
-                >
-                  <Icon name='cart' size='large' />
-                </Menu.Item>
-              </Link>
-              {!profile.isEmpty && profile.role === 'admin' && (
-                <Link to='/create'>
-                  <Menu.Item
-                    header
-                    active={isActive('/creates')}
-                    className='text-dark'
-                  >
-                    <Icon name='add square' size='large' />
-                    Create
-                  </Menu.Item>
-                </Link>
-              )}
-              {!profile.isEmpty && profile.role === 'admin' && (
-                <Link to='/createType'>
-                  <Menu.Item
-                    header
-                    active={isActive('/createTypes')}
-                    className='text-dark'
-                  >
-                    <Icon name='add square' size='large' />
-                    Create Types
-                  </Menu.Item>
-                </Link>
-              )}
+              <Menu.Item
+                header
+                className='text-dark'
+                onClick={() => setOpened2(!opened2)}
+              >
+                <Icon name='cart' size='large' />
+              </Menu.Item>
+
+              <SideBarCart opened={opened2} setOpened={setOpened2} />
+
+              <Sidebar
+                as={Menu}
+                animation='overlay'
+                direction='right'
+                icon='labeled'
+                inverted
+                vertical
+                visible={opened}
+              >
+                {!profile.isEmpty && profile.role === 'admin' && (
+                  <>
+                    <div className='mt-2 pr-3 d-flex justify-content-end'>
+                      <a
+                        role='button'
+                        className='text-white'
+                        onClick={() => setOpened(false)}
+                      >
+                        <i className='fas fa-times fa-1x' />
+                      </a>
+                    </div>
+                    <Link to='/create'>
+                      <Menu.Item
+                        header
+                        active={isActive('/creates')}
+                        className='text-white'
+                      >
+                        <Icon name='add square' size='large' />
+                        Create
+                      </Menu.Item>
+                    </Link>
+                  </>
+                )}
+                {!profile.isEmpty && profile.role === 'admin' && (
+                  <Link to='/createType'>
+                    <Menu.Item
+                      header
+                      active={isActive('/createTypes')}
+                      className='text-white'
+                    >
+                      <Icon name='add square' size='large' />
+                      Create Types
+                    </Menu.Item>
+                  </Link>
+                )}
+              </Sidebar>
             </div>
           </Menu.Menu>
         </Menu>

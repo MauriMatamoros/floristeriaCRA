@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
 import { setCity } from '../../redux/actions/city'
-import ButtonWhatsApp from '../layout/ButtonWhatsApp'
 
 const countryOptions = [
   { key: 'Tegucigalpa', value: 'Tegucigalpa', text: 'Tegucigalpa' },

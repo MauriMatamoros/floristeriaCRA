@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tab, Container, Grid, Pagination } from 'semantic-ui-react'
+import { Container, Grid, Pagination } from 'semantic-ui-react'
 
 import Search from '../components/layout/Search'
 import ArrayItem from '../components/Arrays/ArrayItem'

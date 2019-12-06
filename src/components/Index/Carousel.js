@@ -18,7 +18,7 @@ const CarouselPage = () => {
           showControls={true}
           showIndicators={true}
           interval={6000}
-          onHoverStop={false}
+          //onHoverStop={false}
         >
           <MDBCarouselInner>
             <MDBCarouselItem itemId='1'>
