@@ -14,9 +14,11 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { firebaseConnect } from 'react-redux-firebase'
+import SideBarCart from '../../components/Cart/SideBarCart'
 
 const NavBar = ({ location, auth, profile, firebase }) => {
   const [opened, setOpened] = useState(false)
+  const [opened2, setOpened2] = useState(false)
 
   const isActive = route => route === location.pathname
   // const isRoot = user && user.role === 'root'
@@ -101,13 +103,17 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                   <Icon name='search' size='big' />
                   BUSCAR
                 </Dropdown.Item>
-                <Dropdown.Item className='text-dark'>
+                <Dropdown.Item
+                  className='text-dark'
+                  onClick={() => setOpened2(!opened2)}
+                >
                   <Icon name='cart' size='big' />
                   COMPRAS
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
+          <SideBarCart opened={opened2} setOpened={setOpened2} />
           <div className='d-flex justify-content-end w-100'>
             <div>
               {!profile.isEmpty && profile.role === 'admin' && (
@@ -265,21 +271,23 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                 </Grid>
               </Popup>
 
-              <Link to='/'>
-                <Menu.Item
-                  header
-                  active={isActive('/search')}
-                  className='text-dark'
-                >
-                  <Icon name='search' size='large' />
-                </Menu.Item>
-              </Link>
+              <Menu.Item
+                header
+                active={isActive('/search')}
+                className='text-dark'
+              >
+                <Icon name='search' size='large' />
+              </Menu.Item>
 
-              <Link to='/cart'>
-                <Menu.Item header className='text-dark'>
-                  <Icon name='cart' size='large' />
-                </Menu.Item>
-              </Link>
+              <Menu.Item
+                header
+                className='text-dark'
+                onClick={() => setOpened2(!opened2)}
+              >
+                <Icon name='cart' size='large' />
+              </Menu.Item>
+
+              <SideBarCart opened={opened2} setOpened={setOpened2} />
 
               <Sidebar
                 as={Menu}
