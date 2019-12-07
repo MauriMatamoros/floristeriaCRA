@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { compose } from 'redux'
+import React, {useState, useEffect} from "react";
+import {compose} from "redux";
 import {
   Button,
   Form,
@@ -7,62 +7,62 @@ import {
   Container,
   Grid,
   Segment
-} from 'semantic-ui-react'
-import { Link, withRouter } from 'react-router-dom'
+} from "semantic-ui-react";
+import {Link, withRouter} from "react-router-dom";
 
-import { firebaseConnect } from 'react-redux-firebase'
-import { connect } from 'react-redux'
+import {firebaseConnect} from "react-redux-firebase";
+import {connect} from "react-redux";
 
-const Login = ({ firebase, history, location, profile }) => {
+const Login = ({firebase, history, location, profile}) => {
   const INITIAL_USER = {
-    email: '',
-    password: ''
-  }
-  const [user, setUser] = useState(INITIAL_USER)
-  const [disabled, setDisabled] = useState(true)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+    email: "",
+    password: ""
+  };
+  const [user, setUser] = useState(INITIAL_USER);
+  const [disabled, setDisabled] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    const isUser = Object.values(user).every(element => Boolean(element))
-    isUser ? setDisabled(false) : setDisabled(true)
-  }, [user])
+    const isUser = Object.values(user).every(element => Boolean(element));
+    isUser ? setDisabled(false) : setDisabled(true);
+  }, [user]);
 
   const handleChange = e => {
-    const { name, value } = e.target
+    const {name, value} = e.target;
     setUser(prevState => ({
       ...prevState,
       [name]: value
-    }))
-  }
+    }));
+  };
 
   const handleSubmit = async e => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      setLoading(true)
-      setError('')
+      setLoading(true);
+      setError("");
       await firebase
         .auth()
-        .signInWithEmailAndPassword(user.email, user.password)
+        .signInWithEmailAndPassword(user.email, user.password);
+      history.push("/");
     } catch (error) {
-      setError(error.message)
+      setError(error.message);
     } finally {
-      setLoading(false)
-      history.push('/')
+      setLoading(false);
     }
-  }
+  };
   if (!profile.isEmpty) {
-    history.push('/')
+    history.push("/");
   }
   return (
-    <Container className='mbt-10em w-75'>
+    <Container className="mbt-10em w-75">
       <Segment>
-        <Grid centered className='pt-5 pb-5'>
-          <Grid.Row className='text-center'>
-            <Grid.Column className='col-lg-5 col-md-8 col-12 align-self-center'>
-              <div className='alert alert-light text-center' role='alert'>
-                <p className='h3 font-weight-normal'>
-                  Ya eres <span className='font-weight-bold'>miembro</span>?
+        <Grid centered className="pt-5 pb-5">
+          <Grid.Row className="text-center">
+            <Grid.Column className="col-lg-5 col-md-8 col-12 align-self-center">
+              <div className="alert alert-light text-center" role="alert">
+                <p className="h3 font-weight-normal">
+                  Ya eres <span className="font-weight-bold">miembro</span>?
                 </p>
               </div>
               <Form
@@ -70,46 +70,46 @@ const Login = ({ firebase, history, location, profile }) => {
                 onSubmit={handleSubmit}
                 loading={loading}
               >
-                <Message error header='Oops!' content={error} />
+                <Message error header="Oops!" content={error} />
 
                 <Form.Input
-                  placeholder='Correo'
-                  name='email'
+                  placeholder="Correo"
+                  name="email"
                   onChange={handleChange}
                   value={user.email}
-                  type='email'
+                  type="email"
                 />
                 <Form.Input
-                  placeholder='Contraseña'
-                  name='password'
+                  placeholder="Contraseña"
+                  name="password"
                   onChange={handleChange}
                   value={user.password}
-                  type='password'
+                  type="password"
                 />
                 <Button
-                  className='mb-5'
-                  type='submit'
-                  color='black'
-                  content='Ingresar'
+                  className="mb-5"
+                  type="submit"
+                  color="black"
+                  content="Ingresar"
                   disabled={disabled || loading}
                 />
               </Form>
             </Grid.Column>
-            <Grid.Column className='col-lg-5 col-md-8 col-12'>
-              <div className='view' style={styles.backgroundView}>
+            <Grid.Column className="col-lg-5 col-md-8 col-12">
+              <div className="view" style={styles.backgroundView}>
                 <div style={styles.buttonFloat}>
                   <Link
-                    to='/signup'
-                    role='button'
-                    className='btn w-100 font-weight-bold'
+                    to="/signup"
+                    role="button"
+                    className="btn w-100 font-weight-bold"
                     style={styles.btnRegister}
                   >
                     Registrarse
                   </Link>
                   <Link
-                    to='/forgotpassword'
-                    role='button'
-                    className='btn w-100 font-weight-bold'
+                    to="/forgotpassword"
+                    role="button"
+                    className="btn w-100 font-weight-bold"
                     style={styles.btnPass}
                   >
                     Olvidaste tu contraseña?
@@ -121,37 +121,37 @@ const Login = ({ firebase, history, location, profile }) => {
         </Grid>
       </Segment>
     </Container>
-  )
-}
+  );
+};
 
 export default compose(
   withRouter,
   firebaseConnect(),
-  connect(({ firebase: { profile } }) => ({ profile }))
-)(Login)
+  connect(({firebase: {profile}}) => ({profile}))
+)(Login);
 
 // Styles
 const styles = {
   buttonFloat: {
-    position: 'absolute',
-    top: '75%',
-    left: '0',
-    right: '0',
-    bottom: '10%',
-    margin: 'auto',
-    width: '65%'
+    position: "absolute",
+    top: "75%",
+    left: "0",
+    right: "0",
+    bottom: "10%",
+    margin: "auto",
+    width: "65%"
   },
   backgroundView: {
     backgroundImage:
-      'url(https://floresdesandy.com/85-large_default/ramo-de-flores-armonia.jpg)',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    height: '70vh'
+      "url(https://floresdesandy.com/85-large_default/ramo-de-flores-armonia.jpg)",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    height: "70vh"
   },
   btnRegister: {
-    backgroundColor: '#C9A559',
-    color: 'white',
-    fontSize: '1rem'
+    backgroundColor: "#C9A559",
+    color: "white",
+    fontSize: "1rem"
   },
-  btnPass: { backgroundColor: '#C9A559', color: 'white', fontSize: '1rem' }
-}
+  btnPass: {backgroundColor: "#C9A559", color: "white", fontSize: "1rem"}
+};
