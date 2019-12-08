@@ -6,7 +6,7 @@ export default class GalleryPhotos extends React.Component {
     return (
       <>
         <div className='text-center mt-5 mb-5'>
-          <h1 className='font-weight-bold'>Lo mas nuevo</h1>
+          <h1 className='font-weight-bold'>Lo más destacado</h1>
         </div>
         <div className='mb-5 pb-5'>
           <Gallery
