@@ -2,6 +2,7 @@
   "projects": {
     "default": "floristeria-cra",
     "floristeria-cra": "floristeria-cra",
-    "floristeria": "floristeria-cra"
+    "floristeria": "floristeria-cra",
+    "develop": "floristeria-cra"
   }
 }
