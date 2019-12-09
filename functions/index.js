@@ -209,3 +209,70 @@ exports.removeType = functions.https.onRequest((req, res) =>
     }
   })
 );
+
+exports.postCoupon = functions.https.onRequest((req, res) =>
+  cors(req, res, async () => {
+    try {
+      const {token, name, discount, expireDate} = req.body;
+      const {uid} = await admin.auth().verifyIdToken(token);
+
+      if (!uid) {
+        res.status(403).send("Please log in again.");
+      }
+
+      const {id} = await db
+        .collection("coupons")
+        .add({name, discount, expireDate});
+
+      const coupon = await db
+        .collection("coupons")
+        .doc(id)
+        .get();
+
+      res.status(201).json({id, ...coupon.data()});
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Server Error");
+    }
+  })
+);
+
+exports.getCoupons = functions.https.onRequest((req, res) =>
+  cors(req, res, async () => {
+    try {
+      const snapshots = await db.collection("coupons").get();
+      const coupons = [];
+      if (snapshots.empty) {
+        res.status(200).send([]);
+      }
+      snapshots.forEach(coupon =>
+        coupons.push({
+          id: coupon.id,
+          ...coupon.data()
+        })
+      );
+      res.status(200).json(coupons);
+    } catch (error) {
+      res.status(500).send("Server Error");
+    }
+  })
+);
+
+exports.removeCoupons = functions.https.onRequest((req, res) =>
+  cors(req, res, async () => {
+    try {
+      const {token, id} = req.body;
+      const {uid} = await admin.auth().verifyIdToken(token);
+      if (!uid) {
+        res.status(403).send("Please log in again.");
+      }
+      await db
+        .collection("coupons")
+        .doc(id)
+        .delete();
+      res.status(200).json(id);
+    } catch (error) {
+      res.status(500).send("Server Error");
+    }
+  })
+);
