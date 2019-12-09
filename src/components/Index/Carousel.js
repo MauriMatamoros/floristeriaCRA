@@ -64,7 +64,7 @@ const styles = {
     width: '100%',
     height: 80,
     zIndex: 3,
-    left: '92%',
+    left: '2%',
     top: '83%',
     right: 'auto',
     bottom: 'auto'

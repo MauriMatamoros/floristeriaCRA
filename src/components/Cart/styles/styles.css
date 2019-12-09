@@ -1,0 +1,25 @@
+@media (max-width: 992px) {
+  .cart-option {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-left: 10%;
+    padding-right: 10%;
+    align-items: center;
+  }
+}
+
+.containerItem {
+  border-bottom: 2px solid lightgray;
+}
+
+.colorCategory {
+  color: gray;
+}
+
+.flowerIcon {
+  width: 20px;
+  height: 28px;
+}

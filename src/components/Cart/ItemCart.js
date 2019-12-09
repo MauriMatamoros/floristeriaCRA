@@ -1,52 +1,46 @@
 import React from 'react'
+import './styles/styles.css'
 
 const ItemCart = props => {
   return (
     <>
-      <div className='d-flex flex-row mt-2 mb-2' style={styles.containerItem}>
-        <div className='w-25'>
-          <img
-            src={
-              'https://paisajismodigital.com/blog/wp-content/uploads/2019/10/flores-nacionales-de-europa-segunda-parte-4.jpg'
-            }
-            style={{ width: 100, height: 100 }}
-          />
-        </div>
-        <div className='w-75 d-flex justify-content-start align-items-center pl-2'>
-          <div className='text-left'>
-            <p className='h5 m-0'>Nombre del arreglo</p>
-            <p style={styles.colorCategory}>Categoria del arreglo</p>
-            <h6>L.250.00/$4.00</h6>
+      <div className='container-fluid'>
+        <div className='row mt-2 mb-2 containerItem'>
+          <div className='col-lg-2 col-12'>
+            <div className='text-center'>
+              <img
+                src={
+                  'https://paisajismodigital.com/blog/wp-content/uploads/2019/10/flores-nacionales-de-europa-segunda-parte-4.jpg'
+                }
+                style={{ width: 100, height: 100 }}
+              />
+            </div>
           </div>
-        </div>
-        <div className='pr-3 d-flex flex-column justify-content-between'>
-          <a role='button'>
-            <i className='far fa-trash-alt'></i>
-          </a>
-          <div className='d-flex flex-row'>
-            <p className='font-weight-bold h5'>3</p>
-            <img
-              src={'./assets/icons/icon_flower.png'}
-              style={styles.flowerIcon}
-            />
+          <div className='col-lg-7 col-12'>
+            <div className='text-center'>
+              <p className='h5 m-0'>Nombre del arreglo</p>
+              <p className='colorCategory'>Categoria del arreglo</p>
+              <h6>L.250.00/$4.00</h6>
+            </div>
+          </div>
+          <div className='col-lg-3 col-12'>
+            <div className='cart-option d-flex justify-content-around flex-row'>
+              <a role='button'>
+                <i className='far fa-trash-alt'></i>
+              </a>
+              <div className='row justify-content-center align-items-center'>
+                <img
+                  src={'./assets/icons/icon_flower.png'}
+                  className='flowerIcon'
+                />
+                <p className='font-weight-bold h5'>0</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </>
   )
-}
-
-const styles = {
-  colorCategory: {
-    color: 'gray'
-  },
-  flowerIcon: {
-    width: 22,
-    height: 30
-  },
-  containerItem: {
-    borderBottom: '2px solid lightgray'
-  }
 }
 
 export default ItemCart

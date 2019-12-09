@@ -1,0 +1,27 @@
+.input-count {
+  width: 60px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.btn-custom {
+  text-decoration: none;
+  padding: 7px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #1883ba;
+}
+
+@media (max-width: 992px) {
+  .grid-images {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    margin-right: -15px !important;
+    margin-left: -15px !important;
+  }
+  .images-to-row {
+    width: 130px !important;
+    height: 170px !important;
+    margin-right: 1rem;
+  }
+}

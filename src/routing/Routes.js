@@ -14,6 +14,8 @@ import Products from "../pages/Products";
 import Gallery from "../pages/Gallery";
 import Arrays from "../pages/Arrays";
 import FormProductPay from "../pages/FormProductPay";
+import Blog from "../pages/Blog";
+import New from "../pages/New";
 import CreateCoupons from "../pages/CreateCoupons";
 
 const Routes = () => (
@@ -26,10 +28,12 @@ const Routes = () => (
       <Route exact path="/products/:type/:page?" component={Products} />
       <Route exact path="/gallery" component={Gallery} />
       <Route exact path="/arrays" component={Arrays} />
+      <Route exact path="/blog" component={Blog} />
+      <Route exact path="/blog/new" component={New} />
       <Route exact path="/form_card_product" component={FormProductPay} />
       <PrivateRoute exact path="/create" component={Create} />
       <PrivateRoute exact path="/createType" component={CreateType} />
-      <PrivateRoute exact path="/createCoupon" component={CreateCoupons} />
+      <PrivateRoute exact path="/createCoupons" component={CreateCoupons} />
       <PrivateRoute exact path="/createAddress" component={CreateAddress} />
       <PrivateRoute exact path="/account" component={Account} />
     </Switch>
