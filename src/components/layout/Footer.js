@@ -45,7 +45,10 @@ const FooterMain = ({ setCity }) => {
   }
   return (
     /* <!-- Footer --> */
-    <footer className='page-footer font-small mdb-color lighten-5 pt-4'>
+    <footer
+      className='page-footer font-small lighten-5 pt-4'
+      style={styles.containerFooter}
+    >
       {/* <!-- Footer Links --> */}
       <div className='container text-center text-md-left text-dark'>
         {/* <!-- Grid row --> */}
@@ -53,7 +56,7 @@ const FooterMain = ({ setCity }) => {
           <hr className='clearfix w-100 d-md-none' />
 
           {/* <!-- Grid column --> */}
-          <div className='col-md-6 col-lg-2 mx-auto my-md-4 my-0 mt-4 mb-1'>
+          <div className='col-md-6 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1'>
             {/* <!-- Links --> */}
             <h5 className='font-weight-bold text-uppercase mb-4'>
               Informativo
@@ -96,6 +99,25 @@ const FooterMain = ({ setCity }) => {
                 </p>
               </li>
             </ul>
+            <div className='row center-cards'>
+              <img src='/assets/icons/visa-icon.png' style={styles.iconCard} />
+              <img
+                src='/assets/icons/paypal-icon.png'
+                style={styles.iconCard}
+              />
+              <img
+                src='/assets/icons/mastercard-icon.png'
+                style={styles.iconCard}
+              />
+              <img
+                src='/assets/icons/discover-icon.png'
+                style={styles.iconCard}
+              />
+              <img
+                src='/assets/icons/amazon-icon.png'
+                style={styles.iconCard}
+              />
+            </div>
           </div>
           {/* <!-- Grid column --> */}
 
@@ -104,34 +126,16 @@ const FooterMain = ({ setCity }) => {
           {/* <!-- Grid column --> */}
           <div className='col-md-6 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1'>
             {/* <!-- Contact details --> */}
-            <h5 className='font-weight-bold text-uppercase mb-4'>Tienda</h5>
+            <h5 className='font-weight-bold text-uppercase mb-4'>
+              Visita la tienda
+            </h5>
 
             <Select
               placeholder='Seleccione la ciudad...'
               options={countryOptions}
               onChange={handleCityChange}
             />
-
             <ul className='list-unstyled pt-3'>
-              <li>
-                <p>
-                  <i className='fas fa-envelope mr-3'></i> info@example.com
-                </p>
-              </li>
-              <li>
-                <p>
-                  <i className='fas fa-phone mr-3'></i> + 01 234 567 88
-                </p>
-              </li>
-            </ul>
-          </div>
-          {/* <!-- Grid column --> */}
-          {/* <!-- Grid column --> */}
-          <div className='col-md-6 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1'>
-            {/* <!-- Contact details --> */}
-            <h5 className='font-weight-bold text-uppercase mb-4'>Dirección</h5>
-
-            <ul className='list-unstyled'>
               <li>
                 <p>
                   <i className='fas fa-home mr-3'></i>
@@ -145,13 +149,34 @@ const FooterMain = ({ setCity }) => {
             </ul>
           </div>
           {/* <!-- Grid column --> */}
+          {/* <!-- Grid column --> */}
+          <div className='col-md-6 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1'>
+            {/* <!-- Contact details --> */}
+            <h5 className='font-weight-bold text-uppercase mb-4'>
+              Información
+            </h5>
+
+            <ul className='list-unstyled pt-3'>
+              <li>
+                <p className='pb-3'>
+                  <i className='fas fa-envelope mr-3'></i> info@example.com
+                </p>
+              </li>
+              <li>
+                <p className='m-0'>whatsapp SPS: 3333-55555</p>
+                <p className='m-0'>whatsapp TGA: 3333-55555</p>
+                <p className='m-0'>whatsapp CBA: 3333-55555</p>
+              </li>
+            </ul>
+          </div>
+          {/* <!-- Grid column --> */}
 
           <hr className='clearfix w-100 d-md-none' />
 
           {/* <!-- Grid column --> */}
           <div
-            className='col-md-6 col-lg-4 mx-auto my-4'
-            style={{ backgroundColor: '#A7ABB5', padding: '2em' }}
+            className='col-md-6 col-lg-3 mx-auto my-4'
+            style={styles.containerSubscription}
           >
             {/* <!-- Social buttons --> */}
             <h5 className='font-weight-bold text-uppercase mb-4'>
@@ -180,12 +205,6 @@ const FooterMain = ({ setCity }) => {
                 </Button>
               </Form>
             </div>
-            <button type='button' className='btn btn-fb'>
-              <i className='fab fa-facebook-f left'></i> Facebook
-            </button>
-            <button type='button' className='btn btn-ins'>
-              <i className='fab fa-instagram left'></i> Instagram
-            </button>
           </div>
           {/* <!-- Grid column --> */}
         </div>
@@ -194,7 +213,10 @@ const FooterMain = ({ setCity }) => {
       {/* <!-- Footer Links --> */}
 
       {/* <!-- Copyright --> */}
-      <div className='footer-copyright text-center py-3 text-dark'>
+      <div
+        className='footer-copyright text-center py-3 text-dark'
+        style={styles.containerCopyRight}
+      >
         © 2019 Copyright:
         <a href='/' className='text-dark'>
           {' '}
@@ -209,5 +231,19 @@ const FooterMain = ({ setCity }) => {
 const mapStateToProps = ({ city }) => ({
   city
 })
+
+const styles = {
+  containerFooter: {
+    backgroundColor: '#F7F7F7'
+  },
+  containerCopyRight: {
+    backgroundColor: '#FFF'
+  },
+  containerSubscription: { padding: '1em' },
+  iconCard: {
+    width: 40,
+    height: 35
+  }
+}
 
 export default withRouter(connect(mapStateToProps, { setCity })(FooterMain))
