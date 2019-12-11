@@ -21,6 +21,19 @@ body {
   background-color: '#f7f7f7';
 }
 
+.navbar {
+  display: block;
+  text-align: center;
+}
+
+.navbar-expand {
+  justify-content: center;
+}
+.nav-item {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
 /* Overrides default styled accordion styles (too much bottom padding) */
 /* .ui.styled.accordion .content {
   margin: 0;
