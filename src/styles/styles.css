@@ -24,11 +24,19 @@ body {
 .navbar {
   display: block;
   text-align: center;
+  width: 100%;
+  padding: 0px;
 }
 
 .navbar-expand {
   justify-content: center;
+  position: relative;
+  z-index: 5;
 }
+.navbar-transparent {
+  position: absolute;
+}
+
 .nav-item {
   padding-left: 1em;
   padding-right: 1em;
@@ -103,5 +111,37 @@ div.scrollmenu a {
 @media (max-width: 768px) {
   .center-cards {
     justify-content: center;
+  }
+}
+
+@media (min-width: 570px) {
+  .padding-left-logo {
+    padding-left: 39%;
+    padding-right: auto;
+  }
+}
+@media (min-width: 768px) {
+  .padding-left-logo {
+    padding-left: 35%;
+    padding-right: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .padding-left-logo {
+    padding-left: 28%;
+    padding-right: auto;
+  }
+}
+@media (min-width: 1200px) {
+  .padding-left-logo {
+    padding-left: 20%;
+    padding-right: auto;
+  }
+}
+@media (min-width: 1550px) {
+  .padding-left-logo {
+    padding-left: 16%;
+    padding-right: auto;
   }
 }
