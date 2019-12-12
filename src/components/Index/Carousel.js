@@ -11,7 +11,7 @@ import ButtonWhatsApp from '../layout/ButtonWhatsApp'
 const CarouselPage = () => {
   return (
     <>
-      <MDBContainer fluid>
+      <MDBContainer fluid style={styles.container}>
         <MDBCarousel
           activeItem={1}
           length={3}
@@ -64,10 +64,14 @@ const styles = {
     width: '100%',
     height: 80,
     zIndex: 3,
-    left: '2%',
+    left: '90%',
     top: '83%',
     right: 'auto',
     bottom: 'auto'
+  },
+  container: {
+    paddingRight: 0,
+    paddingLeft: 0
   }
 }
 

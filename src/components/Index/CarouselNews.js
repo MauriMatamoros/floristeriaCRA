@@ -85,6 +85,7 @@ class CarouselNews extends React.Component {
                 size='lg'
                 rounded
                 color='black'
+                style={styles.marginBottom}
               >
                 <ArrowBackIosIcon />
               </MDBBtn>
@@ -94,7 +95,7 @@ class CarouselNews extends React.Component {
                 onClick={() => this._next()}
                 size='lg'
                 color='black'
-                rounded
+                style={styles.marginBottom}
               >
                 <ArrowForwardIosIcon />
               </MDBBtn>
@@ -109,6 +110,12 @@ class CarouselNews extends React.Component {
         </div>
       </>
     )
+  }
+}
+
+const styles = {
+  marginBottom: {
+    marginBottom: 150
   }
 }
 

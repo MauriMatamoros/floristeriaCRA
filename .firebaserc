@@ -3,6 +3,7 @@
     "default": "floristeria-cra",
     "floristeria-cra": "floristeria-cra",
     "floristeria": "floristeria-cra",
-    "develop": "floristeria-cra"
+    "develop": "floristeria-cra",
+    "floristeria-deploy-2": "floristeria-cra"
   }
 }

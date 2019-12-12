@@ -9,7 +9,7 @@ const CarouselNewsItem = props => {
           <div className='col-12 col-lg-6 text-right center'>
             <img src={props.array.image} style={styles.image} />
           </div>
-          <div className='col-12 col-lg-6 center'>
+          <div className='col-12 col-lg-6'>
             <div className='text-center pt-4'>
               <h3>Culumpio de amor</h3>
               <p>L.250.00 / $.4.00</p>

@@ -1,22 +1,31 @@
-import React from "react";
-import {Container} from "semantic-ui-react";
-import {connect} from "react-redux";
+import React from 'react'
+import { Container } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
-import NavBar from "./NavBar";
-import Footer from "./Footer";
+import NavBar from './NavBar'
+import Footer from './Footer'
 
-const Layout = ({children, isAuthenticated}) => {
+const Layout = ({ children, isAuthenticated }) => {
   return (
     <>
       <NavBar user={isAuthenticated} />
-      <Container fluid style={{minHeight: "50vh", paddingTop: "5em"}}>
+      <Container fluid style={styles.containerGeneral}>
         {children}
       </Container>
       <Footer />
     </>
-  );
-};
+  )
+}
 
-const mapStateToProps = ({auth: {isAuthenticated}}) => ({isAuthenticated});
+const styles = {
+  containerGeneral: {
+    minHeight: '50vh',
+    paddingTop: 0.1,
+    paddingRight: 0,
+    paddingLeft: 0
+  }
+}
 
-export default connect(mapStateToProps)(Layout);
+const mapStateToProps = ({ auth: { isAuthenticated } }) => ({ isAuthenticated })
+
+export default connect(mapStateToProps)(Layout)
