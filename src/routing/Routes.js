@@ -17,6 +17,7 @@ import FormProductPay from "../pages/FormProductPay";
 import Blog from "../pages/Blog";
 import New from "../pages/New";
 import CreateCoupons from "../pages/CreateCoupons";
+import ProductPay from "../pages/ProductPay";
 
 const Routes = () => (
   <>
@@ -26,6 +27,7 @@ const Routes = () => (
       <Route exact path="/" component={Home} />
       <Route exact path="/forgotPassword" component={ForgotPassword} />
       <Route exact path="/products/:type/:page?" component={Products} />
+      <Route exact path="/product/:id" component={ProductPay} />
       <Route exact path="/gallery" component={Gallery} />
       <Route exact path="/arrays" component={Arrays} />
       <Route exact path="/blog" component={Blog} />

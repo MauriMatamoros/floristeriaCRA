@@ -24,12 +24,12 @@ class ProductItem extends Component {
     }
   }
   render() {
-    let {name, price, description} = this.props;
+    let {name, price, id} = this.props;
     return (
       <>
         <Grid.Column className="col-12 col-lg-3 col-md-4 col-sm-6 p-4">
           <Link
-            to="/form_card_product"
+            to={`/product/${id}`}
             className="text-decoration-none text-dark"
           >
             <div className="mt-1 mb-1">
