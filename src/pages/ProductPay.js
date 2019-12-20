@@ -60,8 +60,14 @@ class ProductPay extends Component {
                 <img src="/assets/logo-spiral.png" style={styles.logo} />
               </div>
               <div className="text-left">
-                <h3>Titulo del arreglo</h3>
-                <p>L.250.00 / $.4.00</p>
+                <h3>{this.props.product ? this.props.product.name : ""}</h3>
+                <p>
+                  {this.props.product
+                    ? `${parseFloat(
+                        this.props.product.price
+                      ).toLocaleString()} Lps`
+                    : ""}
+                </p>
               </div>
               <div className="text-left row p-3 container-quantity">
                 <p className="pr-4 h5">Cantidad:</p>
@@ -116,15 +122,7 @@ class ProductPay extends Component {
               </div>
               <div className="pt-5">
                 <p className="text-justify">
-                  Aqui esta la description del producto. Lorem ipsum dolor sit
-                  amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                  veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                  nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id
-                  est laborum.
+                  {this.props.product ? this.props.product.description : ""}
                 </p>
               </div>
             </div>
