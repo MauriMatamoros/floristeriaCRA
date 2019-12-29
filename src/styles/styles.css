@@ -26,7 +26,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   font-family: 'Raleway-Light';
 }
 
@@ -142,26 +143,26 @@ div.scrollmenu a {
 }
 @media (min-width: 768px) {
   .padding-left-logo {
-    padding-left: 35%;
+    padding-left: 30%;
     padding-right: auto;
   }
 }
 
 @media (min-width: 992px) {
   .padding-left-logo {
-    padding-left: 28%;
+    padding-left: 22%;
     padding-right: auto;
   }
 }
 @media (min-width: 1200px) {
   .padding-left-logo {
-    padding-left: 20%;
+    padding-left: 15%;
     padding-right: auto;
   }
 }
 @media (min-width: 1550px) {
   .padding-left-logo {
-    padding-left: 16%;
+    padding-left: 15%;
     padding-right: auto;
   }
 }

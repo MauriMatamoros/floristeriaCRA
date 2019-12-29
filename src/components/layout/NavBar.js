@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {
-  Header,
   Button,
   Popup,
   Grid,
@@ -231,26 +230,34 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                         {auth.isEmpty ? (
                           <>
                             <Grid.Column textAlign='center'>
-                              <Header as='h4'>INGRESAR</Header>
-                              <Button as={Link} to='/login'>
+                              <Button
+                                as={Link}
+                                to='/login'
+                                style={styles.btnHidden}
+                                className='btn btn-outline-dark w-75'
+                              >
                                 <Menu.Item
                                   header
                                   active={isActive('/login')}
                                   onClick={() => setIndex(false)}
                                 >
-                                  Login
+                                  <p>Ingresar</p>
                                 </Menu.Item>
                               </Button>
                             </Grid.Column>
                             <Grid.Column textAlign='center'>
-                              <Header as='h4'>REGISTRARSE</Header>
-                              <Button as={Link} to='/signup'>
+                              <Button
+                                as={Link}
+                                to='/signup'
+                                style={styles.btnHidden}
+                                className='btn btn-dark w-75'
+                              >
                                 <Menu.Item
                                   header
                                   active={isActive('/signup')}
                                   onClick={() => setIndex(false)}
                                 >
-                                  Sign Up
+                                  <p>Registrarse</p>
                                 </Menu.Item>
                               </Button>
                             </Grid.Column>
@@ -258,22 +265,25 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                         ) : (
                           <>
                             <Grid.Column textAlign='center'>
-                              <Header as='h4'>CUENTA</Header>
                               <Button
                                 as={Link}
                                 to='/account'
                                 onClick={() => setIndex(false)}
+                                style={styles.btnHidden}
+                                className='btn btn-outline-dark w-75'
                               >
                                 <Menu.Item header active={isActive('/account')}>
-                                  Account
+                                  Cuenta
                                 </Menu.Item>
                               </Button>
                             </Grid.Column>
                             <Grid.Column textAlign='center'>
-                              <Header as='h4'>SALIR</Header>
-                              <Button>
+                              <Button
+                                style={styles.btnHidden}
+                                className='btn btn-dark w-75'
+                              >
                                 <Menu.Item header onClick={handleLogout}>
-                                  Logout
+                                  Salir
                                 </Menu.Item>
                               </Button>
                             </Grid.Column>
@@ -487,6 +497,9 @@ const styles = {
     fontSize: 14,
     textAlign: 'center',
     fontWeight: 'bold'
+  },
+  btnHidden: {
+    color: 'white'
   }
 }
 
