@@ -8,34 +8,57 @@ const FormProductPay = () => {
       <Container className='mbt-10em'>
         <div className='row'>
           <div className='col-lg-2 justify-content-center grid-images'>
-            <a role='button' onClick={() => alert('Modal')}>
+            <button
+              className='btn'
+              type='button'
+              onClick={() => alert('Modal')}
+            >
               <img
                 src='/assets/Products/array-1.jpg'
                 style={styles.imageArray}
                 className='mb-3 images-to-row'
+                alt='array-1'
               />
-            </a>
-            <a role='button' onClick={() => alert('Modal')}>
+            </button>
+            <button
+              className='btn'
+              type='button'
+              onClick={() => alert('Modal')}
+            >
               <img
                 src='/assets/Products/array-2.jpg'
                 style={styles.imageArray}
                 className='mb-3 images-to-row'
+                alt='array-2'
               />
-            </a>
-            <a role='button' onClick={() => alert('Modal')}>
+            </button>
+            <button
+              className='btn'
+              type='button'
+              onClick={() => alert('Modal')}
+            >
               <img
                 src='/assets/Products/array-3.jpg'
                 style={styles.imageArray}
                 className='mb-3 images-to-row'
+                alt='array-3'
               />
-            </a>
+            </button>
           </div>
           <div className='col-lg-5'>
-            <img src='/assets/Products/array-2.jpg' style={styles.imageArray} />
+            <img
+              src='/assets/Products/array-2.jpg'
+              style={styles.imageArray}
+              alt='array-2'
+            />
           </div>
           <div className='col-lg-5 col-12 text-center p-5'>
             <div>
-              <img src='/assets/logo-spiral.png' style={styles.logo} />
+              <img
+                src='/assets/logo-spiral.png'
+                style={styles.logo}
+                alt='logo-spiral'
+              />
             </div>
             <div className='text-left'>
               <h3>Titulo del arreglo</h3>

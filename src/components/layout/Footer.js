@@ -100,22 +100,30 @@ const FooterMain = ({ setCity }) => {
               </li>
             </ul>
             <div className='row center-cards'>
-              <img src='/assets/icons/visa-icon.png' style={styles.iconCard} />
+              <img
+                src='/assets/icons/visa-icon.png'
+                style={styles.iconCard}
+                alt='visa-icon'
+              />
               <img
                 src='/assets/icons/paypal-icon.png'
                 style={styles.iconCard}
+                alt='paypal-icon'
               />
               <img
                 src='/assets/icons/mastercard-icon.png'
                 style={styles.iconCard}
+                alt='mastercard-icon'
               />
               <img
                 src='/assets/icons/discover-icon.png'
                 style={styles.iconCard}
+                alt='discover-icon'
               />
               <img
                 src='/assets/icons/amazon-icon.png'
                 style={styles.iconCard}
+                alt='amazon-icon'
               />
             </div>
           </div>

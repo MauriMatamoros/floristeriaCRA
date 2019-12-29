@@ -3,8 +3,9 @@ import React from 'react'
 const HistoryItem = props => {
   return (
     <>
-      <a
-        role='button'
+      <button
+        type='button'
+        className='btn'
         onClick={() => props.toggle()}
         style={styles.textDecoration}
       >
@@ -28,7 +29,7 @@ const HistoryItem = props => {
             </div>
           </div>
         </div>
-      </a>
+      </button>
       <div className='card-footer text-muted'>Mayo, Lunes 10 2019</div>
     </>
   )

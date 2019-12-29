@@ -16,18 +16,22 @@ const SideBarCart = props => {
         style={styles.containerSideBar}
       >
         <div className='mt-2 pr-3 d-flex justify-content-end'>
-          <a
-            role='button'
-            className='text-dark'
+          <button
+            type='button'
+            className='btn text-dark'
             onClick={() => props.setOpened(false)}
           >
             <i className='fas fa-times fa-1x' />
-          </a>
+          </button>
         </div>
 
         {/* En caso de no existir producto en el carro de compras */}
         <div className='text-center p-3'>
-          <img src='./assets/cart.png' style={{ width: 70, height: 50 }} />
+          <img
+            src='./assets/cart.png'
+            style={{ width: 70, height: 50 }}
+            alt='cart'
+          />
           <p style={{ color: 'gray' }}>
             No tiene productos en el carro de compras, favor iniciar sesión y
             agregar arreglos a su carrito.

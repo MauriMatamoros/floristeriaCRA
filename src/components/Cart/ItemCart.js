@@ -13,6 +13,7 @@ const ItemCart = props => {
                   'https://paisajismodigital.com/blog/wp-content/uploads/2019/10/flores-nacionales-de-europa-segunda-parte-4.jpg'
                 }
                 style={{ width: 100, height: 100 }}
+                alt='imagen'
               />
             </div>
           </div>
@@ -25,13 +26,14 @@ const ItemCart = props => {
           </div>
           <div className='col-lg-3 col-12'>
             <div className='cart-option d-flex justify-content-around flex-row'>
-              <a role='button'>
+              <button className='btn' type='button'>
                 <i className='far fa-trash-alt'></i>
-              </a>
+              </button>
               <div className='row justify-content-center align-items-center'>
                 <img
                   src={'./assets/icons/icon_flower.png'}
                   className='flowerIcon'
+                  alt='icon_flower'
                 />
                 <p className='font-weight-bold h5'>0</p>
               </div>

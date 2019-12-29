@@ -11,7 +11,11 @@ const ItemBlogSmall = props => {
               <p className='font-weight-bold'>Nuevo arreglo de San Valentin</p>
             </div>
             <div className='pb-4'>
-              <img src='./assets/News/img-3.jpg' style={styles.sizeImage} />
+              <img
+                src='./assets/News/img-3.jpg'
+                style={styles.sizeImage}
+                alt='new'
+              />
             </div>
           </div>
           <div className='p-4 col-lg-9 col-12'>

@@ -137,13 +137,13 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                 {!profile.isEmpty && profile.role === 'admin' && (
                   <>
                     <div className='mt-2 pr-3 d-flex justify-content-end'>
-                      <a
-                        role='button'
-                        className='text-white'
+                      <button
+                        type='button'
+                        className='btn text-white'
                         onClick={() => setOpened(false)}
                       >
                         <i className='fas fa-times fa-2x' />
-                      </a>
+                      </button>
                     </div>
 
                     <Link to='/create'>
@@ -194,15 +194,19 @@ const NavBar = ({ location, auth, profile, firebase }) => {
               <div className='col-12'>
                 <div className='d-flex flex-row justify-content-between'>
                   <div className='w-100 padding-left-logo'>
-                    <img src='/assets/logo.png' style={styles.logo} />
+                    <img
+                      src='/assets/logo.png'
+                      style={styles.logo}
+                      alt='logo-foristeria'
+                    />
                   </div>
                   <ul className='navbar-nav pt-3'>
                     <Popup
                       trigger={
                         <li className='nav-item'>
-                          <a role='button' className='text-dark'>
+                          <button type='button' className='btn text-dark'>
                             <Icon name='user' size='large' />
-                          </a>
+                          </button>
                         </li>
                       }
                       flowing
@@ -256,29 +260,29 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                     </Popup>
 
                     <li className='nav-item'>
-                      <a role='button' className='text-dark'>
+                      <button type='button' className='btn text-dark'>
                         <Icon name='search' size='large' />
-                      </a>
+                      </button>
                     </li>
 
                     <li className='nav-item'>
-                      <a
-                        role='button'
-                        className='text-dark'
+                      <button
+                        type='button'
+                        className='btn text-dark'
                         onClick={() => setOpened2(!opened2)}
                       >
                         <Icon name='cart' size='large' />
-                      </a>
+                      </button>
                     </li>
                     {!profile.isEmpty && profile.role === 'admin' && (
                       <li className='nav-item'>
-                        <a
-                          role='button'
+                        <button
+                          type='button'
                           onClick={() => setOpened(!opened)}
-                          className='text-dark'
+                          className='btn text-dark'
                         >
                           <Icon name='settings' size='large' />
-                        </a>
+                        </button>
                       </li>
                     )}
                   </ul>
@@ -320,13 +324,13 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                       {!profile.isEmpty && profile.role === 'admin' && (
                         <>
                           <div className='mt-2 pr-3 d-flex justify-content-end'>
-                            <a
-                              role='button'
-                              className='text-white'
+                            <button
+                              type='button'
+                              className='btn text-white'
                               onClick={() => setOpened(false)}
                             >
                               <i className='fas fa-times fa-1x' />
-                            </a>
+                            </button>
                           </div>
                           <Link to='/create'>
                             <Menu.Item
