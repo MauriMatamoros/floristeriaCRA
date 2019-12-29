@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container } from 'semantic-ui-react'
-import { MDBBtn } from 'mdbreact'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import ItemsCarousel from 'react-items-carousel'
@@ -48,7 +47,7 @@ class ArraysCategory extends React.Component {
     return this.state.loading ? (
       <Spinner />
     ) : (
-      <>
+      <div className='pl-5 pr-5'>
         <Container fluid className='pt-5 pb-5'>
           <div className='text-center pb-5'>
             <h2>Lo que buscas</h2>
@@ -62,24 +61,22 @@ class ArraysCategory extends React.Component {
             numberOfCards={this.state.responsive}
             gutter={20}
             leftChevron={
-              <MDBBtn
+              <div
                 onClick={() => this._prev()}
                 size='lg'
-                rounded
-                color='black'
+                style={styles.btnNextPre}
               >
-                <ArrowBackIosIcon />
-              </MDBBtn>
+                <ArrowBackIosIcon style={styles.icon} />
+              </div>
             }
             rightChevron={
-              <MDBBtn
+              <div
                 onClick={() => this._next()}
                 size='lg'
-                color='black'
-                rounded
+                style={styles.btnNextPre}
               >
-                <ArrowForwardIosIcon />
-              </MDBBtn>
+                <ArrowForwardIosIcon style={styles.icon} />
+              </div>
             }
             outsideChevron
             chevronWidth={chevronWidth}
@@ -89,8 +86,25 @@ class ArraysCategory extends React.Component {
             ))}
           </ItemsCarousel>
         </div>
-      </>
+      </div>
     )
+  }
+}
+
+const styles = {
+  btnNextPre: {
+    width: 100,
+    height: 40,
+    marginBottom: 15,
+    borderRadius: 50,
+    backgroundColor: 'black',
+    opacity: 0.8,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  icon: {
+    color: '#FFF'
   }
 }
 

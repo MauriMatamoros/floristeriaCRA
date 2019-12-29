@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container } from 'semantic-ui-react'
-import { MDBBtn } from 'mdbreact'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import ItemsCarousel from 'react-items-carousel'
@@ -66,7 +65,7 @@ class CarouselNews extends React.Component {
 
   render() {
     return (
-      <>
+      <div className='pl-5 pr-5'>
         <Container fluid className='pb-5'>
           <div className='text-center pb-5'>
             <h2>Lo más nuevo</h2>
@@ -80,25 +79,25 @@ class CarouselNews extends React.Component {
             numberOfCards={this.state.responsive}
             gutter={20}
             leftChevron={
-              <MDBBtn
+              <div
                 onClick={() => this._prev()}
                 size='lg'
                 rounded
                 color='black'
-                style={styles.marginBottom}
+                style={styles.btnNextPre}
               >
-                <ArrowBackIosIcon />
-              </MDBBtn>
+                <ArrowBackIosIcon style={styles.icon} />
+              </div>
             }
             rightChevron={
-              <MDBBtn
+              <div
                 onClick={() => this._next()}
                 size='lg'
                 color='black'
-                style={styles.marginBottom}
+                style={styles.btnNextPre}
               >
-                <ArrowForwardIosIcon />
-              </MDBBtn>
+                <ArrowForwardIosIcon style={styles.icon} />
+              </div>
             }
             outsideChevron
             chevronWidth={chevronWidth}
@@ -108,14 +107,25 @@ class CarouselNews extends React.Component {
             ))}
           </ItemsCarousel>
         </div>
-      </>
+      </div>
     )
   }
 }
 
 const styles = {
-  marginBottom: {
-    marginBottom: 150
+  btnNextPre: {
+    width: 100,
+    height: 40,
+    marginBottom: 150,
+    borderRadius: 50,
+    backgroundColor: 'black',
+    opacity: 0.8,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  icon: {
+    color: '#FFF'
   }
 }
 

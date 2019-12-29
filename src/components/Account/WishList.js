@@ -41,7 +41,7 @@ const WishList = () => {
 
 const styles = {
   container: {
-    backgroundColor: '#D3D3D3'
+    backgroundColor: '#f0f0f0'
   },
   logo: {
     width: 150,

@@ -5,7 +5,7 @@ const HistoryItem = props => {
     <>
       <button
         type='button'
-        className='btn'
+        className='btn w-100 p-0 m-0'
         onClick={() => props.toggle()}
         style={styles.textDecoration}
       >

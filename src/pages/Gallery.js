@@ -1,7 +1,5 @@
 import React from 'react'
 import { Tab, Container, Grid, Pagination } from 'semantic-ui-react'
-
-import Search from '../components/layout/Search'
 import GalleryItemImage from '../components/Gallery/GalleryItemImage'
 import GalleryItemVideo from '../components/Gallery/GalleryItemVideo'
 
@@ -77,7 +75,6 @@ const Gallery = props => {
   return (
     <>
       <Container fluid className='mbt-10em'>
-        <Search />
         <Tab panes={panes} className='mt-5' />
       </Container>
     </>

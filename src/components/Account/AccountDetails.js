@@ -149,7 +149,7 @@ const mapStateToProps = ({ firebase: { profile, auth } }) => ({
 
 const styles = {
   container: {
-    backgroundColor: '#D3D3D3'
+    backgroundColor: '#f0f0f0'
   }
 }
 

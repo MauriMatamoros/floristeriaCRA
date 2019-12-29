@@ -4,7 +4,7 @@ import { Header, Modal } from 'semantic-ui-react'
 const ModalMultimediaImage = props => (
   <Modal
     trigger={
-      <button className='btn' type='button' style={styles.textDecoration}>
+      <button className='btn p-0' type='button' style={styles.textDecoration}>
         {props.render}
       </button>
     }
