@@ -58,9 +58,7 @@ const FooterMain = ({ setCity }) => {
           {/* <!-- Grid column --> */}
           <div className='col-md-6 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1'>
             {/* <!-- Links --> */}
-            <h5 className='font-weight-bold text-uppercase mb-4'>
-              Informativo
-            </h5>
+            <h5 className='text-uppercase mb-4'>Informativo</h5>
 
             <ul className='list-unstyled'>
               <li>
@@ -134,9 +132,7 @@ const FooterMain = ({ setCity }) => {
           {/* <!-- Grid column --> */}
           <div className='col-md-6 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1'>
             {/* <!-- Contact details --> */}
-            <h5 className='font-weight-bold text-uppercase mb-4'>
-              Visita la tienda
-            </h5>
+            <h5 className='text-uppercase mb-4'>Visita la tienda</h5>
 
             <Select
               placeholder='Seleccione la ciudad...'
@@ -160,9 +156,7 @@ const FooterMain = ({ setCity }) => {
           {/* <!-- Grid column --> */}
           <div className='col-md-6 col-lg-3 mx-auto my-md-4 my-0 mt-4 mb-1'>
             {/* <!-- Contact details --> */}
-            <h5 className='font-weight-bold text-uppercase mb-4'>
-              Información
-            </h5>
+            <h5 className='text-uppercase mb-4'>Información</h5>
 
             <ul className='list-unstyled pt-3'>
               <li>
@@ -187,9 +181,7 @@ const FooterMain = ({ setCity }) => {
             style={styles.containerSubscription}
           >
             {/* <!-- Social buttons --> */}
-            <h5 className='font-weight-bold text-uppercase mb-4'>
-              Suscripción
-            </h5>
+            <h5 className='text-uppercase mb-4'>Suscripción</h5>
             <p>
               Suscribete para informarte sobre nuestras promociones y eventos.
             </p>

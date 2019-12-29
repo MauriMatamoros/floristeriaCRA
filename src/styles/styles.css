@@ -4,10 +4,30 @@
   --progressBar: #54d1db;
 }
 
+@font-face {
+  font-family: 'Raleway-Light';
+  src: url('../fonts/Raleway/Raleway-Light.ttf');
+}
+
+@font-face {
+  font-family: 'Raleway-ExtraLight';
+  src: url('../fonts/Raleway/Raleway-ExtraLight.ttf');
+}
+
 body {
   background: var(--bodyBg);
   margin: 0;
   padding: 0;
+  font-family: 'Raleway-ExtraLight';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Raleway-Light';
 }
 
 #menu {

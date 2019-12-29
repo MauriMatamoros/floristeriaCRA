@@ -17,7 +17,7 @@ const CarouselNewsItem = props => {
                 className='btn btn-dark'
                 onClick={() => alert('Ir al detalle del producto')}
               >
-                Ver producto
+                <p className='font-weight-bold'>Ver producto</p>
               </button>
             </div>
           </div>

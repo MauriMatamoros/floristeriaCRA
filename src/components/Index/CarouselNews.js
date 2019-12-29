@@ -67,9 +67,9 @@ class CarouselNews extends React.Component {
   render() {
     return (
       <>
-        <Container fluid className='pt-5 pb-5'>
+        <Container fluid className='pb-5'>
           <div className='text-center pb-5'>
-            <h1 className='font-weight-bold'>Lo más nuevo</h1>
+            <h2>Lo más nuevo</h2>
           </div>
         </Container>
         <div style={{ padding: `0 ${chevronWidth}px` }}>
