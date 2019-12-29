@@ -8,7 +8,7 @@ const panes = [
     menuItem: 'Imagenes',
     render: () => (
       <div className='text-center'>
-        <Tab.Pane loading={false}>
+        <Tab.Pane loading={false} style={styles.containerTab}>
           <Grid centered>
             <Grid.Row centered>
               <GalleryItemImage />
@@ -41,7 +41,7 @@ const panes = [
     menuItem: 'Videos',
     render: () => (
       <div className='text-center'>
-        <Tab.Pane>
+        <Tab.Pane style={styles.containerTab}>
           <Grid centered>
             <Grid.Row centered>
               <GalleryItemVideo />
@@ -79,6 +79,12 @@ const Gallery = props => {
       </Container>
     </>
   )
+}
+
+const styles = {
+  containerTab: {
+    borderWidth: 0
+  }
 }
 
 export default Gallery

@@ -19,6 +19,7 @@ import SideBarCart from '../../components/Cart/SideBarCart'
 const NavBar = ({ location, auth, profile, firebase }) => {
   const [opened, setOpened] = useState(false)
   const [opened2, setOpened2] = useState(false)
+  const [index, setIndex] = useState(true)
 
   const isActive = route => route === location.pathname
   // const isRoot = user && user.role === 'root'
@@ -189,7 +190,10 @@ const NavBar = ({ location, auth, profile, firebase }) => {
       </Responsive>
       <Responsive minWidth={750}>
         <nav className='navbar navbar-expand navbar-light'>
-          <div className='container-fluid navbar-transparent'>
+          <div
+            className='container-fluid navbar-transparent'
+            style={index ? styles.containerNavbar : null}
+          >
             <div className='row w-100'>
               <div className='col-12'>
                 <div className='d-flex flex-row justify-content-between'>
@@ -204,8 +208,19 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                     <Popup
                       trigger={
                         <li className='nav-item'>
-                          <button type='button' className='btn text-dark'>
-                            <Icon name='user' size='large' />
+                          <button
+                            type='button'
+                            className='btn btn-link text-dark p-0 m-0'
+                          >
+                            <img
+                              src={
+                                index
+                                  ? './assets/icons/icon-user-white.png'
+                                  : './assets/icons/icon-user-dark.png'
+                              }
+                              alt='user-icon'
+                              style={styles.icon}
+                            />
                           </button>
                         </li>
                       }
@@ -218,8 +233,11 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                             <Grid.Column textAlign='center'>
                               <Header as='h4'>INGRESAR</Header>
                               <Button as={Link} to='/login'>
-                                <Menu.Item header active={isActive('/login')}>
-                                  <Icon name='sign in' size='large' />
+                                <Menu.Item
+                                  header
+                                  active={isActive('/login')}
+                                  onClick={() => setIndex(false)}
+                                >
                                   Login
                                 </Menu.Item>
                               </Button>
@@ -227,8 +245,11 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                             <Grid.Column textAlign='center'>
                               <Header as='h4'>REGISTRARSE</Header>
                               <Button as={Link} to='/signup'>
-                                <Menu.Item header active={isActive('/signup')}>
-                                  <Icon name='signup' size='large' />
+                                <Menu.Item
+                                  header
+                                  active={isActive('/signup')}
+                                  onClick={() => setIndex(false)}
+                                >
                                   Sign Up
                                 </Menu.Item>
                               </Button>
@@ -238,9 +259,12 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                           <>
                             <Grid.Column textAlign='center'>
                               <Header as='h4'>CUENTA</Header>
-                              <Button as={Link} to='/account'>
+                              <Button
+                                as={Link}
+                                to='/account'
+                                onClick={() => setIndex(false)}
+                              >
                                 <Menu.Item header active={isActive('/account')}>
-                                  <Icon name='user' size='large' />
                                   Account
                                 </Menu.Item>
                               </Button>
@@ -249,7 +273,6 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                               <Header as='h4'>SALIR</Header>
                               <Button>
                                 <Menu.Item header onClick={handleLogout}>
-                                  <Icon name='sign out' size='large' />
                                   Logout
                                 </Menu.Item>
                               </Button>
@@ -260,18 +283,41 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                     </Popup>
 
                     <li className='nav-item'>
-                      <button type='button' className='btn text-dark'>
-                        <Icon name='search' size='large' />
+                      <button
+                        type='button'
+                        className='btn btn-link text-dark p-0 m-0'
+                      >
+                        <img
+                          src={
+                            index
+                              ? './assets/icons/icon-search-white.png'
+                              : './assets/icons/icon-search-dark.png'
+                          }
+                          alt='icon-search'
+                          style={styles.icon}
+                        />
                       </button>
                     </li>
 
                     <li className='nav-item'>
                       <button
                         type='button'
-                        className='btn text-dark'
+                        className='btn btn-link text-dark p-0 m-0'
+                        style={{ position: 'relative' }}
                         onClick={() => setOpened2(!opened2)}
                       >
-                        <Icon name='cart' size='large' />
+                        <div style={styles.containerCount}>
+                          <p style={styles.count}>1</p>
+                        </div>
+                        <img
+                          src={
+                            index
+                              ? './assets/icons/icon-bag-white.png'
+                              : './assets/icons/icon-bag-dark.png'
+                          }
+                          alt='icon-bag'
+                          style={styles.icon}
+                        />
                       </button>
                     </li>
                     {!profile.isEmpty && profile.role === 'admin' && (
@@ -279,9 +325,17 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                         <button
                           type='button'
                           onClick={() => setOpened(!opened)}
-                          className='btn text-dark'
+                          className='btn btn-link text-dark p-0 m-0'
                         >
-                          <Icon name='settings' size='large' />
+                          <img
+                            src={
+                              index
+                                ? './assets/icons/icon-settings-white.png'
+                                : './assets/icons/icon-settings-dark.png'
+                            }
+                            alt='icon-settings'
+                            style={styles.icon}
+                          />
                         </button>
                       </li>
                     )}
@@ -290,23 +344,47 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                 <div className='d-flex justify-content-center'>
                   <ul className='navbar-nav'>
                     <li className='nav-item'>
-                      <Link to='/'>
-                        <p className='text-dark font-weight-bold'>INICIO</p>
+                      <Link to='/' onClick={() => setIndex(true)}>
+                        <p
+                          className={`${
+                            index ? 'text-white' : 'text-dark'
+                          } font-weight-bold`}
+                        >
+                          INICIO
+                        </p>
                       </Link>
                     </li>
                     <li className='nav-item'>
-                      <Link to='/gallery'>
-                        <p className='text-dark font-weight-bold'>GALERIA</p>
+                      <Link to='/gallery' onClick={() => setIndex(false)}>
+                        <p
+                          className={`${
+                            index ? 'text-white' : 'text-dark'
+                          } font-weight-bold`}
+                        >
+                          GALERIA
+                        </p>
                       </Link>
                     </li>
                     <li className='nav-item'>
-                      <Link to='/arrays'>
-                        <p className='text-dark font-weight-bold'>ARREGLOS</p>
+                      <Link to='/arrays' onClick={() => setIndex(false)}>
+                        <p
+                          className={`${
+                            index ? 'text-white' : 'text-dark'
+                          } font-weight-bold`}
+                        >
+                          ARREGLOS
+                        </p>
                       </Link>
                     </li>
                     <li className='nav-item'>
-                      <Link to='/blog'>
-                        <p className='text-dark font-weight-bold'>NOTICIAS</p>
+                      <Link to='/blog' onClick={() => setIndex(false)}>
+                        <p
+                          className={`${
+                            index ? 'text-white' : 'text-dark'
+                          } font-weight-bold`}
+                        >
+                          NOTICIAS
+                        </p>
                       </Link>
                     </li>
 
@@ -389,6 +467,26 @@ const styles = {
   logo: {
     width: 163,
     height: 80
+  },
+  icon: {
+    width: 30,
+    height: 'auto'
+  },
+  containerNavbar: {
+    boxShadow: 'inset 0 50px 70px'
+  },
+  containerCount: {
+    position: 'absolute',
+    backgroundColor: 'red',
+    left: '60%',
+    borderRadius: 50,
+    width: 20
+  },
+  count: {
+    color: 'white',
+    fontSize: 14,
+    textAlign: 'center',
+    fontWeight: 'bold'
   }
 }
 
