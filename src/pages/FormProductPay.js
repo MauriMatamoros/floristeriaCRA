@@ -9,7 +9,7 @@ const FormProductPay = () => {
         <div className='row'>
           <div className='col-lg-2 justify-content-center grid-images'>
             <button
-              className='btn'
+              className='btn btn-link p-0'
               type='button'
               onClick={() => alert('Modal')}
             >
@@ -21,7 +21,7 @@ const FormProductPay = () => {
               />
             </button>
             <button
-              className='btn'
+              className='btn btn-link p-0'
               type='button'
               onClick={() => alert('Modal')}
             >
@@ -33,7 +33,7 @@ const FormProductPay = () => {
               />
             </button>
             <button
-              className='btn'
+              className='btn btn-link p-0'
               type='button'
               onClick={() => alert('Modal')}
             >
@@ -46,36 +46,43 @@ const FormProductPay = () => {
             </button>
           </div>
           <div className='col-lg-5'>
-            <img
-              src='/assets/Products/array-2.jpg'
-              style={styles.imageArray}
-              alt='array-2'
-            />
-          </div>
-          <div className='col-lg-5 col-12 text-center p-5'>
-            <div>
+            {/* Aqui es el corazon */}
+
+            <div style={{ position: 'relative' }}>
+              <div style={styles.iconHeart}>
+                <button
+                  className='btn p-0 m-0'
+                  type='button'
+                  onClick={() => alert('Se agregado la wishlist')}
+                >
+                  <i className='fas fa-heart fa-3x text-white' />
+                </button>
+              </div>
               <img
-                src='/assets/logo-spiral.png'
-                style={styles.logo}
-                alt='logo-spiral'
+                src='/assets/Products/array-2.jpg'
+                style={styles.imageArrayBig}
+                alt='array-2'
               />
             </div>
+          </div>
+          <div className='col-lg-5 col-12 pl-5'>
             <div className='text-left'>
-              <h3>Titulo del arreglo</h3>
+              <h3>Nombre del arreglo</h3>
               <p>L.250.00 / $.4.00</p>
             </div>
             <div className='text-left row p-3 container-quantity'>
               <p className='pr-4 h5'>Cantidad:</p>
-              <div className='row'>
-                <button className='btn btn-dark btn-custom'>
-                  <p className='h4'>+</p>
+              <div className='row p-0 m-0'>
+                <button className='btn btn-outline-link btn-custom m-0'>
+                  <p className='h4 font-weight-bold'>+</p>
                 </button>
                 <input
                   type='numeric'
-                  className='form-control input-count mt-2'
+                  className='form-control input-count mt-0'
+                  value='0'
                 />
-                <button className='btn btn-dark btn-custom'>
-                  <p className='h4'>-</p>
+                <button className='btn btn-outline-link btn-custom m-0'>
+                  <p className='h4 font-weight-bold'>-</p>
                 </button>
               </div>
             </div>
@@ -93,11 +100,6 @@ const FormProductPay = () => {
             </div>
             <div className='pt-2 pb-2'>
               <button className='btn btn-white w-100' style={styles.btnAddCart}>
-                Agregar a mi wishlist
-              </button>
-            </div>
-            <div className='pt-2 pb-2'>
-              <button className='btn btn-grey w-100' style={styles.btnAddCart}>
                 Agregar al carrito de compras
               </button>
             </div>
@@ -126,10 +128,6 @@ const FormProductPay = () => {
 }
 
 const styles = {
-  logo: {
-    width: 72,
-    height: 58
-  },
   btnAddCart: {
     pading: 30,
     fontSize: 16
@@ -137,6 +135,15 @@ const styles = {
   imageArray: {
     width: '100%',
     height: 'auto'
+  },
+  imageArrayBig: {
+    width: '100%',
+    maxHeight: 600
+  },
+  iconHeart: {
+    position: 'absolute',
+    top: '85%',
+    left: '85%'
   }
 }
 

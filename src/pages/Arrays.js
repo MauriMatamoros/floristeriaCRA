@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Grid, Pagination } from 'semantic-ui-react'
 
 import ArrayItem from '../components/Arrays/ArrayItem'
+import ArraysCategory from '../components/Index/ArraysCategory'
 
 const Gallery = props => {
   return (
@@ -35,6 +36,7 @@ const Gallery = props => {
           siblingRange={1}
           totalPages={10}
         />
+        <ArraysCategory />
       </Container>
     </>
   )
