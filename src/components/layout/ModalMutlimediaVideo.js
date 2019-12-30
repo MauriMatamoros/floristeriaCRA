@@ -4,9 +4,9 @@ import { Header, Modal, Embed } from 'semantic-ui-react'
 const ModalMultimediaVideo = props => (
   <Modal
     trigger={
-      <a role='button' style={styles.textDecoration}>
+      <button className='btn p-0' type='button' style={styles.textDecoration}>
         {props.render}
-      </a>
+      </button>
     }
     basic
     closeIcon

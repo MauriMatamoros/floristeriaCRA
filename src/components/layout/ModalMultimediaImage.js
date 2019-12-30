@@ -4,9 +4,9 @@ import { Header, Modal } from 'semantic-ui-react'
 const ModalMultimediaImage = props => (
   <Modal
     trigger={
-      <a role='button' style={styles.textDecoration}>
+      <button className='btn p-0' type='button' style={styles.textDecoration}>
         {props.render}
-      </a>
+      </button>
     }
     basic
     closeIcon

@@ -7,9 +7,12 @@
 .btn-custom {
   text-decoration: none;
   padding: 7px;
+  padding-top: 6px !important;
   font-weight: 600;
-  color: #ffffff;
-  background-color: #1883ba;
+  color: #000;
+  background-color: #fff !important;
+  width: 30px;
+  height: 35px;
 }
 
 @media (max-width: 992px) {

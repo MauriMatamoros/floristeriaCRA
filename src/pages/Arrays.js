@@ -1,14 +1,13 @@
 import React from 'react'
 import { Container, Grid, Pagination } from 'semantic-ui-react'
 
-import Search from '../components/layout/Search'
 import ArrayItem from '../components/Arrays/ArrayItem'
+import ArraysCategory from '../components/Index/ArraysCategory'
 
 const Gallery = props => {
   return (
     <>
       <Container fluid className='mbt-10em text-center'>
-        <Search />
         <div className='w-100 mt-5 mb-2'>
           <h2 className='text-center'>Nombre de la categoria</h2>
         </div>
@@ -37,6 +36,7 @@ const Gallery = props => {
           siblingRange={1}
           totalPages={10}
         />
+        <ArraysCategory />
       </Container>
     </>
   )

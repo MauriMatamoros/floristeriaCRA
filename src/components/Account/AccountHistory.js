@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import HistoryItem from '../Account/HistoryItem'
 import ModalItemHistory from '../Account/ModalItemHistory'
-import Search from '../layout/Search'
 
 class AccountHistory extends Component {
   state = {
@@ -19,9 +18,6 @@ class AccountHistory extends Component {
     return (
       <>
         <div className='card'>
-          <div className='card-header'>
-            <Search />
-          </div>
           <div style={styles.containerItemHistory}>
             <div style={styles.overflowLimit}>
               <HistoryItem toggle={this.toggle} />

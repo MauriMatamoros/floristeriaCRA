@@ -1,60 +1,59 @@
-import React from "react";
-import {Container} from "semantic-ui-react";
-import {MDBBtn} from "mdbreact";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import ItemsCarousel from "react-items-carousel";
-import axios from "axios";
-import {firebaseConnect} from "react-redux-firebase";
+import React from 'react'
+import { Container } from 'semantic-ui-react'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import ItemsCarousel from 'react-items-carousel'
+import axios from 'axios'
+import { firebaseConnect } from 'react-redux-firebase'
 
-import CardCategory from "./CardCategoty";
-import Spinner from "../Spinner/Spinner";
+import CardCategory from './CardCategoty'
+import Spinner from '../Spinner/Spinner'
 
 class ArraysCategory extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       index: 0,
       responsive: 5,
       loading: true,
       arraysFlowers: []
-    };
+    }
   }
 
   _prev = () => {
-    this.setState({index: this.state.index - 1});
-  };
+    this.setState({ index: this.state.index - 1 })
+  }
   _next = () => {
-    this.setState({index: this.state.index + 1});
-  };
+    this.setState({ index: this.state.index + 1 })
+  }
 
   async componentDidMount() {
-    const {data} = await axios.post(
-      "http://localhost:5001/floristeria-cra/us-central1/getTypes"
-    );
-    const flowerArray = [];
+    const { data } = await axios.post(
+      'http://localhost:5001/floristeria-cra/us-central1/getTypes'
+    )
+    const flowerArray = []
     for (const type of data) {
       const image = await this.props.firebase
         .storage()
         .ref(`types/${type.id}-${type.image}`)
-        .getDownloadURL();
-      flowerArray.push({...type, image});
+        .getDownloadURL()
+      flowerArray.push({ ...type, image })
     }
-    this.setState(() => ({loading: false, arraysFlowers: flowerArray}));
+    this.setState(() => ({ loading: false, arraysFlowers: flowerArray }))
   }
 
   render() {
-    const chevronWidth = 40;
+    const chevronWidth = 40
     return this.state.loading ? (
       <Spinner />
     ) : (
-      <>
-        <Container fluid className="pt-5 pb-5">
-          <div className="text-center pb-5">
-            <h1 className="font-weight-bold">Lo que buscas</h1>
+      <div className='pl-5 pr-5'>
+        <Container fluid className='pt-5 pb-5'>
+          <div className='text-center pb-5'>
+            <h2>Lo que buscas</h2>
           </div>
         </Container>
-        <div style={{padding: `0 ${chevronWidth}px`}}>
+        <div style={{ padding: `0 ${chevronWidth}px` }}>
           <ItemsCarousel
             requestToChangeActive={() => {}}
             activeItemIndex={this.state.index}
@@ -62,24 +61,22 @@ class ArraysCategory extends React.Component {
             numberOfCards={this.state.responsive}
             gutter={20}
             leftChevron={
-              <MDBBtn
+              <div
                 onClick={() => this._prev()}
-                size="lg"
-                rounded
-                color="black"
+                size='lg'
+                style={styles.btnNextPre}
               >
-                <ArrowBackIosIcon />
-              </MDBBtn>
+                <ArrowBackIosIcon style={styles.icon} />
+              </div>
             }
             rightChevron={
-              <MDBBtn
+              <div
                 onClick={() => this._next()}
-                size="lg"
-                color="black"
-                rounded
+                size='lg'
+                style={styles.btnNextPre}
               >
-                <ArrowForwardIosIcon />
-              </MDBBtn>
+                <ArrowForwardIosIcon style={styles.icon} />
+              </div>
             }
             outsideChevron
             chevronWidth={chevronWidth}
@@ -89,9 +86,26 @@ class ArraysCategory extends React.Component {
             ))}
           </ItemsCarousel>
         </div>
-      </>
-    );
+      </div>
+    )
   }
 }
 
-export default firebaseConnect()(ArraysCategory);
+const styles = {
+  btnNextPre: {
+    width: 100,
+    height: 40,
+    marginBottom: 15,
+    borderRadius: 50,
+    backgroundColor: 'black',
+    opacity: 0.8,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  icon: {
+    color: '#FFF'
+  }
+}
+
+export default firebaseConnect()(ArraysCategory)

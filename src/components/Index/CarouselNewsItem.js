@@ -7,7 +7,7 @@ const CarouselNewsItem = props => {
       <div className='container-fluid' style={styles.container}>
         <div className='row align-items-center'>
           <div className='col-12 col-lg-6 text-right center'>
-            <img src={props.array.image} style={styles.image} />
+            <img src={props.array.image} style={styles.image} alt='array' />
           </div>
           <div className='col-12 col-lg-6'>
             <div className='text-center pt-4'>
@@ -17,7 +17,7 @@ const CarouselNewsItem = props => {
                 className='btn btn-dark'
                 onClick={() => alert('Ir al detalle del producto')}
               >
-                Ver producto
+                <p className='font-weight-bold'>Ver producto</p>
               </button>
             </div>
           </div>

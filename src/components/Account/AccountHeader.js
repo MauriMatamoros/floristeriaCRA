@@ -20,7 +20,7 @@ const AccountHeader = props => {
           />
         </div>
         <div
-          className='container text-center mt-3 mb-4'
+          className='container text-center mt-3 mb-4 text-dark'
           style={styles.containerInfo}
         >
           <div className='row mt-3'>

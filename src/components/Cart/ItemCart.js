@@ -5,42 +5,50 @@ const ItemCart = props => {
   return (
     <>
       <div className='container-fluid'>
-        <div className='row mt-2 mb-2 containerItem'>
-          <div className='col-lg-2 col-12'>
+        <div className='row mt-2 mb-2'>
+          <div className='col-lg-3 col-12 p-3'>
             <div className='text-center'>
               <img
                 src={
                   'https://paisajismodigital.com/blog/wp-content/uploads/2019/10/flores-nacionales-de-europa-segunda-parte-4.jpg'
                 }
-                style={{ width: 100, height: 100 }}
+                style={styles.imagen}
+                alt='imagen'
               />
             </div>
           </div>
-          <div className='col-lg-7 col-12'>
-            <div className='text-center'>
-              <p className='h5 m-0'>Nombre del arreglo</p>
-              <p className='colorCategory'>Categoria del arreglo</p>
-              <h6>L.250.00/$4.00</h6>
+          <div className='col-lg-9 col-12 pl-3 pt-4'>
+            <div className='text-left'>
+              <h6>Culumpio de amor</h6>
+              <p>$.3.00</p>
             </div>
-          </div>
-          <div className='col-lg-3 col-12'>
-            <div className='cart-option d-flex justify-content-around flex-row'>
-              <a role='button'>
-                <i className='far fa-trash-alt'></i>
-              </a>
-              <div className='row justify-content-center align-items-center'>
-                <img
-                  src={'./assets/icons/icon_flower.png'}
-                  className='flowerIcon'
+            <div className='row pl-3 justify-content-between mt-3'>
+              <div className='row p-0 m-0'>
+                <button className='btn btn-outline-link btn-custom m-0'>
+                  <p className='h4 font-weight-bold'>+</p>
+                </button>
+                <input
+                  type='numeric'
+                  className='form-control input-count mt-0'
+                  value='0'
                 />
-                <p className='font-weight-bold h5'>0</p>
+                <button className='btn btn-outline-link btn-custom m-0'>
+                  <p className='h4 font-weight-bold'>-</p>
+                </button>
               </div>
+              <button type='button' className='btn btn-link'>
+                <p className='text-muted'>REMOVER</p>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </>
   )
+}
+
+const styles = {
+  imagen: { width: 100, height: 100, borderRadius: 10 }
 }
 
 export default ItemCart

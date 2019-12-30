@@ -1,7 +1,5 @@
 import React from 'react'
 import { Tab, Container, Grid, Pagination } from 'semantic-ui-react'
-
-import Search from '../components/layout/Search'
 import GalleryItemImage from '../components/Gallery/GalleryItemImage'
 import GalleryItemVideo from '../components/Gallery/GalleryItemVideo'
 
@@ -10,7 +8,7 @@ const panes = [
     menuItem: 'Imagenes',
     render: () => (
       <div className='text-center'>
-        <Tab.Pane loading={false}>
+        <Tab.Pane loading={false} style={styles.containerTab}>
           <Grid centered>
             <Grid.Row centered>
               <GalleryItemImage />
@@ -43,7 +41,7 @@ const panes = [
     menuItem: 'Videos',
     render: () => (
       <div className='text-center'>
-        <Tab.Pane>
+        <Tab.Pane style={styles.containerTab}>
           <Grid centered>
             <Grid.Row centered>
               <GalleryItemVideo />
@@ -77,11 +75,16 @@ const Gallery = props => {
   return (
     <>
       <Container fluid className='mbt-10em'>
-        <Search />
         <Tab panes={panes} className='mt-5' />
       </Container>
     </>
   )
+}
+
+const styles = {
+  containerTab: {
+    borderWidth: 0
+  }
 }
 
 export default Gallery
