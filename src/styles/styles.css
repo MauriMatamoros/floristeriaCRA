@@ -130,9 +130,13 @@ div.scrollmenu a {
 }
 
 /* Media query */
-@media (max-width: 768px) {
-  .center-cards {
+@media (max-width: 560px) {
+  .cart-item-input-row {
     justify-content: center;
+  }
+  .btn-whatsapp {
+    left: 85%;
+    top: 68%;
   }
 }
 
@@ -141,11 +145,31 @@ div.scrollmenu a {
     padding-left: 39%;
     padding-right: auto;
   }
+  .cart-item-input-row {
+    justify-content: center;
+  }
+  .btn-whatsapp {
+    left: 83%;
+    top: 65%;
+  }
 }
 @media (min-width: 768px) {
   .padding-left-logo {
     padding-left: 30%;
     padding-right: auto;
+  }
+  .center-cards {
+    justify-content: center;
+  }
+  .cart-item-align {
+    text-align: center;
+  }
+  .cart-item-input-row {
+    justify-content: center;
+  }
+  .btn-whatsapp {
+    left: 87%;
+    top: 72%;
   }
 }
 
@@ -154,16 +178,44 @@ div.scrollmenu a {
     padding-left: 22%;
     padding-right: auto;
   }
+  .cart-item {
+    padding-left: 4rem;
+  }
+  .cart-item-align {
+    text-align: left;
+  }
+  .cart-item-input {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding-left: 1rem;
+  }
+  .btn-whatsapp {
+    left: 90%;
+    top: 80%;
+  }
 }
 @media (min-width: 1200px) {
   .padding-left-logo {
     padding-left: 15%;
     padding-right: auto;
   }
+  .cart-item {
+    padding-left: 2rem;
+  }
+  .btn-whatsapp {
+    left: 90%;
+    top: 83%;
+  }
 }
 @media (min-width: 1550px) {
   .padding-left-logo {
     padding-left: 15%;
     padding-right: auto;
+  }
+  .btn-whatsapp {
+    left: 93%;
+    top: 84%;
   }
 }
