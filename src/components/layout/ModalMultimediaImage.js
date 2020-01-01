@@ -11,6 +11,7 @@ const ModalMultimediaImage = props => (
     basic
     closeIcon
     size='large'
+    style={styles.content}
   >
     <Header content='Nombre de la imagen' />
     <p className='pl-4'>Fecha de la image en que se subio</p>
@@ -21,6 +22,9 @@ const ModalMultimediaImage = props => (
 const styles = {
   textDecoration: {
     textDecoration: 'none'
+  },
+  content: {
+    height: 1000
   }
 }
 
