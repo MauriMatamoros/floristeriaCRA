@@ -138,12 +138,18 @@ div.scrollmenu a {
     left: 85%;
     top: 68%;
   }
+  .center-cards {
+    justify-content: center;
+  }
 }
 
 @media (min-width: 570px) {
   .padding-left-logo {
     padding-left: 39%;
     padding-right: auto;
+  }
+  .center-cards {
+    justify-content: center;
   }
   .cart-item-input-row {
     justify-content: center;
@@ -159,7 +165,7 @@ div.scrollmenu a {
     padding-right: auto;
   }
   .center-cards {
-    justify-content: center;
+    justify-content: left;
   }
   .cart-item-align {
     text-align: center;

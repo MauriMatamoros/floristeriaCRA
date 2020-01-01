@@ -9,15 +9,25 @@ import { firebaseConnect } from 'react-redux-firebase'
 import CardCategory from './CardCategoty'
 import Spinner from '../Spinner/Spinner'
 
+var intervalCarousel
+
 class ArraysCategory extends React.Component {
   constructor() {
     super()
     this.state = {
       index: 0,
-      responsive: 5,
+      responsive: 1,
       loading: true,
       arraysFlowers: []
     }
+  }
+
+  onChangeCarousel = () => {
+    this.setState({ index: this.state.index + 1 })
+  }
+
+  componentWillUnmount() {
+    clearInterval(intervalCarousel)
   }
 
   _prev = () => {
@@ -27,7 +37,14 @@ class ArraysCategory extends React.Component {
     this.setState({ index: this.state.index + 1 })
   }
 
+  onChangeResponsiveCard = () => {
+    const quantityResponsive = parseInt(window.screen.width / 300)
+    this.setState({ responsive: quantityResponsive })
+  }
+
   async componentDidMount() {
+    intervalCarousel = setInterval(() => this.onChangeCarousel(), 4000)
+    this.onChangeResponsiveCard()
     const { data } = await axios.post(
       'http://localhost:5001/floristeria-cra/us-central1/getTypes'
     )
@@ -55,6 +72,7 @@ class ArraysCategory extends React.Component {
         </Container>
         <div style={{ padding: `0 ${chevronWidth}px` }}>
           <ItemsCarousel
+            infiniteLoop={true}
             requestToChangeActive={() => {}}
             activeItemIndex={this.state.index}
             /* numberOfCards es la propiedad donde se agrupara los elementos en el responsive */

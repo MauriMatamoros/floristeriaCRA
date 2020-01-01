@@ -66,7 +66,6 @@ class CarouselNews extends React.Component {
   }
 
   onchangeState = () => {
-    console.log('state: ', this.state.index)
     this.setState({
       index: this.state.index + 1
     })

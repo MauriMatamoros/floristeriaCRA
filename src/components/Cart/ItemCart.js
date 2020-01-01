@@ -30,7 +30,7 @@ const ItemCart = props => {
                 <input
                   type='numeric'
                   className='form-control input-count mt-0'
-                  value='0'
+                  //value='0'
                 />
                 <button className='btn btn-outline-link btn-custom m-0'>
                   <p className='h4 font-weight-bold'>-</p>
