@@ -30,12 +30,13 @@ const ModalProductForm = props => {
 const styles = {
   container: {
     width: 'auto',
-    height: 1000
+    height: 800
   },
   content: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    height: 800
   },
   imageArray: {
     width: 'auto',

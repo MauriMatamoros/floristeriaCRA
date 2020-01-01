@@ -15,10 +15,12 @@ import { Link, withRouter } from 'react-router-dom'
 import { firebaseConnect } from 'react-redux-firebase'
 import SideBarCart from '../../components/Cart/SideBarCart'
 
+const widthScreen = window.screen.width
 const NavBar = ({ location, auth, profile, firebase }) => {
   const [opened, setOpened] = useState(false)
   const [opened2, setOpened2] = useState(false)
   const [index, setIndex] = useState(true)
+  const [visibleSearch, onChangeSearch] = useState(false)
 
   const isActive = route => route === location.pathname
   // const isRoot = user && user.role === 'root'
@@ -51,20 +53,37 @@ const NavBar = ({ location, auth, profile, firebase }) => {
               className='link item'
             >
               <Dropdown.Menu>
-                <Dropdown.Item className='text-dark' as={Link} to='/'>
+                <Dropdown.Item
+                  className='text-dark'
+                  as={Link}
+                  to='/'
+                  onClick={() => onChangeSearch(false)}
+                >
                   INICIO
                 </Dropdown.Item>
-                <Dropdown.Item className='text-dark' as={Link} to='/gallery'>
+                <Dropdown.Item
+                  className='text-dark'
+                  as={Link}
+                  to='/gallery'
+                  onClick={() => onChangeSearch(false)}
+                >
                   GALERIA
                 </Dropdown.Item>
-                <Dropdown.Item className='text-dark' as={Link} to='/arrays'>
+                <Dropdown.Item
+                  className='text-dark'
+                  as={Link}
+                  to='/arrays'
+                  onClick={() => onChangeSearch(false)}
+                >
                   ARREGLOS
                 </Dropdown.Item>
-                <Dropdown.Item className='text-dark' as={Link} to='/store'>
-                  TIENDA
-                </Dropdown.Item>
-                <Dropdown.Item className='text-dark' as={Link} to='/blog'>
-                  BLOG
+                <Dropdown.Item
+                  className='text-dark'
+                  as={Link}
+                  to='/blog'
+                  onClick={() => onChangeSearch(false)}
+                >
+                  NOTICIAS
                 </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Header>CUENTA</Dropdown.Header>
@@ -76,22 +95,39 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                   <Dropdown.Menu>
                     {auth.isEmpty ? (
                       <>
-                        <Dropdown.Item as={Link} to='/login'>
+                        <Dropdown.Item
+                          as={Link}
+                          to='/login'
+                          onClick={() => onChangeSearch(false)}
+                        >
                           <Icon name='sign in' size='large' />
                           INGRESAR
                         </Dropdown.Item>
-                        <Dropdown.Item as={Link} to='/signup'>
+                        <Dropdown.Item
+                          as={Link}
+                          to='/signup'
+                          onClick={() => onChangeSearch(false)}
+                        >
                           <Icon name='signup' size='large' />
                           REGISTRARSE
                         </Dropdown.Item>
                       </>
                     ) : (
                       <>
-                        <Dropdown.Item as={Link} to='/account'>
+                        <Dropdown.Item
+                          as={Link}
+                          to='/account'
+                          onClick={() => onChangeSearch(false)}
+                        >
                           <Icon name='user' size='large' />
                           CUENTA
                         </Dropdown.Item>
-                        <Dropdown.Item onClick={handleLogout}>
+                        <Dropdown.Item
+                          onClick={() => {
+                            handleLogout()
+                            onChangeSearch(false)
+                          }}
+                        >
                           <Icon name='sign out' size='large' />
                           SALIR
                         </Dropdown.Item>
@@ -99,7 +135,10 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                     )}
                   </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown.Item className='text-dark'>
+                <Dropdown.Item
+                  className='text-dark'
+                  onClick={() => onChangeSearch(!visibleSearch)}
+                >
                   <Icon name='search' size='big' />
                   BUSCAR
                 </Dropdown.Item>
@@ -113,6 +152,7 @@ const NavBar = ({ location, auth, profile, firebase }) => {
               </Dropdown.Menu>
             </Dropdown>
           </div>
+
           <SideBarCart opened={opened2} setOpened={setOpened2} />
           <div className='d-flex justify-content-end w-100'>
             <div>
@@ -184,17 +224,40 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                 )}
               </Sidebar>
             </div>
+            {/* Aqui inicia el search */}
+            <div style={{ width: '100%' }}>
+              {visibleSearch ? (
+                <div style={styles.containerSearch}>
+                  <div style={styles.containerCloseSearch}>
+                    <button
+                      className='btn btn-link'
+                      onClick={() => onChangeSearch(false)}
+                    >
+                      <p className='h6'>X</p>
+                    </button>
+                  </div>
+                  <div className='p-3'>
+                    <input
+                      className='form w-100'
+                      placeholder='Buscar...'
+                      style={styles.inputSearch}
+                    />
+                  </div>
+                </div>
+              ) : null}
+            </div>
           </div>
         </Menu>
       </Responsive>
+
       <Responsive minWidth={750}>
         <nav className='navbar navbar-expand navbar-light'>
           <div
             className='container-fluid navbar-transparent'
             style={index ? styles.containerNavbar : null}
           >
-            <div className='row w-100'>
-              <div className='col-12'>
+            <div className='row w-100 m-0'>
+              <div className='col-12 p-0 m-0'>
                 <div className='d-flex flex-row justify-content-between'>
                   <div className='w-100 padding-left-logo'>
                     <img
@@ -296,6 +359,7 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                       <button
                         type='button'
                         className='btn btn-link text-dark p-0 m-0'
+                        onClick={() => onChangeSearch(!visibleSearch)}
                       >
                         <img
                           src={
@@ -354,7 +418,13 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                 <div className='d-flex justify-content-center'>
                   <ul className='navbar-nav'>
                     <li className='nav-item'>
-                      <Link to='/' onClick={() => setIndex(true)}>
+                      <Link
+                        to='/'
+                        onClick={() => {
+                          setIndex(true)
+                          onChangeSearch(false)
+                        }}
+                      >
                         <p
                           className={`${
                             index ? 'text-white' : 'text-dark'
@@ -365,7 +435,13 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                       </Link>
                     </li>
                     <li className='nav-item'>
-                      <Link to='/gallery' onClick={() => setIndex(false)}>
+                      <Link
+                        to='/gallery'
+                        onClick={() => {
+                          setIndex(false)
+                          onChangeSearch(false)
+                        }}
+                      >
                         <p
                           className={`${
                             index ? 'text-white' : 'text-dark'
@@ -376,7 +452,13 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                       </Link>
                     </li>
                     <li className='nav-item'>
-                      <Link to='/arrays' onClick={() => setIndex(false)}>
+                      <Link
+                        to='/arrays'
+                        onClick={() => {
+                          setIndex(false)
+                          onChangeSearch(false)
+                        }}
+                      >
                         <p
                           className={`${
                             index ? 'text-white' : 'text-dark'
@@ -387,7 +469,13 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                       </Link>
                     </li>
                     <li className='nav-item'>
-                      <Link to='/blog' onClick={() => setIndex(false)}>
+                      <Link
+                        to='/blog'
+                        onClick={() => {
+                          setIndex(false)
+                          onChangeSearch(false)
+                        }}
+                      >
                         <p
                           className={`${
                             index ? 'text-white' : 'text-dark'
@@ -415,7 +503,10 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                             <button
                               type='button'
                               className='btn text-white'
-                              onClick={() => setOpened(false)}
+                              onClick={() => {
+                                setOpened(false)
+                                onChangeSearch(false)
+                              }}
                             >
                               <i className='fas fa-times fa-1x' />
                             </button>
@@ -459,6 +550,26 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                     </Sidebar>
                   </ul>
                 </div>
+                {/* Aqui inicia el search */}
+                {visibleSearch ? (
+                  <div style={styles.containerSearch}>
+                    <div style={styles.containerCloseSearch}>
+                      <button
+                        className='btn btn-link'
+                        onClick={() => onChangeSearch(false)}
+                      >
+                        <p className='h6'>X</p>
+                      </button>
+                    </div>
+                    <div className='p-4'>
+                      <input
+                        className='form w-100'
+                        placeholder='Buscar...'
+                        style={styles.inputSearch}
+                      />
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
@@ -500,6 +611,20 @@ const styles = {
   },
   btnHidden: {
     color: 'white'
+  },
+  /* Search */
+  containerSearch: {
+    backgroundColor: '#FFF',
+    height: widthScreen < 768 ? 60 : 150
+  },
+  containerCloseSearch: {
+    float: 'right'
+  },
+  inputSearch: {
+    border: 0,
+    height: widthScreen < 768 ? 32 : 60,
+    paddingLeft: widthScreen < 768 ? 25 : 50,
+    fontSize: widthScreen < 768 ? '1rem' : '1.5rem'
   }
 }
 
