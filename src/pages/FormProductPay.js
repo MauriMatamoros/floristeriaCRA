@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Popup, Button } from 'semantic-ui-react'
+import ModalProductform from '../components/layout/ModalProdutForm'
 import './styles/formProduct.css'
 
 const FormProductPay = () => {
@@ -8,42 +9,9 @@ const FormProductPay = () => {
       <Container className='mbt-10em'>
         <div className='row'>
           <div className='col-lg-2 justify-content-center grid-images'>
-            <button
-              className='btn btn-link p-0'
-              type='button'
-              onClick={() => alert('Modal')}
-            >
-              <img
-                src='/assets/Products/array-1.jpg'
-                style={styles.imageArray}
-                className='mb-3 images-to-row'
-                alt='array-1'
-              />
-            </button>
-            <button
-              className='btn btn-link p-0'
-              type='button'
-              onClick={() => alert('Modal')}
-            >
-              <img
-                src='/assets/Products/array-2.jpg'
-                style={styles.imageArray}
-                className='mb-3 images-to-row'
-                alt='array-2'
-              />
-            </button>
-            <button
-              className='btn btn-link p-0'
-              type='button'
-              onClick={() => alert('Modal')}
-            >
-              <img
-                src='/assets/Products/array-3.jpg'
-                style={styles.imageArray}
-                className='mb-3 images-to-row'
-                alt='array-3'
-              />
-            </button>
+            <ModalProductform src='/assets/Products/array-1.jpg' />
+            <ModalProductform src='/assets/Products/array-2.jpg' />
+            <ModalProductform src='/assets/Products/array-3.jpg' />
           </div>
           <div className='col-lg-5'>
             {/* Aqui es el corazon */}

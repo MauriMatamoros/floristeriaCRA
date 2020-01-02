@@ -42,9 +42,9 @@ class Account extends Component {
     return (
       <Container className='mbt-10em'>
         <div style={styles.containerWelcome}>
-          <h5 className='text-center'>
+          <h4 className='text-center'>
             Hola {name} {lastName}
-          </h5>
+          </h4>
           <p className='text-center'>Bienvenido a Floristeria Honduras</p>
         </div>
         <Grid>
