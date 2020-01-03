@@ -17,27 +17,29 @@ import FormProductPay from '../pages/FormProductPay'
 import Blog from '../pages/Blog'
 import New from '../pages/New'
 import CreateCoupons from '../pages/CreateCoupons'
+import MethodPay from '../components/Products/MethodPay'
 
 const Routes = () => (
-	<>
-		<Switch>
-			<Route exact path='/login' component={Login} />
-			<Route exact path='/signup' component={Signup} />
-			<Route exact path='/' component={Home} />
-			<Route exact path='/forgotPassword' component={ForgotPassword} />
-			<Route exact path='/products/:type/:page?' component={Products} />
-			<Route exact path='/gallery' component={Gallery} />
-			<Route exact path='/arrays' component={Arrays} />
-			<Route exact path='/blog' component={Blog} />
-			<Route exact path='/blog/new' component={New} />
-			<Route exact path='/form_card_product' component={FormProductPay} />
-			<PrivateRoute exact path='/create' component={Create} />
-			<PrivateRoute exact path='/createType' component={CreateType} />
-			<Route exact path='/createCoupons' component={CreateCoupons} />
-			<PrivateRoute exact path='/createAddress' component={CreateAddress} />
-			<PrivateRoute exact path='/account' component={Account} />
-		</Switch>
-	</>
+  <>
+    <Switch>
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/signup' component={Signup} />
+      <Route exact path='/' component={Home} />
+      <Route exact path='/forgotPassword' component={ForgotPassword} />
+      <Route exact path='/products/:type/:page?' component={Products} />
+      <Route exact path='/gallery' component={Gallery} />
+      <Route exact path='/arrays' component={Arrays} />
+      <Route exact path='/blog' component={Blog} />
+      <Route exact path='/blog/new' component={New} />
+      <Route exact path='/method-pay' component={MethodPay} />
+      <Route exact path='/form_card_product' component={FormProductPay} />
+      <PrivateRoute exact path='/create' component={Create} />
+      <PrivateRoute exact path='/createType' component={CreateType} />
+      <Route exact path='/createCoupons' component={CreateCoupons} />
+      <PrivateRoute exact path='/createAddress' component={CreateAddress} />
+      <PrivateRoute exact path='/account' component={Account} />
+    </Switch>
+  </>
 )
 
 export default Routes
