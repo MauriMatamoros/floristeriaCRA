@@ -48,7 +48,7 @@ const CarouselPage = () => {
                 />
               </MDBView>
             </MDBCarouselItem>
-            <div style={styles.containerBtnWhatsApp}>
+            <div style={styles.containerBtnWhatsApp} className='btn-whatsapp'>
               <ButtonWhatsApp />
             </div>
           </MDBCarouselInner>
@@ -64,8 +64,6 @@ const styles = {
     width: '100%',
     height: 80,
     zIndex: 3,
-    left: '90%',
-    top: '83%',
     right: 'auto',
     bottom: 'auto'
   },

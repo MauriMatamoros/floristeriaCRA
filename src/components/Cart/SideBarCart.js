@@ -35,8 +35,11 @@ const SideBarCart = props => {
           </p>
         </div>
 
-        <ItemCart />
-        <ItemCart />
+        <div style={styles.containerItemsCart}>
+          <ItemCart />
+          <ItemCart />
+          <ItemCart />
+        </div>
 
         <div
           className='pt-5 mt-5 text-left pl-4 pr-4'
@@ -66,13 +69,17 @@ const SideBarCart = props => {
 
 const styles = {
   containerSideBar: {
-    backgroundColor: 'white',
-    width: '30%'
+    backgroundColor: 'white'
   },
   titleHeader: { fontSize: 20 },
   containerPromo: {
     borderBottom: '1px solid lightgray',
     borderTop: '1px solid lightgray'
+  },
+  containerItemsCart: {
+    height: '48vh',
+    overflowY: 'scroll',
+    overflowX: 'hidden'
   },
   containerTop: {
     borderTop: '1px solid lightgray'

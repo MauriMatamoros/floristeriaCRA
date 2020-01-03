@@ -39,13 +39,14 @@ const array = [
   },
   {
     id: 6,
-    name: 'Nombre',
+    name: 'Ultimo item',
     image:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx_dYh06U7wfZmXF3Ar6d76PXrBx2PzP4emDP8FBKOhT2ka6MXwg&s'
   }
 ]
 
 const chevronWidth = 40
+var intervalCarousel
 
 class CarouselNews extends React.Component {
   constructor() {
@@ -54,6 +55,20 @@ class CarouselNews extends React.Component {
       index: 0,
       responsive: 1
     }
+  }
+
+  componentDidMount() {
+    intervalCarousel = setInterval(() => this.onchangeState(), 5000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(intervalCarousel)
+  }
+
+  onchangeState = () => {
+    this.setState({
+      index: this.state.index + 1
+    })
   }
 
   _prev = () => {
@@ -73,6 +88,7 @@ class CarouselNews extends React.Component {
         </Container>
         <div style={{ padding: `0 ${chevronWidth}px` }}>
           <ItemsCarousel
+            infiniteLoop={true}
             requestToChangeActive={() => {}}
             activeItemIndex={this.state.index}
             /* numberOfCards es la propiedad donde se agrupara los elementos en el responsive */
@@ -99,7 +115,6 @@ class CarouselNews extends React.Component {
                 <ArrowForwardIosIcon style={styles.icon} />
               </div>
             }
-            outsideChevron
             chevronWidth={chevronWidth}
           >
             {array.map(array => (
