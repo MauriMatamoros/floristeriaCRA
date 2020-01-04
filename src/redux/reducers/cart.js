@@ -10,7 +10,7 @@ export default (state = initialState, action) => {
 		case ADD_PRODUCT:
 			return { products: [...state.products, payload] }
 		case REMOVE_PRODUCT:
-			return state.products.filter(({ id }) => id !== payload)
+			return { products: state.products.filter(({ id }) => id !== payload) }
 		default:
 			return state
 	}

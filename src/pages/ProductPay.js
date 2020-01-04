@@ -154,7 +154,7 @@ class ProductPay extends Component {
 									style={styles.btnAddCart}
 									onClick={() =>
 										this.props.addProduct({
-											id: this.props.product.id,
+											id: window.location.href.split('/')[4],
 											quantity: this.state.quantity,
 											image: this.state.productImages[0],
 											name: this.props.product.name,
