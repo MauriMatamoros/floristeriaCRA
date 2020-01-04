@@ -4,13 +4,17 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { withFirebase, firestoreConnect } from 'react-redux-firebase'
 
+import { addProduct } from '../redux/actions/cart'
+
 import './styles/formProduct.css'
 
 class ProductPay extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			productImages: []
+			productImages: [],
+			quantity: 1,
+			text: ''
 		}
 	}
 	async UNSAFE_componentWillUpdate(props) {
@@ -44,6 +48,11 @@ class ProductPay extends Component {
 			// setLoading(false);
 		}
 	}
+
+	handleTextChange = (e) => {
+		this.setState({ text: e.target.value })
+	}
+
 	render() {
 		return (
 			<>
@@ -87,14 +96,29 @@ class ProductPay extends Component {
 							<div className='text-left row p-3 container-quantity'>
 								<p className='pr-4 h5'>Cantidad:</p>
 								<div className='row'>
-									<button className='btn btn-dark btn-custom'>
+									<button
+										className='btn btn-dark btn-custom'
+										onClick={() =>
+											this.setState(() => ({
+												quantity: this.state.quantity + 1
+											}))
+										}
+									>
 										<p className='h4'>+</p>
 									</button>
 									<input
+										value={this.state.quantity}
 										type='numeric'
 										className='form-control input-count mt-2'
 									/>
-									<button className='btn btn-dark btn-custom'>
+									<button
+										className='btn btn-dark btn-custom'
+										onClick={() =>
+											this.setState(() => ({
+												quantity: this.state.quantity - 1
+											}))
+										}
+									>
 										<p className='h4'>-</p>
 									</button>
 								</div>
@@ -109,7 +133,12 @@ class ProductPay extends Component {
 										}
 									/>
 								</p>
-								<input type='text' className='form-control' />
+								<input
+									type='text'
+									className='form-control'
+									value={this.state.text}
+									onChange={this.handleTextChange}
+								/>
 							</div>
 							<div className='pt-2 pb-2'>
 								<button
@@ -123,6 +152,15 @@ class ProductPay extends Component {
 								<button
 									className='btn btn-grey w-100'
 									style={styles.btnAddCart}
+									onClick={() =>
+										this.props.addProduct({
+											id: window.location.href.split('/')[4],
+											quantity: this.state.quantity,
+											image: this.state.productImages[0],
+											name: this.props.product.name,
+											price: this.props.product.price
+										})
+									}
 								>
 									Agregar al carrito de compras
 								</button>
@@ -168,9 +206,12 @@ export default compose(
 	firestoreConnect((props) => {
 		return [{ collection: 'products', doc: props.match.params.id }]
 	}),
-	connect(({ firestore: { data } }, props) => {
-		return {
-			product: data.products && data.products[props.match.params.id]
-		}
-	})
+	connect(
+		({ firestore: { data } }, props) => {
+			return {
+				product: data.products && data.products[props.match.params.id]
+			}
+		},
+		{ addProduct }
+	)
 )(ProductPay)
