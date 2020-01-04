@@ -4,6 +4,9 @@ export const UPDATE_PROFILE = 'UPDATE_PROFILE'
 
 export const CHANGE_CITY = 'CHANGE_CITY'
 
+export const ADD_PRODUCT = 'ADD_PRODUCT'
+export const REMOVE_PRODUCT = 'REMOVE_PRODUCT'
+
 export const GET_TYPES = 'GET_TYPES'
 export const TYPES_ERROR = 'TYPES_ERROR'
 export const ADD_TYPE = 'ADD_TYPE'
