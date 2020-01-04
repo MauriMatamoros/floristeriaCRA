@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import './styles/styles.css'
 
-const ItemCart = ({ id, name, price, image, quantity }) => {
+import { removeProduct } from '../../redux/actions/cart'
+
+const ItemCart = ({ id, name, price, image, quantity, removeProduct }) => {
+	const [quantityState, setQuantityState] = useState(quantity)
 	return (
 		<>
 			<div className='container-fluid'>
@@ -18,20 +22,30 @@ const ItemCart = ({ id, name, price, image, quantity }) => {
 						</div>
 						<div className='cart-item-input justify-content-between mt-3'>
 							<div className='row p-0 m-0 cart-item-input-row'>
-								<button className='btn btn-outline-link btn-custom m-0'>
+								<button
+									className='btn btn-outline-link btn-custom m-0'
+									onClick={() => setQuantityState((prevState) => prevState + 1)}
+								>
 									<p className='h4 font-weight-bold'>+</p>
 								</button>
 								<input
-									value={quantity}
+									value={quantityState}
 									type='numeric'
 									className='form-control input-count mt-0'
 									//value='0'
 								/>
-								<button className='btn btn-outline-link btn-custom m-0'>
+								<button
+									className='btn btn-outline-link btn-custom m-0'
+									onClick={() => setQuantityState((prevState) => prevState - 1)}
+								>
 									<p className='h4 font-weight-bold'>-</p>
 								</button>
 							</div>
-							<button type='button' className='btn btn-link'>
+							<button
+								type='button'
+								className='btn btn-link'
+								onClick={() => removeProduct(id)}
+							>
 								<p className='text-muted'>REMOVER</p>
 							</button>
 						</div>
@@ -46,4 +60,4 @@ const styles = {
 	imagen: { width: 100, height: 100, borderRadius: 10 }
 }
 
-export default ItemCart
+export default connect(null, { removeProduct })(ItemCart)
