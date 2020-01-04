@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container } from 'semantic-ui-react'
+import { MDBBtn } from 'mdbreact'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import ItemsCarousel from 'react-items-carousel'
@@ -39,14 +40,13 @@ const array = [
   },
   {
     id: 6,
-    name: 'Ultimo item',
+    name: 'Nombre',
     image:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSx_dYh06U7wfZmXF3Ar6d76PXrBx2PzP4emDP8FBKOhT2ka6MXwg&s'
   }
 ]
 
 const chevronWidth = 40
-var intervalCarousel
 
 class CarouselNews extends React.Component {
   constructor() {
@@ -55,20 +55,6 @@ class CarouselNews extends React.Component {
       index: 0,
       responsive: 1
     }
-  }
-
-  componentDidMount() {
-    intervalCarousel = setInterval(() => this.onchangeState(), 5000)
-  }
-
-  componentWillUnmount() {
-    clearInterval(intervalCarousel)
-  }
-
-  onchangeState = () => {
-    this.setState({
-      index: this.state.index + 1
-    })
   }
 
   _prev = () => {
@@ -80,41 +66,41 @@ class CarouselNews extends React.Component {
 
   render() {
     return (
-      <div className='pl-5 pr-5'>
-        <Container fluid className='pb-5'>
+      <>
+        <Container fluid className='pt-5 pb-5'>
           <div className='text-center pb-5'>
-            <h2>Lo más nuevo</h2>
+            <h1 className='font-weight-bold'>Lo más nuevo</h1>
           </div>
         </Container>
         <div style={{ padding: `0 ${chevronWidth}px` }}>
           <ItemsCarousel
-            infiniteLoop={true}
             requestToChangeActive={() => {}}
             activeItemIndex={this.state.index}
             /* numberOfCards es la propiedad donde se agrupara los elementos en el responsive */
             numberOfCards={this.state.responsive}
             gutter={20}
             leftChevron={
-              <div
+              <MDBBtn
                 onClick={() => this._prev()}
                 size='lg'
                 rounded
                 color='black'
-                style={styles.btnNextPre}
+                style={styles.marginBottom}
               >
-                <ArrowBackIosIcon style={styles.icon} />
-              </div>
+                <ArrowBackIosIcon />
+              </MDBBtn>
             }
             rightChevron={
-              <div
+              <MDBBtn
                 onClick={() => this._next()}
                 size='lg'
                 color='black'
-                style={styles.btnNextPre}
+                style={styles.marginBottom}
               >
-                <ArrowForwardIosIcon style={styles.icon} />
-              </div>
+                <ArrowForwardIosIcon />
+              </MDBBtn>
             }
+            outsideChevron
             chevronWidth={chevronWidth}
           >
             {array.map(array => (
@@ -122,25 +108,14 @@ class CarouselNews extends React.Component {
             ))}
           </ItemsCarousel>
         </div>
-      </div>
+      </>
     )
   }
 }
 
 const styles = {
-  btnNextPre: {
-    width: 100,
-    height: 40,
-    marginBottom: 150,
-    borderRadius: 50,
-    backgroundColor: 'black',
-    opacity: 0.8,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  icon: {
-    color: '#FFF'
+  marginBottom: {
+    marginBottom: 150
   }
 }
 

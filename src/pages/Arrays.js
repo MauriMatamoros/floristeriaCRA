@@ -1,17 +1,18 @@
-import React from 'react'
-import { Container, Grid, Pagination } from 'semantic-ui-react'
+import React from "react";
+import {Container, Grid, Pagination} from "semantic-ui-react";
 
-import ArrayItem from '../components/Arrays/ArrayItem'
-import ArraysCategory from '../components/Index/ArraysCategory'
+import Search from "../components/layout/Search";
+import ArrayItem from "../components/Arrays/ArrayItem";
 
 const Gallery = props => {
   return (
     <>
-      <Container fluid className='mbt-10em text-center'>
-        <div className='w-100 mt-5 mb-2'>
-          <h2 className='text-center'>Nombre de la categoria</h2>
+      <Container fluid className="mbt-10em text-center">
+        <Search />
+        <div className="w-100 mt-5 mb-2">
+          <h2 className="text-center">Nombre de la categoria</h2>
         </div>
-        <Grid centered className='pb-5'>
+        <Grid centered className="pb-5">
           <Grid.Row centered>
             <ArrayItem />
             <ArrayItem />
@@ -36,10 +37,9 @@ const Gallery = props => {
           siblingRange={1}
           totalPages={10}
         />
-        <ArraysCategory />
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default Gallery
+export default Gallery;

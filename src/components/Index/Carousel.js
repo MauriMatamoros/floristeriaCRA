@@ -20,7 +20,7 @@ const CarouselPage = () => {
           interval={6000}
           //onHoverStop={false}
         >
-          <MDBCarouselInner style={{ position: 'relative' }}>
+          <MDBCarouselInner>
             <MDBCarouselItem itemId='1'>
               <MDBView>
                 <img
@@ -48,10 +48,10 @@ const CarouselPage = () => {
                 />
               </MDBView>
             </MDBCarouselItem>
-            <div style={styles.containerBtnWhatsApp} className='btn-whatsapp'>
-              <ButtonWhatsApp />
-            </div>
           </MDBCarouselInner>
+          <div style={styles.containerBtnWhatsApp}>
+            <ButtonWhatsApp />
+          </div>
         </MDBCarousel>
       </MDBContainer>
     </>
@@ -64,6 +64,8 @@ const styles = {
     width: '100%',
     height: 80,
     zIndex: 3,
+    left: '90%',
+    top: '83%',
     right: 'auto',
     bottom: 'auto'
   },

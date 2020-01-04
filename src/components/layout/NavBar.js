@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {
+  Header,
   Button,
   Popup,
   Grid,
@@ -15,12 +16,9 @@ import { Link, withRouter } from 'react-router-dom'
 import { firebaseConnect } from 'react-redux-firebase'
 import SideBarCart from '../../components/Cart/SideBarCart'
 
-const widthScreen = window.screen.width
 const NavBar = ({ location, auth, profile, firebase }) => {
   const [opened, setOpened] = useState(false)
   const [opened2, setOpened2] = useState(false)
-  const [index, setIndex] = useState(true)
-  const [visibleSearch, onChangeSearch] = useState(false)
 
   const isActive = route => route === location.pathname
   // const isRoot = user && user.role === 'root'
@@ -53,37 +51,20 @@ const NavBar = ({ location, auth, profile, firebase }) => {
               className='link item'
             >
               <Dropdown.Menu>
-                <Dropdown.Item
-                  className='text-dark'
-                  as={Link}
-                  to='/'
-                  onClick={() => onChangeSearch(false)}
-                >
+                <Dropdown.Item className='text-dark' as={Link} to='/'>
                   INICIO
                 </Dropdown.Item>
-                <Dropdown.Item
-                  className='text-dark'
-                  as={Link}
-                  to='/gallery'
-                  onClick={() => onChangeSearch(false)}
-                >
+                <Dropdown.Item className='text-dark' as={Link} to='/gallery'>
                   GALERIA
                 </Dropdown.Item>
-                <Dropdown.Item
-                  className='text-dark'
-                  as={Link}
-                  to='/arrays'
-                  onClick={() => onChangeSearch(false)}
-                >
+                <Dropdown.Item className='text-dark' as={Link} to='/arrays'>
                   ARREGLOS
                 </Dropdown.Item>
-                <Dropdown.Item
-                  className='text-dark'
-                  as={Link}
-                  to='/blog'
-                  onClick={() => onChangeSearch(false)}
-                >
-                  NOTICIAS
+                <Dropdown.Item className='text-dark' as={Link} to='/store'>
+                  TIENDA
+                </Dropdown.Item>
+                <Dropdown.Item className='text-dark' as={Link} to='/blog'>
+                  BLOG
                 </Dropdown.Item>
                 <Dropdown.Divider />
                 <Dropdown.Header>CUENTA</Dropdown.Header>
@@ -95,39 +76,22 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                   <Dropdown.Menu>
                     {auth.isEmpty ? (
                       <>
-                        <Dropdown.Item
-                          as={Link}
-                          to='/login'
-                          onClick={() => onChangeSearch(false)}
-                        >
+                        <Dropdown.Item as={Link} to='/login'>
                           <Icon name='sign in' size='large' />
                           INGRESAR
                         </Dropdown.Item>
-                        <Dropdown.Item
-                          as={Link}
-                          to='/signup'
-                          onClick={() => onChangeSearch(false)}
-                        >
+                        <Dropdown.Item as={Link} to='/signup'>
                           <Icon name='signup' size='large' />
                           REGISTRARSE
                         </Dropdown.Item>
                       </>
                     ) : (
                       <>
-                        <Dropdown.Item
-                          as={Link}
-                          to='/account'
-                          onClick={() => onChangeSearch(false)}
-                        >
+                        <Dropdown.Item as={Link} to='/account'>
                           <Icon name='user' size='large' />
                           CUENTA
                         </Dropdown.Item>
-                        <Dropdown.Item
-                          onClick={() => {
-                            handleLogout()
-                            onChangeSearch(false)
-                          }}
-                        >
+                        <Dropdown.Item onClick={handleLogout}>
                           <Icon name='sign out' size='large' />
                           SALIR
                         </Dropdown.Item>
@@ -135,10 +99,7 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                     )}
                   </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown.Item
-                  className='text-dark'
-                  onClick={() => onChangeSearch(!visibleSearch)}
-                >
+                <Dropdown.Item className='text-dark'>
                   <Icon name='search' size='big' />
                   BUSCAR
                 </Dropdown.Item>
@@ -152,7 +113,6 @@ const NavBar = ({ location, auth, profile, firebase }) => {
               </Dropdown.Menu>
             </Dropdown>
           </div>
-
           <SideBarCart opened={opened2} setOpened={setOpened2} />
           <div className='d-flex justify-content-end w-100'>
             <div>
@@ -177,13 +137,13 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                 {!profile.isEmpty && profile.role === 'admin' && (
                   <>
                     <div className='mt-2 pr-3 d-flex justify-content-end'>
-                      <button
-                        type='button'
-                        className='btn text-white'
+                      <a
+                        role='button'
+                        className='text-white'
                         onClick={() => setOpened(false)}
                       >
                         <i className='fas fa-times fa-2x' />
-                      </button>
+                      </a>
                     </div>
 
                     <Link to='/create'>
@@ -224,66 +184,25 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                 )}
               </Sidebar>
             </div>
-            {/* Aqui inicia el search */}
-            <div style={{ width: '100%' }}>
-              {visibleSearch ? (
-                <div style={styles.containerSearch}>
-                  <div style={styles.containerCloseSearch}>
-                    <button
-                      className='btn btn-link'
-                      onClick={() => onChangeSearch(false)}
-                    >
-                      <p className='h6'>X</p>
-                    </button>
-                  </div>
-                  <div className='p-3'>
-                    <input
-                      className='form w-100'
-                      placeholder='Buscar...'
-                      style={styles.inputSearch}
-                    />
-                  </div>
-                </div>
-              ) : null}
-            </div>
           </div>
         </Menu>
       </Responsive>
-
       <Responsive minWidth={750}>
         <nav className='navbar navbar-expand navbar-light'>
-          <div
-            className='container-fluid navbar-transparent'
-            style={index ? styles.containerNavbar : null}
-          >
-            <div className='row w-100 m-0'>
-              <div className='col-12 p-0 m-0'>
+          <div className='container-fluid navbar-transparent'>
+            <div className='row w-100'>
+              <div className='col-12'>
                 <div className='d-flex flex-row justify-content-between'>
                   <div className='w-100 padding-left-logo'>
-                    <img
-                      src='/assets/logo.png'
-                      style={styles.logo}
-                      alt='logo-foristeria'
-                    />
+                    <img src='/assets/logo.png' style={styles.logo} />
                   </div>
                   <ul className='navbar-nav pt-3'>
                     <Popup
                       trigger={
                         <li className='nav-item'>
-                          <button
-                            type='button'
-                            className='btn btn-link text-dark p-0 m-0'
-                          >
-                            <img
-                              src={
-                                index
-                                  ? './assets/icons/icon-user-white.png'
-                                  : './assets/icons/icon-user-dark.png'
-                              }
-                              alt='user-icon'
-                              style={styles.icon}
-                            />
-                          </button>
+                          <a role='button' className='text-dark'>
+                            <Icon name='user' size='large' />
+                          </a>
                         </li>
                       }
                       flowing
@@ -293,34 +212,20 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                         {auth.isEmpty ? (
                           <>
                             <Grid.Column textAlign='center'>
-                              <Button
-                                as={Link}
-                                to='/login'
-                                style={styles.btnHidden}
-                                className='btn btn-outline-dark w-75'
-                              >
-                                <Menu.Item
-                                  header
-                                  active={isActive('/login')}
-                                  onClick={() => setIndex(false)}
-                                >
-                                  <p>Ingresar</p>
+                              <Header as='h4'>INGRESAR</Header>
+                              <Button as={Link} to='/login'>
+                                <Menu.Item header active={isActive('/login')}>
+                                  <Icon name='sign in' size='large' />
+                                  Login
                                 </Menu.Item>
                               </Button>
                             </Grid.Column>
                             <Grid.Column textAlign='center'>
-                              <Button
-                                as={Link}
-                                to='/signup'
-                                style={styles.btnHidden}
-                                className='btn btn-dark w-75'
-                              >
-                                <Menu.Item
-                                  header
-                                  active={isActive('/signup')}
-                                  onClick={() => setIndex(false)}
-                                >
-                                  <p>Registrarse</p>
+                              <Header as='h4'>REGISTRARSE</Header>
+                              <Button as={Link} to='/signup'>
+                                <Menu.Item header active={isActive('/signup')}>
+                                  <Icon name='signup' size='large' />
+                                  Sign Up
                                 </Menu.Item>
                               </Button>
                             </Grid.Column>
@@ -328,25 +233,20 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                         ) : (
                           <>
                             <Grid.Column textAlign='center'>
-                              <Button
-                                as={Link}
-                                to='/account'
-                                onClick={() => setIndex(false)}
-                                style={styles.btnHidden}
-                                className='btn btn-outline-dark w-75'
-                              >
+                              <Header as='h4'>CUENTA</Header>
+                              <Button as={Link} to='/account'>
                                 <Menu.Item header active={isActive('/account')}>
-                                  Cuenta
+                                  <Icon name='user' size='large' />
+                                  Account
                                 </Menu.Item>
                               </Button>
                             </Grid.Column>
                             <Grid.Column textAlign='center'>
-                              <Button
-                                style={styles.btnHidden}
-                                className='btn btn-dark w-75'
-                              >
+                              <Header as='h4'>SALIR</Header>
+                              <Button>
                                 <Menu.Item header onClick={handleLogout}>
-                                  Salir
+                                  <Icon name='sign out' size='large' />
+                                  Logout
                                 </Menu.Item>
                               </Button>
                             </Grid.Column>
@@ -356,61 +256,29 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                     </Popup>
 
                     <li className='nav-item'>
-                      <button
-                        type='button'
-                        className='btn btn-link text-dark p-0 m-0'
-                        onClick={() => onChangeSearch(!visibleSearch)}
-                      >
-                        <img
-                          src={
-                            index
-                              ? './assets/icons/icon-search-white.png'
-                              : './assets/icons/icon-search-dark.png'
-                          }
-                          alt='icon-search'
-                          style={styles.icon}
-                        />
-                      </button>
+                      <a role='button' className='text-dark'>
+                        <Icon name='search' size='large' />
+                      </a>
                     </li>
 
                     <li className='nav-item'>
-                      <button
-                        type='button'
-                        className='btn btn-link text-dark p-0 m-0'
-                        style={{ position: 'relative' }}
+                      <a
+                        role='button'
+                        className='text-dark'
                         onClick={() => setOpened2(!opened2)}
                       >
-                        <div style={styles.containerCount}>
-                          <p style={styles.count}>1</p>
-                        </div>
-                        <img
-                          src={
-                            index
-                              ? './assets/icons/icon-bag-white.png'
-                              : './assets/icons/icon-bag-dark.png'
-                          }
-                          alt='icon-bag'
-                          style={styles.icon}
-                        />
-                      </button>
+                        <Icon name='cart' size='large' />
+                      </a>
                     </li>
                     {!profile.isEmpty && profile.role === 'admin' && (
                       <li className='nav-item'>
-                        <button
-                          type='button'
+                        <a
+                          role='button'
                           onClick={() => setOpened(!opened)}
-                          className='btn btn-link text-dark p-0 m-0'
+                          className='text-dark'
                         >
-                          <img
-                            src={
-                              index
-                                ? './assets/icons/icon-settings-white.png'
-                                : './assets/icons/icon-settings-dark.png'
-                            }
-                            alt='icon-settings'
-                            style={styles.icon}
-                          />
-                        </button>
+                          <Icon name='settings' size='large' />
+                        </a>
                       </li>
                     )}
                   </ul>
@@ -418,71 +286,23 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                 <div className='d-flex justify-content-center'>
                   <ul className='navbar-nav'>
                     <li className='nav-item'>
-                      <Link
-                        to='/'
-                        onClick={() => {
-                          setIndex(true)
-                          onChangeSearch(false)
-                        }}
-                      >
-                        <p
-                          className={`${
-                            index ? 'text-white' : 'text-dark'
-                          } font-weight-bold`}
-                        >
-                          INICIO
-                        </p>
+                      <Link to='/'>
+                        <p className='text-dark font-weight-bold'>INICIO</p>
                       </Link>
                     </li>
                     <li className='nav-item'>
-                      <Link
-                        to='/gallery'
-                        onClick={() => {
-                          setIndex(false)
-                          onChangeSearch(false)
-                        }}
-                      >
-                        <p
-                          className={`${
-                            index ? 'text-white' : 'text-dark'
-                          } font-weight-bold`}
-                        >
-                          GALERIA
-                        </p>
+                      <Link to='/gallery'>
+                        <p className='text-dark font-weight-bold'>GALERIA</p>
                       </Link>
                     </li>
                     <li className='nav-item'>
-                      <Link
-                        to='/arrays'
-                        onClick={() => {
-                          setIndex(false)
-                          onChangeSearch(false)
-                        }}
-                      >
-                        <p
-                          className={`${
-                            index ? 'text-white' : 'text-dark'
-                          } font-weight-bold`}
-                        >
-                          ARREGLOS
-                        </p>
+                      <Link to='/arrays'>
+                        <p className='text-dark font-weight-bold'>ARREGLOS</p>
                       </Link>
                     </li>
                     <li className='nav-item'>
-                      <Link
-                        to='/blog'
-                        onClick={() => {
-                          setIndex(false)
-                          onChangeSearch(false)
-                        }}
-                      >
-                        <p
-                          className={`${
-                            index ? 'text-white' : 'text-dark'
-                          } font-weight-bold`}
-                        >
-                          NOTICIAS
-                        </p>
+                      <Link to='/blog'>
+                        <p className='text-dark font-weight-bold'>NOTICIAS</p>
                       </Link>
                     </li>
 
@@ -500,16 +320,13 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                       {!profile.isEmpty && profile.role === 'admin' && (
                         <>
                           <div className='mt-2 pr-3 d-flex justify-content-end'>
-                            <button
-                              type='button'
-                              className='btn text-white'
-                              onClick={() => {
-                                setOpened(false)
-                                onChangeSearch(false)
-                              }}
+                            <a
+                              role='button'
+                              className='text-white'
+                              onClick={() => setOpened(false)}
                             >
                               <i className='fas fa-times fa-1x' />
-                            </button>
+                            </a>
                           </div>
                           <Link to='/create'>
                             <Menu.Item
@@ -550,26 +367,6 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                     </Sidebar>
                   </ul>
                 </div>
-                {/* Aqui inicia el search */}
-                {visibleSearch ? (
-                  <div style={styles.containerSearch}>
-                    <div style={styles.containerCloseSearch}>
-                      <button
-                        className='btn btn-link'
-                        onClick={() => onChangeSearch(false)}
-                      >
-                        <p className='h6'>X</p>
-                      </button>
-                    </div>
-                    <div className='p-4'>
-                      <input
-                        className='form w-100'
-                        placeholder='Buscar...'
-                        style={styles.inputSearch}
-                      />
-                    </div>
-                  </div>
-                ) : null}
               </div>
             </div>
           </div>
@@ -588,43 +385,6 @@ const styles = {
   logo: {
     width: 163,
     height: 80
-  },
-  icon: {
-    width: 30,
-    height: 'auto'
-  },
-  containerNavbar: {
-    boxShadow: 'inset 0 50px 70px'
-  },
-  containerCount: {
-    position: 'absolute',
-    backgroundColor: 'red',
-    left: '60%',
-    borderRadius: 50,
-    width: 20
-  },
-  count: {
-    color: 'white',
-    fontSize: 14,
-    textAlign: 'center',
-    fontWeight: 'bold'
-  },
-  btnHidden: {
-    color: 'white'
-  },
-  /* Search */
-  containerSearch: {
-    backgroundColor: '#FFF',
-    height: widthScreen < 768 ? 60 : 150
-  },
-  containerCloseSearch: {
-    float: 'right'
-  },
-  inputSearch: {
-    border: 0,
-    height: widthScreen < 768 ? 32 : 60,
-    paddingLeft: widthScreen < 768 ? 25 : 50,
-    fontSize: widthScreen < 768 ? '1rem' : '1.5rem'
   }
 }
 

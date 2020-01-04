@@ -23,9 +23,9 @@ const styles = {
     position: 'relative',
     color: 'green',
     backgroundColor: 'white',
-    borderRadius: 50,
-    width: 68,
-    height: 68
+    width: 80,
+    height: 80,
+    borderRadius: 50
   }
 }
 

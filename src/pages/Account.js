@@ -42,9 +42,9 @@ class Account extends Component {
     return (
       <Container className='mbt-10em'>
         <div style={styles.containerWelcome}>
-          <h4 className='text-center'>
+          <h5 className='text-center'>
             Hola {name} {lastName}
-          </h4>
+          </h5>
           <p className='text-center'>Bienvenido a Floristeria Honduras</p>
         </div>
         <Grid>
@@ -104,7 +104,7 @@ const mapStateToProps = ({ firebase: { auth, profile } }) => ({
 
 const styles = {
   containerWelcome: {
-    backgroundColor: '#F0F0F0',
+    backgroundColor: '#D3D3D3',
     paddingTop: '2rem',
     paddingBottom: '2rem'
   }

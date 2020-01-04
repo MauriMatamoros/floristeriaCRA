@@ -218,14 +218,14 @@ const Signup = ({ firebase, history }) => {
 export default compose(withRouter, firebaseConnect())(Signup)
 
 const styles = {
-  container: { backgroundColor: '#f0f0f0', padding: 0 },
+  container: { backgroundColor: 'lightgray', padding: 0 },
   imgFacebook: {
     width: '100%',
     height: 60
   },
   separator: { paddingLeft: '5%', paddingRight: '5%' },
   inputStyle: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#D3D3D3',
     borderTop: 'none',
     borderLeft: 'none',
     borderRight: 'none',

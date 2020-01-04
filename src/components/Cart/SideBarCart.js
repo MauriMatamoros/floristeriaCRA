@@ -1,94 +1,73 @@
-import React from 'react'
-import { Sidebar, Menu } from 'semantic-ui-react'
-import ItemCart from './ItemCart'
+import React from "react";
+import {Sidebar, Menu} from "semantic-ui-react";
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {withFirebase, firestoreConnect} from "react-redux-firebase";
+import ItemCart from "./ItemCart";
 
 const SideBarCart = props => {
   return (
     <>
       <Sidebar
         as={Menu}
-        animation='overlay'
-        direction='right'
-        icon='labeled'
+        animation="overlay"
+        direction="right"
+        icon="labeled"
         inverted
         vertical
         visible={props.opened}
         style={styles.containerSideBar}
       >
-        <div className='d-flex flex-row justify-content-between pl-4 pr-4'>
-          <p style={styles.titleHeader} className='mt-4'>
-            CARRITO
-          </p>
-          <button
-            type='button'
-            className='btn btn-link text-dark'
+        <div className="mt-2 pr-3 d-flex justify-content-end">
+          <a
+            role="button"
+            className="text-dark"
             onClick={() => props.setOpened(false)}
           >
-            <p style={styles.titleHeader}>X</p>
-          </button>
+            <i className="fas fa-times fa-1x" />
+          </a>
         </div>
 
-        <div className='pl-4 pb-2 pt-2' style={styles.containerPromo}>
-          <p className='text-left text-muted'>
-            Gaste L.100 más y obtenga envío gratis!
-          </p>
-        </div>
-
-        <div style={styles.containerItemsCart}>
+        {/* En caso de no existir producto en el carro de compras */}
+        {props.cart && props.cart.length > 0 ? (
           <ItemCart />
-          <ItemCart />
-          <ItemCart />
-        </div>
-
-        <div
-          className='pt-5 mt-5 text-left pl-4 pr-4'
-          style={styles.containerTop}
-        >
-          <textarea
-            style={styles.inputAddTitle}
-            placeholder='Añadir nota al pedido'
-          />
-          <p style={styles.sentTitle}>
-            Gastos de envio e impuestos calculados en la caja
-          </p>
-          <div className='mt-5 w-100 text-center'>
-            <button className='btn btn-dark'>Comprar anora</button>
+        ) : (
+          <div className="text-center p-3">
+            <img src="/assets/cart.png" style={{width: 70, height: 50}} />
+            <p style={{color: "gray"}}>
+              No tiene productos en el carro de compras, favor iniciar sesión y
+              agregar arreglos a su carrito.
+            </p>
           </div>
-        </div>
+        )}
       </Sidebar>
     </>
-  )
-}
+  );
+};
 
 const styles = {
   containerSideBar: {
-    backgroundColor: 'white'
-  },
-  titleHeader: { fontSize: 20 },
-  containerPromo: {
-    borderBottom: '1px solid lightgray',
-    borderTop: '1px solid lightgray'
-  },
-  containerItemsCart: {
-    height: '48vh',
-    overflowY: 'scroll',
-    overflowX: 'hidden'
-  },
-  containerTop: {
-    borderTop: '1px solid lightgray'
-  },
-  addTitle: {
-    color: 'gray'
-  },
-  sentTitle: {
-    color: 'gray',
-    fontSize: 13
-  },
-  inputAddTitle: {
-    border: 0,
-    textDecoration: 'none',
-    width: '100%'
+    backgroundColor: "white",
+    width: "40%"
   }
-}
+};
 
-export default SideBarCart
+export default compose(
+  withFirebase,
+  connect(({firebase, firestore: {data}}) => ({
+    cart: data.carts,
+    firebaseReducer: firebase
+  })),
+  firestoreConnect(props => {
+    return [
+      {
+        collection: "carts",
+        where: [
+          "user_id",
+          "==",
+          props.firebaseReducer.auth.uid ? props.firebaseReducer.auth.uid : ""
+        ]
+      }
+    ];
+  })
+)(SideBarCart);

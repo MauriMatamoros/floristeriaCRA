@@ -90,7 +90,7 @@ const ChangePassword = () => {
 }
 const styles = {
   container: {
-    backgroundColor: '#f0f0f0'
+    backgroundColor: '#D3D3D3'
   },
   inputStyle: {
     backgroundColor: '#F1F1F3',

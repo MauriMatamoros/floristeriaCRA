@@ -4,14 +4,13 @@ import { Header, Modal } from 'semantic-ui-react'
 const ModalMultimediaImage = props => (
   <Modal
     trigger={
-      <button className='btn p-0' type='button' style={styles.textDecoration}>
+      <a role='button' style={styles.textDecoration}>
         {props.render}
-      </button>
+      </a>
     }
     basic
     closeIcon
     size='large'
-    style={styles.content}
   >
     <Header content='Nombre de la imagen' />
     <p className='pl-4'>Fecha de la image en que se subio</p>
@@ -22,9 +21,6 @@ const ModalMultimediaImage = props => (
 const styles = {
   textDecoration: {
     textDecoration: 'none'
-  },
-  content: {
-    height: 1000
   }
 }
 

@@ -1,25 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ItemBlogSmall = props => {
+const ItemBlogBig = props => {
   return (
     <>
-      <div className='container'>
+      <div className='container mb-5'>
         <div className='row' style={styles.container}>
           <div className='col-lg-3 col-12 text-center'>
             <div>
               <p className='font-weight-bold'>Nuevo arreglo de San Valentin</p>
             </div>
             <div className='pb-4'>
-              <img src='./assets/News/img-3.jpg' style={styles.sizeImage} />
+              <img src='./assets/News/img-1.jpg' style={styles.sizeImage} />
             </div>
           </div>
           <div className='p-4 col-lg-9 col-12'>
             <Link className='text-decoration-none text-dark' to='/blog/new'>
-              <h4>
+              <h2>
                 Disfruta de nuestro nuevo arreglo de San Valentin y totalmente
                 mejorado.
-              </h4>
+              </h2>
             </Link>
             <p className='text-blue pb-3'>
               Blanca | <span>02/12/2019 - 09:24 pm</span>
@@ -35,22 +35,22 @@ const ItemBlogSmall = props => {
             </p>
           </div>
         </div>
-
-        <div></div>
       </div>
     </>
   )
 }
 
 const styles = {
-  container: {},
+  container: {
+    borderBottom: '1px solid gray'
+  },
   sizeImage: {
-    width: 150,
-    height: 230
+    width: 230,
+    height: 330
   },
   fontDescription: {
-    fontSize: 15,
+    fontSize: 18,
     color: 'gray'
   }
 }
-export default ItemBlogSmall
+export default ItemBlogBig
