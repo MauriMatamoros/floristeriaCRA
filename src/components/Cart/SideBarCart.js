@@ -1,6 +1,7 @@
 import React from 'react'
 import { Sidebar, Menu } from 'semantic-ui-react'
 import ItemCart from './ItemCart'
+import { Link } from 'react-router-dom'
 
 const SideBarCart = props => {
   return (
@@ -52,7 +53,13 @@ const SideBarCart = props => {
             Gastos de envio e impuestos calculados en la caja
           </p>
           <div className='mt-5 w-100 text-center'>
-            <button className='btn btn-dark'>Comprar anora</button>
+            <Link
+              className='btn btn-dark'
+              to='/method-pay'
+              onClick={() => props.setOpened(false)}
+            >
+              Comprar anora
+            </Link>
           </div>
         </div>
       </Sidebar>

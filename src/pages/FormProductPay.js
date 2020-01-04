@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Popup, Button } from 'semantic-ui-react'
 import ModalProductform from '../components/layout/ModalProdutForm'
 import './styles/formProduct.css'
+import { Link } from 'react-router-dom'
 
 const FormProductPay = () => {
   return (
@@ -73,7 +74,9 @@ const FormProductPay = () => {
             </div>
             <div>
               <button className='btn btn-dark w-100' style={styles.btnAddCart}>
-                Comprar ahora
+                <Link to='/method-pay' className='w-100'>
+                  <p className='text-white'>Comprar ahora</p>
+                </Link>
               </button>
             </div>
             <div className='pt-5'>
