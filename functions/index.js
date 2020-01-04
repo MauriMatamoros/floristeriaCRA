@@ -276,3 +276,31 @@ exports.removeCoupons = functions.https.onRequest((req, res) =>
     }
   })
 );
+
+
+exports.postCart = functions.https.onRequest((req, res) =>
+  cors(req, res, async () => {
+    try {
+      const {user_id, product_id, token} = req.body;
+      const {uid} = await admin.auth().verifyIdToken(token);
+
+      if (!uid) {
+        res.status(403).send("Please log in again.");
+      }
+
+      const {id} = await db
+        .collection("carts")
+        .add({user_id, product_id});
+
+      const cart = await db
+        .collection("carts")
+        .doc(id)
+        .get();
+
+      res.status(201).json({id, ...cart.data()});
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Server Error");
+    }
+  })
+);

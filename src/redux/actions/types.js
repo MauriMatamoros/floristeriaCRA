@@ -21,3 +21,5 @@ export const ADD_ADDRESS = "ADD_ADDRESS";
 export const GET_ADDRESSES = "GET_ADDRESSES";
 export const REMOVE_ADDRESS = "REMOVE_ADDRESS";
 export const ADDRESS_ERROR = "ADDRESS_ERROR";
+
+export const CART_ERROR = "CART_ERROR";

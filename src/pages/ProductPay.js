@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import axios from 'axios'
 import {Container, Popup, Button} from "semantic-ui-react";
 import {compose} from "redux";
 import {connect} from "react-redux";
@@ -12,6 +13,7 @@ class ProductPay extends Component {
     this.state = {
       productImages: []
     };
+    this.addToCart = this.addToCart.bind(this);
   }
   async UNSAFE_componentWillUpdate(props) {
     let {product, firebase, match} = props;
@@ -29,21 +31,16 @@ class ProductPay extends Component {
       });
     }
   }
-  handleSubmit = async e => {
+  async addToCart (e) {
     e.preventDefault();
-    try {
-      // setLoading(true);
-      // setError("");
-      // await firebase
-      //   .auth()
-      //   .signInWithEmailAndPassword(user.email, user.password);
-      // history.push("/");
-    } catch (error) {
-      // setError(error.message);
-    } finally {
-      // setLoading(false);
-    }
-  };
+    let {match, firebase} = this.props
+    let token = await firebase.auth().currentUser.getIdToken()
+    const { data } = await axios.post(
+      'http://localhost:5001/floristeria-cra/us-central1/postCart',
+      { token, user_id: firebase.auth().currentUser.uid, product_id: match.params.id }
+    )
+    console.log(data)
+  }
   render() {
     return (
       <>
@@ -123,6 +120,7 @@ class ProductPay extends Component {
                 <button
                   className="btn btn-grey w-100"
                   style={styles.btnAddCart}
+                  onClick={this.addToCart}
                 >
                   Agregar al carrito de compras
                 </button>
@@ -168,9 +166,10 @@ export default compose(
   firestoreConnect(props => {
     return [{collection: "products", doc: props.match.params.id}];
   }),
-  connect(({firestore: {data}}, props) => {
+  connect(({cart, firestore: {data}}, props) => {
     return {
-      product: data.products && data.products[props.match.params.id]
+      product: data.products && data.products[props.match.params.id],
+      cart
     };
   })
 )(ProductPay);
