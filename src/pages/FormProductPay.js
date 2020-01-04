@@ -43,7 +43,7 @@ const FormProductPay = () => {
               <p className='pr-4 h5'>Cantidad:</p>
               <div className='row p-0 m-0'>
                 <button className='btn btn-outline-link btn-custom m-0'>
-                  <p className='h4 font-weight-bold'>+</p>
+                  <p className='h4 font-weight-bold'>-</p>
                 </button>
                 <input
                   type='numeric'
@@ -51,7 +51,7 @@ const FormProductPay = () => {
                   value='0'
                 />
                 <button className='btn btn-outline-link btn-custom m-0'>
-                  <p className='h4 font-weight-bold'>-</p>
+                  <p className='h4 font-weight-bold'>+</p>
                 </button>
               </div>
             </div>
