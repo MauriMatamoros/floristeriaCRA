@@ -18,6 +18,7 @@ import Blog from "../pages/Blog";
 import New from "../pages/New";
 import CreateCoupons from "../pages/CreateCoupons";
 import ProductPay from "../pages/ProductPay";
+import ProductsAuthorize from "../pages/ProductsAuthorize";
 
 const Routes = () => (
   <>
@@ -33,6 +34,7 @@ const Routes = () => (
       <Route exact path="/blog" component={Blog} />
       <Route exact path="/blog/new" component={New} />
       <Route exact path="/form_card_product" component={FormProductPay} />
+      <Route exact path="/authorize_products" component={ProductsAuthorize} />
       <PrivateRoute exact path="/create" component={Create} />
       <PrivateRoute exact path="/createType" component={CreateType} />
       <Route exact path="/createCoupons" component={CreateCoupons} />

@@ -4,6 +4,9 @@ import { MDBBtn } from 'mdbreact'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import ItemsCarousel from 'react-items-carousel'
+import {compose} from "redux";
+import {connect} from "react-redux";
+import {withFirebase, firestoreConnect} from "react-redux-firebase";
 
 import CarouselNewsItem from './CarouselNewsItem'
 
@@ -65,6 +68,7 @@ class CarouselNews extends React.Component {
   }
 
   render() {
+    console.log(this.props.products)
     return (
       <>
         <Container fluid className='pt-5 pb-5'>
@@ -103,8 +107,8 @@ class CarouselNews extends React.Component {
             outsideChevron
             chevronWidth={chevronWidth}
           >
-            {array.map(array => (
-              <CarouselNewsItem key={array.id} array={array} />
+            {this.props.products && this.props.products.map(product => (
+              <CarouselNewsItem key={product.id} {...product} />
             ))}
           </ItemsCarousel>
         </div>
@@ -119,4 +123,13 @@ const styles = {
   }
 }
 
-export default CarouselNews
+export default compose(
+  withFirebase,
+  firestoreConnect(() => [{ collection: 'products', where: ['authorized', '==', true]}]),
+  connect(({firestore}) => {
+    return {
+      firestore,
+      products: firestore.ordered.products
+    };
+  })
+)(CarouselNews)

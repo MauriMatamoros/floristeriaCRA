@@ -159,6 +159,20 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                   </>
                 )}
                 {!profile.isEmpty && profile.role === 'admin' && (
+                  <>
+                    <Link to='/authorize_products'>
+                      <Menu.Item
+                        header
+                        active={isActive('/authorize_products')}
+                        className='text-white'
+                      >
+                        <Icon name='add square' size='large' />
+                        Authorize
+                      </Menu.Item>
+                    </Link>
+                  </>
+                )}
+                {!profile.isEmpty && profile.role === 'admin' && (
                   <Link to='/createType'>
                     <Menu.Item
                       header
@@ -336,6 +350,20 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                             >
                               <Icon name='add square' size='large' />
                               Create
+                            </Menu.Item>
+                          </Link>
+                        </>
+                      )}
+                      {!profile.isEmpty && profile.role === 'admin' && (
+                        <>
+                          <Link to='/authorize_products'>
+                            <Menu.Item
+                              header
+                              active={isActive('/authorize_products')}
+                              className='text-white'
+                            >
+                              <Icon name='add square' size='large' />
+                              Authorize
                             </Menu.Item>
                           </Link>
                         </>
