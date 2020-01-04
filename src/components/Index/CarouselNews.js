@@ -3,6 +3,10 @@ import { Container } from 'semantic-ui-react'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import ItemsCarousel from 'react-items-carousel'
+import { compose } from 'redux'
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+
 
 import CarouselNewsItem from './CarouselNewsItem'
 
@@ -86,7 +90,7 @@ class CarouselNews extends React.Component {
             <h2>Lo más nuevo</h2>
           </div>
         </Container>
-        <div style={{ padding: `0 ${chevronWidth}px` }}>
+        <div style={{ padding: `0 0px` }}>
           <ItemsCarousel
             infiniteLoop={true}
             requestToChangeActive={() => {}}
@@ -98,7 +102,6 @@ class CarouselNews extends React.Component {
               <div
                 onClick={() => this._prev()}
                 size='lg'
-                rounded
                 color='black'
                 style={styles.btnNextPre}
               >
@@ -117,8 +120,8 @@ class CarouselNews extends React.Component {
             }
             chevronWidth={chevronWidth}
           >
-            {array.map(array => (
-              <CarouselNewsItem key={array.id} array={array} />
+            {this.props.products && this.props.products.map(product => (
+              <CarouselNewsItem key={product.id} {...product} />
             ))}
           </ItemsCarousel>
         </div>
@@ -144,4 +147,16 @@ const styles = {
   }
 }
 
-export default CarouselNews
+export default compose(
+	firestoreConnect(() => {
+    return [
+      {collection: 'products', where: ['authorized', '==', true]}
+    ]
+  }),
+	connect(({ firestore }) => {
+		return {
+			firestore,
+			products: firestore.ordered.products
+		}
+	})
+)(CarouselNews)
