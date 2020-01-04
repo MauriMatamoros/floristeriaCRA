@@ -1,0 +1,31 @@
+@media (max-width: 768px) {
+  .align-center {
+    text-align: center !important;
+    padding-top: 1rem !important;
+  }
+  .justify-content-center-label {
+    justify-content: center;
+  }
+  .align-center-d-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .float-btn {
+    float: none;
+    margin: 0px;
+  }
+}
+
+.input-custom-check {
+  width: 22px;
+  height: 22px;
+}
+
+.input-custom-text {
+  border: solid #acaca5 1px;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 18px;
+}

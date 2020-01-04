@@ -38,7 +38,7 @@ const SideBarCart = props => {
               No tiene productos en el carro de compras, favor iniciar sesión y
               agregar arreglos a su carrito.
             </p>
-          </div>
+        </div>
         )}
       </Sidebar>
     </>
