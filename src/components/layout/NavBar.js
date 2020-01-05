@@ -222,6 +222,18 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                     </Menu.Item>
                   </Link>
                 )}
+                {!profile.isEmpty && profile.role === 'admin' && (
+                  <Link to='/authorize_products'>
+                    <Menu.Item
+                      header
+                      active={isActive('/authorize_products')}
+                      className='text-white'
+                    >
+                      <Icon name='add square' size='large' />
+                      Authorize products
+                    </Menu.Item>
+                  </Link>
+                )}
               </Sidebar>
             </div>
             {/* Aqui inicia el search */}
@@ -544,6 +556,18 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                           >
                             <Icon name='add square' size='large' />
                             Create Coupon
+                          </Menu.Item>
+                        </Link>
+                      )}
+                      {!profile.isEmpty && profile.role === 'admin' && (
+                        <Link to='/authorize_products'>
+                          <Menu.Item
+                            header
+                            active={isActive('/authorize_products')}
+                            className='text-white'
+                          >
+                            <Icon name='add square' size='large' />
+                            Authorize products
                           </Menu.Item>
                         </Link>
                       )}

@@ -276,3 +276,24 @@ exports.removeCoupons = functions.https.onRequest((req, res) =>
     }
   })
 );
+
+exports.authorizeProducts = functions.https.onRequest((req, res) =>
+  cors(req, res, async () => {
+    try {
+      const {token, productId, authorized} = req.body;
+      
+      await admin.auth().verifyIdToken(token);
+      await db
+        .collection("products")
+        .doc(productId)
+        .update({authorized});
+      const product = await db
+        .collection("products")
+        .doc(productId)
+        .get();
+      res.status(200).json(product.data());
+    } catch (error) {
+      res.status(500).send("Server Error");
+    }
+  })
+);
