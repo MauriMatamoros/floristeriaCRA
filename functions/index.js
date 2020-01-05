@@ -322,3 +322,24 @@ exports.postFeatured = functions.https.onRequest((req, res) =>
     }
   })
 );
+
+exports.getFeaturedProducts = functions.https.onRequest((req, res) =>
+  cors(req, res, async () => {
+    try {
+      const snapshots = await db.collection("featuredProducts").get();
+      const featuredProducts = [];
+      if (snapshots.empty) {
+        res.status(200).send([]);
+      }
+      snapshots.forEach(featuredProduct =>
+        featuredProducts.push({
+          id: featuredProduct.id,
+          ...featuredProduct.data()
+        })
+      );
+      res.status(200).json(featuredProducts);
+    } catch (error) {
+      res.status(500).send("Server Error");
+    }
+  })
+);

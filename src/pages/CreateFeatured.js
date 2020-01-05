@@ -13,12 +13,13 @@ import {
 import axios from 'axios'
 import { connect } from 'react-redux'
 
-import { addFeaturedProduct } from '../redux/actions/featuredProducts'
+import { addFeaturedProduct, getFeaturedProduct } from '../redux/actions/featuredProducts'
 import Spinner from '../components/Spinner/Spinner'
-import TypeList from '../components/ProductTypes/TypeList'
 import { firebaseConnect } from 'react-redux-firebase'
+import FeaturedProductsList from '../components/FeaturedProducts/FeaturedProductsList'
 
-const CreateFeatured = ({ addFeaturedProduct, userLoading, firebase }) => {
+
+const CreateFeatured = ({ getFeaturedProduct, addFeaturedProduct, userLoading, firebase }) => {
   const INITIAL_TYPE = {
     name: '',
     media: ''
@@ -68,6 +69,7 @@ const CreateFeatured = ({ addFeaturedProduct, userLoading, firebase }) => {
       )
       await handleImageUpload(data.id)
       addFeaturedProduct(data)
+      getFeaturedProduct()
       setType(INITIAL_TYPE)
       setSuccess(true)
     } catch (error) {
@@ -128,7 +130,7 @@ const CreateFeatured = ({ addFeaturedProduct, userLoading, firebase }) => {
           disabled={disabled || loading}
         />
       </Form>
-      <TypeList />
+      <FeaturedProductsList />
     </Container>
   )
 }
@@ -141,6 +143,6 @@ export default compose(
   firebaseConnect(),
   connect(
     mapStateToProps,
-    { addFeaturedProduct }
+    { addFeaturedProduct, getFeaturedProduct }
   )
 )(CreateFeatured)

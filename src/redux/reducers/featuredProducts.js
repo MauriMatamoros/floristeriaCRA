@@ -1,4 +1,4 @@
-import { GET_PRODUCTS, PRODUCTS_ERROR } from '../actions/types'
+import { GET_FEATURED_PRODUCT, FEATURED_PRODUCT_ERROR } from '../actions/types'
 
 const initialState = {
 	products: [],
@@ -11,13 +11,13 @@ const initialState = {
 export default (state = initialState, action) => {
 	const { type, payload } = action
 	switch (type) {
-		case GET_PRODUCTS:
+		case GET_FEATURED_PRODUCT:
 			return {
 				...state,
-				types: payload,
+				products: payload,
 				loading: false
 			}
-		case PRODUCTS_ERROR:
+		case FEATURED_PRODUCT_ERROR:
 			return {
 				...state,
 				error: payload,
