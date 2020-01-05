@@ -297,3 +297,28 @@ exports.authorizeProducts = functions.https.onRequest((req, res) =>
     }
   })
 );
+
+exports.postFeatured = functions.https.onRequest((req, res) =>
+  cors(req, res, async () => {
+    try {
+      const {token, name, image} = req.body;
+      const {uid} = await admin.auth().verifyIdToken(token);
+
+      if (!uid) {
+        res.status(403).send("Please log in again.");
+      }
+
+      const {id} = await db.collection("featuredProducts").add({name, image});
+
+      const featureProducts = await db
+        .collection("featuredProducts")
+        .doc(id)
+        .get();
+
+      res.status(201).json({id, ...featureProducts.data()});
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Server Error");
+    }
+  })
+);
