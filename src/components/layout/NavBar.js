@@ -595,6 +595,18 @@ const NavBar = ({ location, auth, profile, firebase }) => {
                           </Menu.Item>
                         </Link>
                       )}
+                      {!profile.isEmpty && profile.role === 'admin' && (
+                        <Link to='/create_gallery'>
+                          <Menu.Item
+                            header
+                            active={isActive('/create_gallery')}
+                            className='text-white'
+                          >
+                            <Icon name='add square' size='large' />
+                            Create Gallery
+                          </Menu.Item>
+                        </Link>
+                      )}
                     </Sidebar>
                   </ul>
                 </div>

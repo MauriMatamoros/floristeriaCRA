@@ -21,6 +21,7 @@ import ProductPay from '../pages/ProductPay'
 import MethodPay from '../components/Products/MethodPay'
 import AuthorizeProducts from '../pages/AuthorizeProducts'
 import CreateFeatured from '../pages/CreateFeatured'
+import CreateGallery from '../pages/CreateGallery'
 
 const Routes = () => (
   <>
@@ -40,6 +41,7 @@ const Routes = () => (
       <PrivateRoute exact path='/create' component={Create} />
       <PrivateRoute exact path='/method-pay' component={MethodPay} />
       <PrivateRoute exact path='/createType' component={CreateType} />
+      <PrivateRoute exact path='/create_gallery' component={CreateGallery} />
       <Route exact path='/createCoupons' component={CreateCoupons} />
       <PrivateRoute exact path='/createAddress' component={CreateAddress} />
       <PrivateRoute exact path='/account' component={Account} />

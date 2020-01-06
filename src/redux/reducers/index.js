@@ -7,6 +7,7 @@ import addresses from './addresses'
 import trends from './trends'
 import cart from './cart'
 import featuredProducts from './featuredProducts'
+import gallery from './gallery'
 import { firestoreReducer } from 'redux-firestore'
 import { firebaseReducer } from 'react-redux-firebase'
 
@@ -19,5 +20,6 @@ export default combineReducers({
 	trends,
 	cart,
 	addresses,
-	featuredProducts
+	featuredProducts,
+	gallery
 })

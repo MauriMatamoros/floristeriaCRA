@@ -362,3 +362,68 @@ exports.removeFeaturedProduct = functions.https.onRequest((req, res) =>
     }
   })
 );
+
+exports.postGallery = functions.https.onRequest((req, res) =>
+  cors(req, res, async () => {
+    try {
+      const {token, name, image} = req.body;
+      const {uid} = await admin.auth().verifyIdToken(token);
+
+      if (!uid) {
+        res.status(403).send("Please log in again.");
+      }
+
+      const {id} = await db.collection("galleries").add({name, image});
+
+      const gallery = await db
+        .collection("galleries")
+        .doc(id)
+        .get();
+
+      res.status(201).json({id, ...gallery.data()});
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Server Error");
+    }
+  })
+);
+
+exports.getGallery = functions.https.onRequest((req, res) =>
+  cors(req, res, async () => {
+    try {
+      const snapshots = await db.collection("galleries").get();
+      const galleries = [];
+      if (snapshots.empty) {
+        res.status(200).send([]);
+      }
+      snapshots.forEach(gallery =>
+        galleries.push({
+          id: gallery.id,
+          ...gallery.data()
+        })
+      );
+      res.status(200).json(galleries);
+    } catch (error) {
+      res.status(500).send("Server Error");
+    }
+  })
+);
+
+exports.removeGallery = functions.https.onRequest((req, res) =>
+  cors(req, res, async () => {
+    try {
+      const {token, id} = req.body;
+      const {uid} = await admin.auth().verifyIdToken(token);
+      if (!uid) {
+        res.status(403).send("Please log in again.");
+      }
+      await db
+        .collection("galleries")
+        .doc(id)
+        .delete();
+      res.status(200).json(id);
+    } catch (error) {
+      res.status(500).send("Server Error");
+    }
+  })
+);
