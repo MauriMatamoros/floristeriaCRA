@@ -343,3 +343,22 @@ exports.getFeaturedProducts = functions.https.onRequest((req, res) =>
     }
   })
 );
+
+exports.removeFeaturedProduct = functions.https.onRequest((req, res) =>
+  cors(req, res, async () => {
+    try {
+      const {token, id} = req.body;
+      const {uid} = await admin.auth().verifyIdToken(token);
+      if (!uid) {
+        res.status(403).send("Please log in again.");
+      }
+      await db
+        .collection("featuredProducts")
+        .doc(id)
+        .delete();
+      res.status(200).json(id);
+    } catch (error) {
+      res.status(500).send("Server Error");
+    }
+  })
+);

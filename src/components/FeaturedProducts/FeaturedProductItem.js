@@ -4,9 +4,9 @@ import {Icon, Table, Button} from 'semantic-ui-react';
 import axios from 'axios';
 
 import {firebase} from '../../firebase';
-import { removeFeaturedProduct } from '../../redux/actions/featuredProducts';
+import { removeFeaturedProduct, getFeaturedProduct } from '../../redux/actions/featuredProducts';
 
-const FeaturedProductItem = ({id, name, image, removeFeaturedProduct}) => {
+const FeaturedProductItem = ({id, name, image, removeFeaturedProduct, getFeaturedProduct}) => {
   const [disabled, setDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const handleDelete = async id => {
@@ -19,6 +19,7 @@ const FeaturedProductItem = ({id, name, image, removeFeaturedProduct}) => {
         {token, id}
       );
       removeFeaturedProduct(data);
+      getFeaturedProduct()
     } catch (error) {
       console.log(error);
     }
@@ -45,5 +46,5 @@ const FeaturedProductItem = ({id, name, image, removeFeaturedProduct}) => {
 
 export default connect(
   null,
-  {removeFeaturedProduct}
+  {removeFeaturedProduct, getFeaturedProduct}
 )(FeaturedProductItem);
