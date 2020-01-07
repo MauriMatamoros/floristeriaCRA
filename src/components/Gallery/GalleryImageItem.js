@@ -5,7 +5,7 @@ import {withFirebase} from 'react-redux-firebase'
 import {connect} from 'react-redux'
 import ModalMultimediaImage from '../layout/ModalMultimediaImage'
 
-class GalleryItemImage extends Component {
+class GalleryImageItem extends Component {
   constructor(props) {
 		super(props)
 		this.state = {
@@ -16,7 +16,7 @@ class GalleryItemImage extends Component {
     const { firebase, id, image } = this.props
 		let productImage = await firebase
 			.storage()
-			.ref(`featuredProducts/${id}-${image}`)
+			.ref(`gallery/${id}-${image}`)
 			.getDownloadURL()
 
 		if (productImage) {
@@ -54,4 +54,4 @@ const styles = {
 export default compose(
   withFirebase,
   connect(() => ({}))
-)(GalleryItemImage)
+)(GalleryImageItem)
